@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const dotenv = require("dotenv");
 const app = express();
 require("dotenv").config();
 
@@ -12,29 +13,27 @@ app.use(bodyParser.json());
 
 const URL = process.env.MONGODB_URL;
 
-mongoose.connect(URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}) 
+mongoose.connect(URL);
 
 const connection = mongoose.connection;
 connection.once("open", () => {
-    console.log("Mongodb Connection Success!");
-})
+    console.log("MongoDB connection successful!");
+});
+
+const employeeRouter= require("./routes/employees.js");
+app.use("/employee",employeeRouter)
 
 
-const fertilizerRouter = require("./routes/fertilizer.js");
-app.use("/fertilizer", fertilizerRouter);
+const EmployeeLeavesRouter= require("./routes/EmployeeLeaveRouter.js");
+app.use("/EmployeeLeave",EmployeeLeavesRouter)
 
-const supplierRouter = require("./routes/supplier.js");
-app.use("/supplier", supplierRouter);
 
-const purchaseRouter = require("./routes/purchase.js");
-app.use("/purchase", purchaseRouter); 
+const EmployeeAttendancesRouter= require("./routes/EmployeeAttendanceRouter.js");
+app.use("/EmployeeAttendance",EmployeeAttendancesRouter)
+
+
 
 app.listen(PORT, () => {
-    console.log(`Server is up and running on port number: ${PORT}`)
-})
-
-
+    console.log(`Server is up and running on port number: ${PORT}`);
+});
 

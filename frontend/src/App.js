@@ -1,24 +1,29 @@
 import './App.css';
-import AddFertilizer from './components/AddFertilizer';
-import AddSupplier from './components/AddSupplier';
-import AddPurchase from './components/AddPurchase';
 import Header from './components/Header';
+import AddEmployee from './components/AddEmployee';
+import AddEmployeeLeave from './components/AddEmployeeLeave';
+import AddEmployeeAttendance from './components/AddEmployeeAttendance';
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <Router>
       <div>
-        <Header/>
+        <Header />
         <Routes>
-          <Route path="/fertilizer/add" element={<AddFertilizer />} />
-          <Route path="/supplier/add" element={<AddSupplier />} />
-          <Route path="/purchase/add" element={<AddPurchase />} />
+          <Route path="/employee/add" element={<AddEmployee />} />
+          <Route path="/EmployeeLeave/add" element={<AddEmployeeLeave />} />
+          <Route path="/EmployeeAttendance/add" element={<AddEmployeeAttendance />} />
         </Routes>
+
+        
+       
+        
+
       </div>
     </Router>
   );
 }
 
 export default App;
-
