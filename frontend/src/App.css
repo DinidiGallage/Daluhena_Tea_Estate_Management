@@ -98,13 +98,13 @@ body {
     color: #1E421D; /* Updated to match specified color */
 }
 .nav-link:hover {
-    background-color: #E1E587; /* Light green */
+    background-color:#f9ffb9; /* Light green */
     color: #A9B523; /* Lighter shade of yellow */
 }
 
 .active {
-    background-color: #b52373; /* Lighter shade of yellow */
-    color: #E1E587; /* Light green */
+    background-color: #A9B523; /* Lighter shade of yellow */
+    color: #f9ffb9; /* Light green */
 }
 
 
@@ -116,4 +116,7 @@ body {
 
 
   
+
+
+
 
