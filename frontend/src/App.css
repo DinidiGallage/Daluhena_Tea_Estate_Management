@@ -103,14 +103,10 @@ body {
 }
 
 .active {
-<<<<<<< HEAD
-    background-color: #5b23b5; /* Lighter shade of yellow */
-    color: #E1E587; /* Light green */
-=======
-    background-color: #A9B523; /* Lighter shade of yellow */
-    color: #f9ffb9; /* Light green */
->>>>>>> 46b2f4b628df7ee1d5d7af4e3097d0df4245f723
+  background-color: #A9B523; /* Lighter shade of yellow */
+  color: #E1E587; /* Light green */
 }
+
 
 
 
