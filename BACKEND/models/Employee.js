@@ -29,7 +29,7 @@ const employeeSchema = new Schema({
     gender: {
         type: String,
         required: true,
-        enum: ['Male', 'Female', 'Other'] // Ensures that gender is one of the specified values
+        enum: ['Male', 'male', 'Female', 'female', 'Other', 'other'] // Ensures that gender is one of the specified values
     },
     age: {
         type: Number,
