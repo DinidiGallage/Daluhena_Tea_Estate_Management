@@ -3,31 +3,37 @@ const router = express.Router();
 const Purchase = require("../models/Purchase");
 
 // Add new purchase
-router.route("/add").post((req, res) => {
-    const { supplier, product, invoiceNumber, purchaseDate, paymentStatus, qty, unitPrice } = req.body;
+router.route("/add").post(async (req, res) => {
+    try {
+        const { supplier, product, invoiceNumber, purchaseDate, paymentStatus, qty, unitPrice } = req.body;
 
-    // Calculate totalPrice
-    const totalPrice = qty * unitPrice;
+        // Check if invoice number already exists
+        const existingPurchase = await Purchase.findOne({ invoiceNumber });
+        if (existingPurchase) {
+            return res.status(400).json({ error: `${invoiceNumber} already exists. Please enter a unique invoice number` });
+        }
 
-    const newPurchase = new Purchase({
-        supplier,
-        product,
-        invoiceNumber,
-        purchaseDate,
-        paymentStatus,
-        qty,
-        unitPrice,
-        totalPrice // Automatically calculated
-    });
+        // Calculate totalPrice
+        const totalPrice = qty * unitPrice;
 
-    newPurchase.save()
-        .then(() => {
-            res.json("Purchase Details Added");
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json({ error: "Error adding purchase details" });
+        const newPurchase = new Purchase({
+            supplier,
+            product,
+            invoiceNumber,
+            purchaseDate,
+            paymentStatus,
+            qty,
+            unitPrice,
+            totalPrice // Automatically calculated
         });
+
+        await newPurchase.save();
+
+        res.json("Purchase Details Added");
+    } catch (error) {
+        console.error("Error adding purchase:", error);
+        res.status(500).json({ error: "Error adding purchase details" });
+    }
 });
 
 // Retrieve all purchase details

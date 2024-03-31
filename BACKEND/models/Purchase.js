@@ -14,8 +14,18 @@ const purchaseSchema = new Schema({
     invoiceNumber: {
         type: String,
         required: true,
-        unique: true  // Ensure each invoice number is unique
-    },
+        unique: true,  // Ensure each invoice number is unique
+        validate: {
+            validator: async function(value) {
+                const existingPurchase = await this.constructor.findOne({ invoiceNumber: value });
+                if (existingPurchase) {
+                    return false; // Return false if the invoice number already exists
+                }
+                return true; // Return true if the invoice number is unique
+            },
+            message: props => `${props.value} already exists. Please enter a unique invoice number`
+        }
+    },     
     purchaseDate: {
         type: Date,
         required: true,
@@ -41,9 +51,9 @@ const purchaseSchema = new Schema({
         required: true,
         validate: {
             validator: function(value) {
-                return value >= 0;
+                return value > 0; // Quantity must be greater than 0
             },
-            message: 'Quantity must be a non-negative number.'
+            message: 'Quantity must be a positive number.'
         }
     },
     unitPrice: {
@@ -51,9 +61,9 @@ const purchaseSchema = new Schema({
         required: true,
         validate: {
             validator: function(value) {
-                return value >= 0;
+                return value > 0; // Unit price must be greater than 0
             },
-            message: 'Unit price must be a non-negative number.'
+            message: 'Unit price must be a positive number.'
         }
     },
     totalPrice: {
@@ -77,5 +87,3 @@ purchaseSchema.pre('save', function(next) {
 const Purchase = mongoose.model("Purchase", purchaseSchema);
 
 module.exports = Purchase;
-
-
