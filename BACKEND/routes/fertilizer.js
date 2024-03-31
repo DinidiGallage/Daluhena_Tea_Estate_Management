@@ -1,52 +1,52 @@
-//const router = require("express").Router;
-
 const express = require('express');
 const router = express.Router();
+const Fertilizer = require("../models/Fertilizer");
 
-let Fertilizer = require("../models/Fertilizer");
 // Add new fertilizer
-router.route("/add").post((req, res) => {
-    const { fertilizerName, fertilizerType, manufacturer, quantity } = req.body;
+router.post("/add", async (req, res) => {
+    const { fertilizerName, fertilizerType, manufacturer, quantity, manufacturedDate, expiredDate } = req.body;
 
-    const newFertilizer = new Fertilizer({
-        fertilizerName,
-        fertilizerType,
-        manufacturer,
-        quantity
-    });
-
-    newFertilizer.save()
-        .then(() => {
-            res.json("Fertilizer Added");
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json({ error: "Error adding fertilizer" });
+    try {
+        const newFertilizer = new Fertilizer({
+            fertilizerName,
+            fertilizerType,
+            manufacturer,
+            quantity,
+            manufacturedDate,
+            expiredDate
         });
+
+        await newFertilizer.save();
+        res.json("Fertilizer Added");
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: "Error adding fertilizer" });
+    }
 });
 
 // Retrieve all fertilizer details
-router.route("/").get((req, res) => {
-    Fertilizer.find()
-        .then((fertilizers) => {
-            res.json(fertilizers);
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json({ error: "Error retrieving fertilizer details" });
-        });
+router.get("/", async (req, res) => {
+    try {
+        const fertilizers = await Fertilizer.find();
+        res.json(fertilizers);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: "Error retrieving fertilizer details" });
+    }
 });
 
 // Update fertilizer details
-router.route("/update/:id").put(async (req, res) => {
+router.put("/update/:id", async (req, res) => {
     const fertilizerId = req.params.id;
-    const { fertilizerName, fertilizerType, manufacturer, quantity } = req.body;
+    const { fertilizerName, fertilizerType, manufacturer, quantity, manufacturedDate, expiredDate } = req.body;
 
     const updateFertilizer = {
         fertilizerName,
         fertilizerType,
         manufacturer,
-        quantity
+        quantity,
+        manufacturedDate,
+        expiredDate
     };
 
     try {
@@ -59,7 +59,7 @@ router.route("/update/:id").put(async (req, res) => {
 });
 
 // Delete fertilizer
-router.route("/delete/:id").delete(async (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
     const fertilizerId = req.params.id;
 
     try {
@@ -72,7 +72,7 @@ router.route("/delete/:id").delete(async (req, res) => {
 });
 
 // Get details of one fertilizer
-router.route("/get/:id").get(async (req, res) => {
+router.get("/get/:id", async (req, res) => {
     const fertilizerId = req.params.id;
 
     try {

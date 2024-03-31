@@ -8,9 +8,38 @@ export default function AddSupplier() {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [productTypes, setProductTypes] = useState("");
+  const [error, setError] = useState("");
+
+  function validateInputs() {
+    if (!supplierName || !contactPerson || !phone || !email || !address || !productTypes) {
+      setError("All fields are required.");
+      return false;
+    }
+
+    // Validate phone number format
+    const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
+    if (!phoneRegex.test(phone)) {
+      setError("Phone number must be in the format XXX-XXX-XXXX.");
+      return false;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Invalid email format.");
+      return false;
+    }
+
+    setError("");
+    return true;
+  }
 
   function sendData(e) {
     e.preventDefault();
+
+    if (!validateInputs()) {
+      return;
+    }
 
     const newSupplier = {
       supplierName,
@@ -69,7 +98,7 @@ export default function AddSupplier() {
             type="text"
             className="form-control"
             id="phone"
-            placeholder="Enter phone number"
+            placeholder="Enter phone number (XXX-XXX-XXXX)"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
           />
@@ -110,6 +139,8 @@ export default function AddSupplier() {
             onChange={(e) => setProductTypes(e.target.value)}
           />
         </div>
+
+        {error && <div className="alert alert-danger">{error}</div>}
 
         <button type="submit" className="btn btn-primary">
           Submit

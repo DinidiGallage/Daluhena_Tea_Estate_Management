@@ -19,6 +19,20 @@ const fertilizerSchema = new Schema({
         type: Number,
         required: true,
         min: [0, 'Quantity must be a non-negative number.'] // Set minimum value for quantity
+    },
+    manufacturedDate: {
+        type: Date,
+        required: true
+    },
+    expiredDate: {
+        type: Date,
+        required: true,
+        validate: {
+            validator: function(expiredDate) {
+                return expiredDate > this.manufacturedDate; // Ensure expired date is after manufactured date
+            },
+            message: 'Expired date must be after manufactured date.'
+        }
     }
 });
 
@@ -30,3 +44,4 @@ fertilizerSchema.path('quantity').validate(function(value) {
 const Fertilizer = mongoose.model("Fertilizer", fertilizerSchema);
 
 module.exports = Fertilizer;
+
