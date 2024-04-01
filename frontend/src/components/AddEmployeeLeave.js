@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+//import DatePicker from "react-datepicker";
+//import "react-datepicker/dist/react-datepicker.css";
 
 export default function AddEmployeeLeave() {
   const [name, setName] = useState("");
@@ -73,7 +73,7 @@ export default function AddEmployeeLeave() {
               <option value="Emergency">Emergency</option>
             </select>
           </div>
-          <div className="mb-3">
+       {/*   <div className="mb-3">
             <label htmlFor="leaveFrom" className="form-label">Leave Date From</label>
             <DatePicker
               selected={leaveFrom}
@@ -92,7 +92,31 @@ export default function AddEmployeeLeave() {
               placeholderText="Select leave end date"
               dateFormat="dd/MM/yyyy"
             />
-          </div>
+  </div>*/}
+            <div className="form-group">
+              <label htmlFor="leaveFrom">Leave Date From</label>
+              <input
+                type="date"
+                className="form-control"
+                id="leaveFrom"
+                value={leaveFrom}
+                onChange={(e) => setLeaveFrom(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="leaveTo">Leave Date To</label>
+              <input
+                type="date"
+                className="form-control"
+                id="leaveTo"
+                value={leaveTo}
+                onChange={(e) =>  setLeaveTo(e.target.value)}
+              />
+            </div>
+
+
+
+
           <div className="mb-3">
             <label htmlFor="leaveStatus" className="form-label">Leave Status</label>
             <select className="form-select" id="leaveStatus" onChange={(e) => setLeaveStatus(e.target.value)}>

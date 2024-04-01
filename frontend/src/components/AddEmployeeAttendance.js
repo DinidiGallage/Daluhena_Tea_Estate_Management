@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+//import DatePicker from "react-datepicker";
+//import "react-datepicker/dist/react-datepicker.css";
 
 export default function AddEmployeeLeave() {
   const [name, setName] = useState("");
@@ -13,6 +13,13 @@ export default function AddEmployeeLeave() {
 
   function sendData(e) {
     e.preventDefault();
+
+    
+    if (!name || !nic || !jobrole || !dayType || !date || !attendance ) {
+      alert("Please fill in all fields");
+      return;
+    }
+
 
     // Prepare data object to send to the server
     const newEmployeeAttendance = {
@@ -62,7 +69,7 @@ export default function AddEmployeeLeave() {
               <label className="form-check-label" htmlFor="weekends">Weekends</label>
             </div>
           </div>
-          <div className="mb-3">
+       { /* <div className="mb-3">
             <label htmlFor="date" className="form-label">Attendance Date</label>
             <DatePicker
               selected={date}
@@ -71,7 +78,19 @@ export default function AddEmployeeLeave() {
               placeholderText="Select attendance date"
               dateFormat="dd/MM/yyyy"
             />
-          </div>
+          </div>*/}
+
+            <div className="form-group">
+              <label htmlFor="date">Attendance Date</label>
+              <input
+                type="date"
+                className="form-control"
+                id="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+            </div>
+
           <div className="mb-3">
             <label className="form-label">Attendance</label>
             <div className="form-check">

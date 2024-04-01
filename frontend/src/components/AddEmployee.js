@@ -15,6 +15,12 @@ export default function AddEmployee() {
   function sendData(e) {
     e.preventDefault();
 
+    if (!name || !nic || !email || !contactNumber || !gender || !age || !address || !jobrole || !qualifications) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+
     const newEmployee = {
       name,
       nic,
