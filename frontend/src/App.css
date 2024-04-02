@@ -1,58 +1,134 @@
-/* App.css */
-
-
-* {
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/* Your existing styles */
-.side-nav {
-  height: 100%;
-  width: 200px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #E1E587; 
-  padding-top: 20px;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.form-wrapper {
+  width: 500px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.btn-primary {
+  background-color: #32CD32; /* Green */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-primary:hover {
+  background-color: #1E421D; 
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+} 
 
 .brand {
   padding: 10px;
   text-align: center;
   border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.brand span {
+  display: block;
+  color: white; /* Change text color to white */
+  font-weight: bold; /* Make text bold */
+}
+
+
+.side-nav {
+  height: 100%;
+  width: 250px; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #1E421D; 
+  padding-top: 20px;
 }
 
 .navbar {
   display: flex;
   flex-direction: column;
+  align-items: center; 
 }
 
 .nav-item {
   padding: 10px;
-  border-radius: 25px;
+  border-radius: 5px; 
+  transition: border-radius 0.3s, background-color 0.3s; 
+  text-align: center;
 }
 
 .nav-link {
   text-decoration: none;
   font-size: 18px;
-  color: #1E421D;
-  border-radius: 25px;
-  text-align: center;
+  color: #fff; 
+  padding: 15px;
+  display: inline-block;
+  width: 150px;
 }
 
 .nav-link:hover {
-  background-color: #f9ffb9; 
-  color: #A9B523; 
+  background-color: #fff; 
+  color: #1E421D; 
+  border-radius: 20px;
 }
 
 .active {
-  background-color: #A9B523; 
-  color: #f9ffb9; 
+  background-color: #fff; 
+  color: #1E421D; 
+  border-radius: 20px;
 }
 
+
+/* Tiles styles */
 .tiles-container {
   display: flex;
   flex-wrap: wrap;
