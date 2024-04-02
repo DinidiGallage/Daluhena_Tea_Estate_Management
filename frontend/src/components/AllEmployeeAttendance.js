@@ -61,7 +61,7 @@ function AllEmployeeAttendance() {
     };
 
     return (
-        <div className="container mt-5" style={{ marginLeft: "220px" }}>
+        <div className="container mt-5" style={{ marginLeft: "250px" }}>
             <h1>All Attendance Details</h1>
             {error && <div className="alert alert-danger" role="alert">{error}</div>}
             <div className="input-group mb-3" style={{ width: "300px" }}>

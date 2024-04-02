@@ -43,7 +43,7 @@ export default function AddEmployee() {
   }
 
   return (
-    <div className="container mt-5" style={{ marginLeft: "220px" }}>
+    <div className="container mt-5" style={{ marginLeft: "250px" }}>
       <h2>Add New Employee</h2>
       <form onSubmit={sendData}>
 

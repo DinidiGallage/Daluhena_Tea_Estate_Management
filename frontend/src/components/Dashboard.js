@@ -30,13 +30,13 @@ function Dashboard() {
           {/* Use Link to navigate to AllAttendanceDetails.js */}
           <Link to="/all-attendance-details">
             {/*all-attendance-details*/}
-            <button className="btn btn-primary mr-2"><h2> View All Employee Attendance </h2></button>  
+            <button className="btn "><h2> View All Employee Attendance </h2></button>  
           </Link>
         </div>
 
         <div className="tile">
           <Link to="/all-leave-details">
-            <button className="btn btn-primary mr-2"><h2> View All Employee Leave Status </h2></button> 
+            <button className="btn btn"><h2> View All Employee Leave Status </h2></button> 
           </Link>
         </div>
       </div>

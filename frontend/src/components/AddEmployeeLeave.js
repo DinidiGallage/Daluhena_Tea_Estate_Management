@@ -45,7 +45,7 @@ export default function AddEmployeeLeave() {
   }
 
   return (
-    <div className="container mt-5" style={{ marginLeft: "220px" }}>
+    <div className="container mt-5" style={{ marginLeft: "250px" }}>
       <h2>Add New Employee Leave</h2>
       <form onSubmit={sendData} className="row">
         <div className="col-md-6">
