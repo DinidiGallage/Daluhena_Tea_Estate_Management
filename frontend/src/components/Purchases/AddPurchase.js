@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import backgroundImage from '../images/DashboardBackground.png'; 
+import backgroundImage from '../../images/DashboardBackground.png'; 
 
 export default function AddPurchase() {
   const [supplier, setSupplier] = useState("");

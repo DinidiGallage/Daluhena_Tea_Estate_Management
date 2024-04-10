@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import backgroundImage from '../images/DashboardBackground.png';
+import backgroundImage from '../../images/DashboardBackground.png'; 
 
 export default function AllSuppliers() {
   const [suppliers, setSuppliers] = useState([]);

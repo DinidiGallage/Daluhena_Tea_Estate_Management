@@ -1,9 +1,9 @@
 import './App.css';
 import AddFertilizer from './components/Fertilizers/AddFertilizer';
-import AddSupplier from './components/AddSupplier';
-import AddPurchase from './components/AddPurchase';
-import AllPurchases from './components/AllPurchases';
-import AllSuppliers from './components/AllSuppliers';
+import AddSupplier from './components/Suppliers/AddSupplier';
+import AddPurchase from './components/Purchases/AddPurchase';
+import AllPurchases from './components/Purchases/AllPurchases';
+import AllSuppliers from './components/Suppliers/AllSuppliers';
 import AllFertilizers from './components/Fertilizers/AllFertilizers';
 
 import Header from './components/Header';
