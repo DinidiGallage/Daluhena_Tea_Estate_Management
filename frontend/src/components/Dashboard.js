@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import backgroundImage from '../images/DashboardBackground.png'; 
 
 export default function Dashboard() {
   const [fertilizers, setFertilizers] = useState([]);
@@ -62,18 +63,19 @@ export default function Dashboard() {
   };
 
   return (
-    <div style={{ marginLeft: "250px", paddingLeft: "20px", marginTop: "20px" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>Welcome to Dashboard</h1>
-      <div style={{ marginBottom: "20px" }}>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={handleSearch}
-          style={{ marginRight: "10px", padding: "8px", width: "calc(100% - 200px)" }}
-        />
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <p style={{ fontSize: "0.9rem", marginTop: "5px", color: "#666", flex: "1" }}>
+    <div className="transparent-box" style={{ marginLeft: "270px", paddingLeft: "20px", paddingRight: "20px", paddingTop: "20px"}}>
+      <div>
+        <h1 style={{ textAlign: "center", marginBottom: "20px", paddingTop: "0", color: "white", 
+          backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', padding: '40px 60px' }}>Welcome to Dashboard</h1>
+        <div style={{ marginBottom: "20px" }}>
+          <input
+            type="text"
+            placeholder="Search for available fertilizers..."
+            value={searchTerm}
+            onChange={handleSearch}
+            style={{ marginRight: "10px", padding: "8px", width: "calc(100% - 200px)" }}
+          />
+          <p style={{ fontSize: "0.9rem", marginTop: "5px", color: "#666" }}>
             Enter your query in the search box above. You can filter by selecting the checkboxes for the specific fields you want to include in the search.
           </p>
           <div style={{ display: "flex", alignItems: "center" }}>
@@ -84,7 +86,7 @@ export default function Dashboard() {
                 checked={filters.name}
                 onChange={handleCheckboxChange}
               />
-              Name
+              Fertilizers
             </label>
             <label style={{ marginRight: "20px" }}>
               <input
@@ -133,42 +135,51 @@ export default function Dashboard() {
             </label>
           </div>
         </div>
-      </div>
-      <table className="table" style={{ width: "100%", borderCollapse: "collapse" }}>
-        <thead>
-          <tr>
-            {getColumns().map(column => (
-              <th key={column} style={{ border: "1px solid #dddddd", padding: "8px" }}>{column}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {filteredFertilizers.map(fertilizer => (
-            <tr key={fertilizer._id}>
+        <table className="table" style={{ width: "100%", borderCollapse: "collapse" }}>
+          <thead>
+            <tr>
               {getColumns().map(column => (
-                <td key={column} style={{ border: "1px solid #dddddd", padding: "8px" }}>
-                  {column === "Name" && fertilizer.fertilizerName}
-                  {column === "Type" && fertilizer.fertilizerType}
-                  {column === "Manufacturer" && fertilizer.manufacturer}
-                  {column === "Quantity (kg)" && fertilizer.quantity}
-                  {column === "Manufactured Date" && fertilizer.manufacturedDate}
-                  {column === "Expired Date" && fertilizer.expiredDate}
-                </td>
+                <th key={column} style={{ border: "1px solid #dddddd", padding: "8px" }}>{column}</th>
               ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <div style={{ marginTop: "20px" }}>
-        <Link to="/fertilizer">
-          <button className="btn btn-primary mr-2">View Fertilizer Stocks</button>
-        </Link>
-        <Link to="/supplier">
-          <button className="btn btn-primary mr-2">View Suppliers</button>
-        </Link>
-        <Link to="/purchase">
-          <button className="btn btn-primary">View Purchase Details</button>
-        </Link>
+          </thead>
+          <tbody>
+            {filteredFertilizers.map(fertilizer => (
+              <tr key={fertilizer._id}>
+                {getColumns().map(column => (
+                  <td key={column} style={{ border: "1px solid #dddddd", padding: "8px" }}>
+                    {column === "Name" && fertilizer.fertilizerName}
+                    {column === "Type" && fertilizer.fertilizerType}
+                    {column === "Manufacturer" && fertilizer.manufacturer}
+                    {column === "Quantity (kg)" && fertilizer.quantity}
+                    {column === "Manufactured Date" && fertilizer.manufacturedDate}
+                    {column === "Expired Date" && fertilizer.expiredDate}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div style={{ marginTop: "20px", textAlign: "center" }}>
+          <Link to="/fertilizer" style={{ marginRight: "10px", textDecoration: "none"}}>
+            <div className="tile">
+              <h2>View Fertilizer Stocks</h2>
+              <p>Click here to view fertilizer stocks</p>
+            </div>
+          </Link>
+          <Link to="/supplier" style={{ marginRight: "10px", textDecoration: "none"}}>
+            <div className="tile">
+              <h2>View Suppliers</h2>
+              <p>Click here to view suppliers</p>
+            </div>
+          </Link>
+          <Link to="/purchase" style={{ textDecoration: "none"}}>
+            <div className="tile">
+              <h2>View Purchase Details</h2>
+              <p>Click here to view purchase details</p>
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   );

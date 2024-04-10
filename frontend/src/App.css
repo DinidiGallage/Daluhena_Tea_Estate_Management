@@ -1,123 +1,223 @@
+/* Add background color */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .form-container {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .form-wrapper {
-    width: 500px;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-  }
-  
-  .input-field {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  .btn-primary {
-    background-color: #32CD32; /* Green */
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .btn-primary:hover {
-    background-color: #1E421D; /* Yellow */
-  }
-  
-  .alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 4px;
-  }
-  
-  .alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-  } 
-  .side-nav {
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #E1E587; /* Updated to match specified color */
-    padding-top: 20px;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom right, #E1E587, #1E421D)
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.form-wrapper {
+  max-width: 900px; /* Adjusted max-width */
+  width: 100%; /* Added width */
+  padding: 5px;
+  border-radius: 20px; /* Add border radius */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #1E421D;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.btn-primary {
+  background-color: #32CD32;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-primary:hover {
+  background-color: #1E421D; /* Changed hover color */
+  color: #fff; /* Changed text color */
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }
 
 .brand {
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #1E421D;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.brand span {
+  display: block;
+  color: white;
+  font-weight: bold;
+}
+
+.side-nav {
+  height: auto;
+  max-height: 100vh;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #FFFFFFCC; /* Transparent white background */
+  padding-top: 5px;
+  padding-bottom: 60px;
+  border-radius: 15px;
+  margin: 10px;
+  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
 }
 
 .navbar {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .nav-item {
-    padding: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: border-radius 0.3s, background-color 0.3s;
+  text-align: center;
 }
 
 .nav-link {
-    text-decoration: none;
-    font-size: 18px;
-    color: #1E421D; /* Updated to match specified color */
+  text-decoration: none;
+  font-size: 16px;
+  color: #1E421D; /* Changed text color */
+  padding: 12px;
+  display: inline-block;
+  width: 150px;
+  border: 1px solid #1E421D; /* Add border */
+  border-radius: 50px; /* Add border radius */
+  margin-bottom: 5px; /* Add margin bottom to separate links */
 }
-.nav-link:hover {
-    background-color:#f9ffb9; /* Light green */
-    color: #A9B523; /* Lighter shade of yellow */
+
+.nav-link:hover,
+.nav-link:focus { /* Add :focus pseudo-class */
+  background-color: #1E421D; /* Changed hover color */
+  color: #fff; /* Changed text color */
+  border-radius: 50px;
 }
 
 .active {
-  background-color: #A9B523; /* Lighter shade of yellow */
-  color: #E1E587; /* Light green */
+  background-color: #1E421D;
+  color: #fff;
+  border-radius: 50px;
 }
 
+.nav-link:hover img,
+.nav-link:focus img,
+.active img {
+  filter: brightness(0) invert(1); /* Change icon color to white */
+}
 
+.logout-btn {
+  background-color: #d32000; /* Change to your desired color */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+}
 
+.logout-btn:hover {
+  background-color: #FF4500; /* Change to your desired hover color */
+}
 
+.tile {
+  background-color: #E1E587; /* Background color for the tile */
+  padding: 10px; /* Padding around the tile content */
+  border-radius: 15px; /* Border radius for rounded corners */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Improved shadow effect */
+  margin-bottom: 0px; /* Spacing between tiles */
+  text-align: center; /* Center align content */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  position: relative; /* Position for pseudo-element */
+}
 
+.tile::after {
+  content: ""; /* Add pseudo-element for gradient overlay */
+  position: absolute; /* Position the pseudo-element */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.05)); /* Semi-transparent gradient overlay */
+  border-radius: 15px; /* Match border radius */
+  pointer-events: none; /* Ensure the overlay doesn't interfere with mouse events */
+}
 
+.tile:hover {
+  background-color: #f5f5f5; /* Background color on hover */
+  transform: translateY(-3px); /* Add slight lift effect */
+}
 
+.tile h2 {
+  margin-bottom: 10px; /* Add margin below heading */
+  color: #333; /* Heading text color */
+  font-size: 22px; /* Increase heading font size */
+}
 
+.tile p {
+  margin-bottom: 0; /* Remove margin below paragraph */
+  color: #666; /* Paragraph text color */
+}
 
+.tile p:last-child {
+  margin-bottom: 15px; /* Add extra margin to last paragraph */
+}
 
-  
+.tile:hover h2 {
+  color: #1E421D; /* Heading text color on hover */
+}
 
+.tile:hover p {
+  color: #444; /* Paragraph text color on hover */
+}
 
-
-
+.transparent-box {
+  background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
+  padding: 71px; /* Adjusted padding */
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 10px; /* Adjusted margin-top */
+  margin-bottom: 20px;
+  margin-left: 270px; /* Adjusted margin-left to match the width of the side nav panel */
+  margin-right: 10px;
+} 

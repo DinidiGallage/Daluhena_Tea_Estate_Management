@@ -1,10 +1,10 @@
 import './App.css';
-import AddFertilizer from './components/AddFertilizer';
+import AddFertilizer from './components/Fertilizers/AddFertilizer';
 import AddSupplier from './components/AddSupplier';
 import AddPurchase from './components/AddPurchase';
 import AllPurchases from './components/AllPurchases';
 import AllSuppliers from './components/AllSuppliers';
-import AllFertilizers from './components/AllFertilizers';
+import AllFertilizers from './components/Fertilizers/AllFertilizers';
 
 import Header from './components/Header';
 import Home from './components/Home';
