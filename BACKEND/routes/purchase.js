@@ -105,5 +105,49 @@ router.route("/get/:id").get(async (req, res) => {
     }
 });
 
+// Generate purchase history report
+router.route("/report").get(async (req, res) => {
+    try {
+        // Extract fromDate and toDate from query parameters
+        const { fromDate, toDate } = req.query;
+
+        // Define filter object for the date range
+        const dateFilter = {};
+        if (fromDate && toDate) {
+            dateFilter.purchaseDate = {
+                $gte: new Date(fromDate), // Greater than or equal to fromDate
+                $lte: new Date(toDate)    // Less than or equal to toDate
+            };
+        } else if (fromDate) {
+            dateFilter.purchaseDate = { $gte: new Date(fromDate) };
+        } else if (toDate) {
+            dateFilter.purchaseDate = { $lte: new Date(toDate) };
+        }
+
+        // Fetch purchases with optional date filtering
+        const purchases = await Purchase.find(dateFilter);
+
+        // Calculate total expense
+        const totalExpense = purchases.reduce((total, purchase) => total + purchase.totalPrice, 0);
+
+        // Format the data for the report
+        const reportData = purchases.map(purchase => ({
+            supplier: purchase.supplier,
+            product: purchase.product,
+            invoiceNumber: purchase.invoiceNumber,
+            purchaseDate: purchase.purchaseDate,
+            totalPrice: purchase.totalPrice,
+
+            // Add any additional information here
+        }));
+
+        // Send the report data and total expense as a response
+        res.json({ reportData, totalExpense });
+    } catch (error) {
+        console.error("Error generating purchase history report:", error);
+        res.status(500).json({ error: "Error generating purchase history report" });
+    }
+});
+
 module.exports = router;
 

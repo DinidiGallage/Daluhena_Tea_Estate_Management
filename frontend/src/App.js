@@ -5,6 +5,11 @@ import AddPurchase from './components/Purchases/AddPurchase';
 import AllPurchases from './components/Purchases/AllPurchases';
 import AllSuppliers from './components/Suppliers/AllSuppliers';
 import AllFertilizers from './components/Fertilizers/AllFertilizers';
+import PurchaseHistoryReport from './components/Purchases/PurchaseHistoryReport'; 
+import PurchasesPage from './components/Purchases/PurchasesPage';
+import SuppliersPage from './components/Suppliers/SuppliersPage';
+import FertilizersPage from './components/Fertilizers/FertilizersPage'; 
+import ScheduleProcess from './components/Fertilizers/ScheduleProcess'; 
 
 import Header from './components/Header';
 import Home from './components/Home';
@@ -32,11 +37,25 @@ function App() {
           <Route path="/purchase/" element={<AllPurchases />} />
           <Route path="/supplier/" element={<AllSuppliers />} />
           <Route path="/fertilizer/" element={<AllFertilizers />} />
+
+          {/* Route for purchase history report */}
+          <Route path="/report-generation" element={<PurchaseHistoryReport />} />
+
+          {/* Route for the PurchasesPage */}
+          <Route path="/purchases" element={<PurchasesPage />} />
+
+          {/* Route for the SuppliersPage */}
+          <Route path="/suppliers" element={<SuppliersPage />} />
+
+          {/* Route for the FertilizersPage */}
+          <Route path="/fertilizers" element={<FertilizersPage />} />
+
+          {/* Route for the ScheduleProcess */}
+          <Route path="/fertilizer/schedule" element={<ScheduleProcess />} />
         </Routes>
       </div>
     </Router>
   );
 }
-
 
 export default App;

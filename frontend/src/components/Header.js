@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from '../images/Logo.png'; 
 import homeIcon from '../images/Icons/home.png';
 import fertilizerIcon from '../images/Icons/fertilizer.png';
@@ -19,34 +19,34 @@ function Header() {
             <nav className="navbar">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <NavLink exact className="nav-link" activeClassName="active" to="/">
+                        <Link exact className="nav-link" to="/">
                             <img src={homeIcon} alt="Home" style={{ width: "20px", height: "20px", marginRight: "10px", marginLeft: "-30px" }} />
                             Home
-                        </NavLink>
+                        </Link>
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link" activeClassName="active" to="/dashboard">
+                        <Link className="nav-link" to="/dashboard">
                             <img src={dashboardIcon} alt="Dashboard" style={{ width: "20px", height: "20px", marginRight: "10px" }} />
                             Dashboard
-                        </NavLink>
+                        </Link>
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link" activeClassName="active" to="/fertilizer/add">
-                            <img src={fertilizerIcon} alt="Add Fertilizers" style={{ width: "20px", height: "20px", marginRight: "10px" }} />
+                        <Link className="nav-link" to="/fertilizers">
+                            <img src={fertilizerIcon} alt="Fertilizers" style={{ width: "20px", height: "20px", marginRight: "10px" }} />
                             Fertilizers
-                        </NavLink>
+                        </Link>
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link" activeClassName="active" to="/supplier/add">
-                            <img src={supplierIcon} alt="Add Suppliers" style={{ width: "20px", height: "20px", marginRight: "10px" }} />
+                        <Link className="nav-link" to="/suppliers">
+                            <img src={supplierIcon} alt="Suppliers" style={{ width: "20px", height: "20px", marginRight: "10px" }} />
                             Suppliers
-                        </NavLink>
+                        </Link>
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link" activeClassName="active" to="/purchase/add">
+                        <Link className="nav-link" to="/purchases">
                             <img src={purchaseIcon} alt="Add Purchases" style={{ width: "20px", height: "20px", marginRight: "10px" }} />
                             Purchases
-                        </NavLink>
+                        </Link>
                     </li>
                     <li className="nav-item"> {/* Logout Button */}
                         <button className="logout-btn">Logout</button>

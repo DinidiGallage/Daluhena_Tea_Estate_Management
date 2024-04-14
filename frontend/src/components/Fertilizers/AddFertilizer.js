@@ -126,7 +126,7 @@ export default function AddFertilizer() {
   return (
     <div className="transparent-box" style={{ paddingTop: "20px", paddingBottom: "35px", paddingLeft: "10px" }}>
       
-      <div style={{ display: "flex", marginLeft: "5px"}}>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         {!submitted ? (
           <div className="form-container" style={{ paddingTop: "1px" }}>
             <div className="form-wrapper" style={{ backgroundColor: "#ffffff", padding: "20px", borderRadius: "8px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", width: "800px" }}>

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import backgroundImage from '../images/DashboardBackground.png'; 
+import Chart from "chart.js/auto";
+import backgroundImage from '../images/DashboardBackground.png';
 
 export default function Dashboard() {
   const [fertilizers, setFertilizers] = useState([]);
@@ -15,6 +16,7 @@ export default function Dashboard() {
     manufacturedDate: false,
     expiredDate: false
   });
+  const chartRef = useRef();
 
   useEffect(() => {
     axios.get("http://localhost:8070/fertilizer")
@@ -61,6 +63,45 @@ export default function Dashboard() {
     if (filters.expiredDate) columns.push("Expired Date");
     return columns;
   };
+
+  useEffect(() => {
+    if (chartRef.current) {
+      chartRef.current.destroy();
+    }
+    const ctx = document.getElementById("myChart");
+    const organicAmount = fertilizers.reduce((total, fertilizer) => {
+      if (fertilizer.fertilizerType.toLowerCase() === "organic") {
+        return total + fertilizer.quantity;
+      }
+      return total;
+    }, 0);
+    const mineralAmount = fertilizers.reduce((total, fertilizer) => {
+      if (fertilizer.fertilizerType.toLowerCase() === "mineral") {
+        return total + fertilizer.quantity;
+      }
+      return total;
+    }, 0);
+    chartRef.current = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Organic', 'Mineral'],
+        datasets: [{
+          label: 'Fertilizer Amount',
+          data: [organicAmount, mineralAmount],
+          backgroundColor: ['#1E421D', '#1E421D'],
+          borderColor: ['#1E421D', '#1E421D'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }, [fertilizers]);
 
   return (
     <div className="transparent-box" style={{ marginLeft: "270px", paddingLeft: "20px", paddingRight: "20px", paddingTop: "20px"}}>
@@ -160,26 +201,12 @@ export default function Dashboard() {
             ))}
           </tbody>
         </table>
-        <div style={{ marginTop: "20px", textAlign: "center" }}>
-          <Link to="/fertilizer" style={{ marginRight: "10px", textDecoration: "none"}}>
-            <div className="tile">
-              <h2>View Fertilizer Stocks</h2>
-              <p>Click here to view fertilizer stocks</p>
-            </div>
-          </Link>
-          <Link to="/supplier" style={{ marginRight: "10px", textDecoration: "none"}}>
-            <div className="tile">
-              <h2>View Suppliers</h2>
-              <p>Click here to view suppliers</p>
-            </div>
-          </Link>
-          <Link to="/purchase" style={{ textDecoration: "none"}}>
-            <div className="tile">
-              <h2>View Purchase Details</h2>
-              <p>Click here to view purchase details</p>
-            </div>
-          </Link>
-        </div>
+      </div>
+      <div>
+      <div style={{ width: "300px", height: "150px" }}>
+  <canvas id="myChart" style={{ width: "100%", height: "100%" }}></canvas>
+</div>
+
       </div>
     </div>
   );

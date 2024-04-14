@@ -3,7 +3,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom right, #E1E587, #1E421D)
+  background: radial-gradient(circle, #E1E587, #1E421D);
 }
 
 .container {
@@ -221,3 +221,16 @@ label {
   margin-left: 270px; /* Adjusted margin-left to match the width of the side nav panel */
   margin-right: 10px;
 } 
+
+.report-container {
+  margin-left: 260px; /* Adjust this value according to your side navigation panel width */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.calendar-container {
+  background-color: #ffffff; /* Adjust as needed */
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
