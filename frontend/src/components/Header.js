@@ -49,7 +49,7 @@ function Header() {
                         </Link>
                     </li>
                     <li className="nav-item"> {/* Logout Button */}
-                        <button className="logout-btn">Logout</button>
+                    <button className="logout-btn" onClick={() => { window.location.href = "/login" }}>Logout</button>
                     </li>
                 </ul>
             </nav>

@@ -10,6 +10,7 @@ import PurchasesPage from './components/Purchases/PurchasesPage';
 import SuppliersPage from './components/Suppliers/SuppliersPage';
 import FertilizersPage from './components/Fertilizers/FertilizersPage'; 
 import ScheduleProcess from './components/Fertilizers/ScheduleProcess'; 
+import Login from './components/Login'; // Import the Login component
 
 import Header from './components/Header';
 import Home from './components/Home';
@@ -52,6 +53,9 @@ function App() {
 
           {/* Route for the ScheduleProcess */}
           <Route path="/fertilizer/schedule" element={<ScheduleProcess />} />
+
+          {/* Route for the Login */}
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>
