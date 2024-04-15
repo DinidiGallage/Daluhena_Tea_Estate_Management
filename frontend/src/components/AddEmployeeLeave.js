@@ -1,30 +1,51 @@
 import React, { useState } from "react";
 import axios from "axios";
-//import DatePicker from "react-datepicker";
-//import "react-datepicker/dist/react-datepicker.css";
 
 export default function AddEmployeeLeave() {
   const [name, setName] = useState("");
   const [nic, setNIC] = useState("");
   const [jobrole, setJobRole] = useState("");
   const [leaveType, setLeaveType] = useState("");
-  const [leaveFrom, setLeaveFrom] = useState(null);
-  const [leaveTo, setLeaveTo] = useState(null);
+  const [leaveFrom, setLeaveFrom] = useState("");
+  const [leaveTo, setLeaveTo] = useState("");
   const [leaveStatus, setLeaveStatus] = useState("");
+  const [errors, setErrors] = useState({});
+
+  // Function to update the error state for a specific field
+  const updateErrors = (fieldName, value) => {
+    setErrors(prevErrors => ({
+      ...prevErrors,
+      [fieldName]: value ? undefined : `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required`
+    }));
+  };
 
   function sendData(e) {
     e.preventDefault();
-
+  
+    // Perform validation checks
     if (!name || !nic || !jobrole || !leaveType || !leaveFrom || !leaveTo || !leaveStatus) {
-      alert("Please fill in all fields");
+      setErrors({
+        name: !name ? "Name is required" : undefined,
+        nic: !nic ? "NIC is required" : undefined,
+        jobrole: !jobrole ? "Job role is required" : undefined,
+        leaveType: !leaveType ? "Leave type is required" : undefined,
+        leaveFrom: !leaveFrom ? "Leave start date is required" : undefined,
+        leaveTo: !leaveTo ? "Leave end date is required" : undefined,
+        leaveStatus: !leaveStatus ? "Leave status is required" : undefined,
+      });
       return;
     }
 
-    if (leaveFrom >= leaveTo) {
-      alert("Leave end date should be after start date");
+    // Additional validation for leave end date after start date
+    if (new Date(leaveFrom) >= new Date(leaveTo)) {
+      setErrors(prevErrors => ({
+        ...prevErrors,
+        leaveTo: "Leave end date should be after start date"
+      }));
       return;
     }
-
+  
+    // If no validation errors, proceed to send data
     const newEmployeeLeave = {
       name,
       nic,
@@ -34,103 +55,82 @@ export default function AddEmployeeLeave() {
       leaveTo,
       leaveStatus
     };
-
+  
     axios.post("http://localhost:8070/EmployeeLeave/add", newEmployeeLeave)
       .then(() => {
         alert("New employee leave added");
       })
       .catch((err) => {
-        alert(err);
+        if (err.response && err.response.status === 400 && err.response.data.error) {
+          // Show error message from the server
+          alert(err.response.data.error);
+        } else {
+          // Show generic error message
+          alert("An error occurred while adding employee leave");
+        }
       });
   }
-
+  
   return (
-    <div className="container mt-5" style={{ marginLeft: "250px" }}>
+    <div className="background-container">
+    <div className="container mt-2" style={{ maxWidth: "calc(100% - 235px)", paddingLeft: "30px",paddingTop: "10px",paddingBottom: "7px" }} >
       <h2>Add New Employee Leave</h2>
       <form onSubmit={sendData} className="row">
         <div className="col-md-6">
           <div className="mb-3">
-            <label htmlFor="name" className="form-label">Employee Full Name</label>
-            <input type="text" className="form-control" id="name" placeholder="Enter Employee name" onChange={(e) => setName(e.target.value)} />
+            <label htmlFor="name" className={`form-label ${errors.name && 'text-danger'}`}>Employee Full Name</label>
+            <input type="text" className={`form-control ${errors.name && 'is-invalid'}`} id="name" placeholder="Enter Employee name" onChange={(e) => { setName(e.target.value); updateErrors('name', e.target.value); }} />
+            {errors.name && <div className="invalid-feedback">{errors.name}</div>}
           </div>
           <div className="mb-3">
-            <label htmlFor="nic" className="form-label">Employee NIC</label>
-            <input type="text" className="form-control" id="nic" placeholder="Enter Employee NIC" onChange={(e) => setNIC(e.target.value)} />
+            <label htmlFor="nic" className={`form-label ${errors.nic && 'text-danger'}`}>Employee NIC</label>
+            <input type="text" className={`form-control ${errors.nic && 'is-invalid'}`} id="nic" placeholder="Enter Employee NIC" onChange={(e) => { setNIC(e.target.value); updateErrors('nic', e.target.value); }} />
+            {errors.nic && <div className="invalid-feedback">{errors.nic}</div>}
           </div>
           <div className="mb-3">
-            <label htmlFor="jobrole" className="form-label">Employee Job Role</label>
-            <input type="text" className="form-control" id="jobrole" placeholder="Enter Employee Job role" onChange={(e) => setJobRole(e.target.value)} />
+            <label htmlFor="jobrole" className={`form-label ${errors.jobrole && 'text-danger'}`}>Employee Job Role</label>
+            <input type="text" className={`form-control ${errors.jobrole && 'is-invalid'}`} id="jobrole" placeholder="Enter Employee Job role" onChange={(e) => { setJobRole(e.target.value); updateErrors('jobrole', e.target.value); }} />
+            {errors.jobrole && <div className="invalid-feedback">{errors.jobrole}</div>}
           </div>
         </div>
         <div className="col-md-6">
           <div className="mb-3">
-            <label htmlFor="leaveType" className="form-label">Leave Type</label>
-            <select className="form-select" id="leaveType" onChange={(e) => setLeaveType(e.target.value)}>
+            <label htmlFor="leaveType" className={`form-label ${errors.leaveType && 'text-danger'}`}>Leave Type</label>
+            <select className={`form-select ${errors.leaveType && 'is-invalid'}`} id="leaveType" onChange={(e) => { setLeaveType(e.target.value); updateErrors('leaveType', e.target.value); }}>
               <option value="">Select leave type</option>
               <option value="Casual">Casual</option>
               <option value="Annual">Annual</option>
               <option value="Medical">Medical</option>
               <option value="Emergency">Emergency</option>
             </select>
-          </div>
-       {/*   <div className="mb-3">
-            <label htmlFor="leaveFrom" className="form-label">Leave Date From</label>
-            <DatePicker
-              selected={leaveFrom}
-              onChange={(date) => setLeaveFrom(date)}
-              className="form-control"
-              placeholderText="Select leave start date"
-              dateFormat="dd/MM/yyyy"
-            />
+            {errors.leaveType && <div className="invalid-feedback">{errors.leaveType}</div>}
           </div>
           <div className="mb-3">
-            <label htmlFor="leaveTo" className="form-label">Leave Date To</label>
-            <DatePicker
-              selected={leaveTo}
-              onChange={(date) => setLeaveTo(date)}
-              className="form-control"
-              placeholderText="Select leave end date"
-              dateFormat="dd/MM/yyyy"
-            />
-  </div>*/}
-            <div className="form-group">
-              <label htmlFor="leaveFrom">Leave Date From</label>
-              <input
-                type="date"
-                className="form-control"
-                id="leaveFrom"
-                value={leaveFrom}
-                onChange={(e) => setLeaveFrom(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="leaveTo">Leave Date To</label>
-              <input
-                type="date"
-                className="form-control"
-                id="leaveTo"
-                value={leaveTo}
-                onChange={(e) =>  setLeaveTo(e.target.value)}
-              />
-            </div>
-
-
-
-
+            <label htmlFor="leaveFrom" className={`form-label ${errors.leaveFrom && 'text-danger'}`}>Leave Date From</label>
+            <input type="date" className={`form-control ${errors.leaveFrom && 'is-invalid'}`} id="leaveFrom" onChange={(e) => { setLeaveFrom(e.target.value); updateErrors('leaveFrom', e.target.value); }} />
+            {errors.leaveFrom && <div className="invalid-feedback">{errors.leaveFrom}</div>}
+          </div>
           <div className="mb-3">
-            <label htmlFor="leaveStatus" className="form-label">Leave Status</label>
-            <select className="form-select" id="leaveStatus" onChange={(e) => setLeaveStatus(e.target.value)}>
+            <label htmlFor="leaveTo" className={`form-label ${errors.leaveTo && 'text-danger'}`}>Leave Date To</label>
+            <input type="date" className={`form-control ${errors.leaveTo && 'is-invalid'}`} id="leaveTo" onChange={(e) => { setLeaveTo(e.target.value); updateErrors('leaveTo', e.target.value); }} />
+            {errors.leaveTo && <div className="invalid-feedback">{errors.leaveTo}</div>}
+          </div>
+          <div className="mb-3">
+            <label htmlFor="leaveStatus" className={`form-label ${errors.leaveStatus && 'text-danger'}`}>Leave Status</label>
+            <select className={`form-select ${errors.leaveStatus && 'is-invalid'}`} id="leaveStatus" onChange={(e) => { setLeaveStatus(e.target.value); updateErrors('leaveStatus', e.target.value); }}>
               <option value="">Select leave status</option>
               <option value="Approve">Approve</option>
               <option value="Reject">Reject</option>
             </select>
+            {errors.leaveStatus && <div className="invalid-feedback">{errors.leaveStatus}</div>}
           </div>
         </div>
 
-        <div className="col-12 text-center">
+        <div className="col-12 text-center" >
           <button type="submit" className="btn btn-primary btn-lg">Submit</button>
         </div>
       </form>
+    </div>
     </div>
   );
 }

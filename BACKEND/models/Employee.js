@@ -12,13 +12,14 @@ const employeeSchema = new Schema({
         required: true,
         minlength: 10, // Example: NIC must have a minimum length of 10 characters
         maxlength: 12, // Example: NIC must have a maximum length of 12 characters
-        // Add additional NIC validation rules as needed
+        
+
     },
     email: {
         type: String,
-        required: true,
-        unique: true, // Ensures that each email is unique
-        // You can add further email validation if necessary
+       
+        sparse: true, // Allow null or empty values without causing a duplicate key error
+       
     },
     contactNumber: {
         type: String,

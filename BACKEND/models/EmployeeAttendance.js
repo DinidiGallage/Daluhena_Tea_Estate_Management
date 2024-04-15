@@ -1,3 +1,5 @@
+// models/EmployeeAttendance.js
+
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
@@ -7,12 +9,10 @@ const EmployeeAttendanceSchema = new Schema({
     name: {
         type : String,
         required: true
-
     },
     nic:{
         type : Number,
         required: true
-
     },
     jobrole:{
         type:String, 

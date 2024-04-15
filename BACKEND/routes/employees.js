@@ -1,13 +1,15 @@
 const router = require("express").Router();
 const Employee = require("../models/Employee");
 
+
+// Route to add a new employee
 router.route("/add").post((req, res) => {
     const { name, nic, email, contactNumber, gender, age, address, jobrole, qualifications } = req.body;
 
     const newEmployee = new Employee({
         name,
         nic,
-        email,
+        email: email || null,
         contactNumber,
         gender,
         age,
@@ -26,6 +28,7 @@ router.route("/add").post((req, res) => {
         });
 });
 
+// Route to get all employees
 router.route("/").get((req, res) => {
     Employee.find()
         .then((employees) => {
@@ -37,7 +40,7 @@ router.route("/").get((req, res) => {
         });
 });
 
-// Get count of all employees
+// Route to get count of all employees
 router.route("/count").get(async (req, res) => {
     try {
         const count = await Employee.countDocuments();
@@ -47,7 +50,20 @@ router.route("/count").get(async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+// Route to get count of employees by job role
+router.route("/jobrole-count").get(async (req, res) => {
+    try {
+        const jobRoles = await Employee.aggregate([
+            { $group: { _id: "$jobrole", count: { $sum: 1 } } }
+        ]);
+        res.json(jobRoles);
+    } catch (err) {
+        console.error('Error counting employees by job role:', err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
+// Route to update an employee
 router.route("/update/:id").put(async (req, res) => {
     const userId = req.params.id;
     const { name, nic, email, contactNumber, gender, age, address, jobrole, qualifications } = req.body;
@@ -73,6 +89,7 @@ router.route("/update/:id").put(async (req, res) => {
     }
 });
 
+// Route to delete an employee
 router.route("/delete/:id").delete(async (req, res) => {
     const userId = req.params.id;
 
@@ -85,6 +102,7 @@ router.route("/delete/:id").delete(async (req, res) => {
     }
 });
 
+// Route to get details of a specific employee
 router.route("/get/:id").get(async (req, res) => {
     const userId = req.params.id;
 
@@ -96,5 +114,6 @@ router.route("/get/:id").get(async (req, res) => {
         res.status(500).json({ error: "Error with fetch user" });
     }
 });
+
 
 module.exports = router;
