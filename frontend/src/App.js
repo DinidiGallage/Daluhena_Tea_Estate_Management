@@ -10,10 +10,10 @@ import PurchasesPage from './components/Purchases/PurchasesPage';
 import SuppliersPage from './components/Suppliers/SuppliersPage';
 import FertilizersPage from './components/Fertilizers/FertilizersPage'; 
 import ScheduleProcess from './components/Fertilizers/ScheduleProcess'; 
-import Login from './components/Login'; // Import the Login component
+import Login from './components/Login/Login'; // Import the Login component
 
 import Header from './components/Header';
-import Home from './components/Home';
+import Home from './components/Home/Home';
 import Dashboard from './components/Dashboard';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 

@@ -1,0 +1,44 @@
+.home-container {
+  padding: 20px;
+  background-image: url('../../images/DashboardBackground.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh; /* Use min-height to ensure the background covers the entire viewport */
+}
+
+.tiles-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Distribute items evenly along the main axis */
+}
+
+.tile {
+  width: calc(25% - 20px); /* Adjust width to occupy 25% of the container's width */
+  margin-bottom: 20px; /* Add margin-bottom for spacing between rows */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.tile a {
+  display: block;
+  margin: 10px;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-decoration: none; /* Remove underlines from links */
+  color: inherit; /* Inherit text color from parent */
+}
+
+.tile a:hover {
+  text-decoration: none; /* Remove underline on hover */
+}
+
+@media (max-width: 768px) {
+  .tile {
+    width: calc(50% - 20px); /* For smaller screens, occupy 50% of the container's width */
+  }
+}
