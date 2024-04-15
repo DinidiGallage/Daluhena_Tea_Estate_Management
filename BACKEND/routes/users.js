@@ -1,20 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-
-// Hardcoded login credentials
-const hardcodedCredentials = {
-  username: 'Operations Manager',
-  password: 'password123',
-};
+const User = require("../models/Users");
 
 // Route for user login
 router.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
-    
-    // Check if username and password match the hardcoded credentials
-    if (username !== hardcodedCredentials.username || password !== hardcodedCredentials.password) {
+
+    // Find user by username
+    const user = await User.findOne({ username });
+
+    // If user not found or password doesn't match, return error
+    if (!user || user.password !== password) {
       return res.status(401).json({ message: 'Invalid username or password' });
     }
 
