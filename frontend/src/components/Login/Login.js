@@ -1,12 +1,28 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Login.css'; // Import the CSS file
+import loginBG from '../../images/loginBG.png'; // Import the loginBG image file
+import loginBG2 from '../../images/daluhenabg.png'; // Import the loginBG image file
+import userNameIcon from '../../icons/userName.png'; // Import the username icon
+import passwordIcon from '../../icons/password.png'; // Import the password icon
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [loggedIn, setLoggedIn] = useState(false); // State to track login status
+  const [usernameIconVisible, setUsernameIconVisible] = useState(true);
+  const [passwordIconVisible, setPasswordIconVisible] = useState(true);
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+    setUsernameIconVisible(e.target.value === '');
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    setPasswordIconVisible(e.target.value === '');
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,22 +44,50 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="dashboard-container-view" style={{  
+      backgroundImage: `url(${loginBG2})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      minHeight: '100vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      margin: '0',
+      padding: '0'
+    }}>
       {!loggedIn ? (
         <div className="login-container">
-          <h2 className="login-heading">Login</h2>
-          <form className="login-form" onSubmit={handleSubmit}>
-            <div>
-              <label className="login-label">Username:</label>
-              <input className="login-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-            </div>
-            <div>
-              <label className="login-label">Password:</label>
-              <input className="login-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            </div>
-            <button className="login-button" type="submit">Login</button>
-            {loginError && <p className="login-error">{loginError}</p>}
-          </form>
+          <img src={loginBG} alt="Login Background" className="login-bg" /> {/* Add the image here */}
+          <div className="login-content">
+            <span className="login-heading">Welcome to Login</span>
+            <form className="login-form" onSubmit={handleSubmit}>
+            <label className="login-label1">Username:</label>
+              <div className="input-container">
+                <input 
+                  className="login-input" 
+                  type="text" 
+                  placeholder="Enter the User Name" 
+                  value={username} 
+                  onChange={handleUsernameChange} 
+                />
+                {usernameIconVisible && <img src={userNameIcon} alt="Username Icon" className="input-icon" />} {/* Username icon */}
+              </div>
+              <label className="login-label2">Password:</label>
+              <div className="input-container">
+                <input 
+                  className="login-input" 
+                  type="password" 
+                  placeholder="Enter the Password" 
+                  value={password} 
+                  onChange={handlePasswordChange} 
+                />
+                {passwordIconVisible && <img src={passwordIcon} alt="Password Icon" className="input-icon" />} {/* Password icon */}
+              </div>
+              <button className="login-button" type="submit">Login</button>
+              {loginError && <p className="login-error">{loginError}</p>}
+            </form>
+          </div>
         </div>
       ) : null}
     </div>

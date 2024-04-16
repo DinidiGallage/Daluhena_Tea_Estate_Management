@@ -151,7 +151,7 @@ function AttendanceReport() {
     <div className="background-container">
     <div className="container mt-3" style={{ maxWidth: "calc(100% - 255px)", paddingLeft: "20px" ,paddingBottom: "20px",paddingTop: "30px", position: 'relative' }}>
       <h2>Employee Attendance Report</h2>
-      <form>
+      <form style={{ paddingLeft: "30px"  }}>
         <label htmlFor="date" style={{ fontWeight: 'bold' }}>Select Date :</label>
         <input type="date" className="dateSelect" id="date" name="date" value={date} onChange={handleDateChange}  />
         <button type="button" className="btn-for-generateReport" onClick={handleGenerateReport } >Generate Report</button>

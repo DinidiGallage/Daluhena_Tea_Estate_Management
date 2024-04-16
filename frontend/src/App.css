@@ -333,13 +333,14 @@ label {
       /*Date Selector*/
       .dateSelect {
         text-align: center;
-        width: 150px; /* width */
+        width: 180px; /* width */
         height: 40px; /* height */
         border-radius: 15px; 
         border: 1px solid #ced4da; /* Refined border width */
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Inner shadow for a subtle inset effect */
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); /* Inner shadow for a subtle inset effect */
         transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transitions for interactions */
         margin-bottom: 10px;
+        padding-right: 10px;
         
       }
       .dateSelect:focus {
@@ -354,16 +355,21 @@ label {
         height: 40px; /* height */
         border-radius: 15px; 
         border: 1px solid #ced4da; /* Refined border width */
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Inner shadow for a subtle inset effect */
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); /* Inner shadow for a subtle inset effect */
         transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transitions for interactions */
         margin-bottom: 10px;
+        padding-left: 10px;
         
       }
       .btn-for-generateReport {
-        margin-left: 20px;
+        margin-left: 30px;
         border-radius: 10px;
         width: 150px; /* width */
         height: 40px; /* height */
+        border: 1px solid #ced4da; /* Refined border width */
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.9); /* Inner shadow for a subtle inset effect */
+        transition: border-color 0.3s, box-shadow 0.3s; 
+        font-weight: bold;
         
         transition: transform 0.2s, box-shadow 0.2s;
       }

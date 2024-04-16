@@ -210,7 +210,7 @@ function LeaveReport() {
             <div style={styles.downloadContainer}>
           <PDFDownloadLink document={generatePDF()} fileName="leave_report.pdf">
             {({ loading }) => (
-              <span>
+              <span >
                 <img src={DownloadIcon} alt="Download Icon" style={{ 
                   marginRight: '8px', 
                   verticalAlign: 'middle',
