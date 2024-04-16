@@ -49,7 +49,7 @@ export default function AllSuppliers() {
   });
 
   return (
-    <div style={{ marginLeft: "280px" }}>
+    <div style={{  marginLeft: "280px", marginRight: "10px", marginTop: "10px" }}>
       <div style={{ backgroundColor: "#FFFFFF", borderRadius: "15px", padding: "20px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)" }}>
         <h1 style={{ textAlign: "center", marginBottom: "20px", color: "white", backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', padding: '40px 60px' }}>All Supplier Details</h1>
         <input

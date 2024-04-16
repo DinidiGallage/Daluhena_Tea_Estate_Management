@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import backgroundImage from '../../images/DashboardBackground.png'; 
+import editIcon from '../../images/Icons/edit.png';
 
 export default function AllPurchases() {
   const [purchases, setPurchases] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [paymentStatusFilter, setPaymentStatusFilter] = useState("All");
   const [purchaseDateFilter, setPurchaseDateFilter] = useState(""); // State for purchase date filter
+  const [editPurchaseId, setEditPurchaseId] = useState(null); // State to manage which purchase is being edited
+  const [updatedPaymentStatus, setUpdatedPaymentStatus] = useState(""); // State to store updated payment status
 
   useEffect(() => {
     axios.get("http://localhost:8070/purchase")
@@ -47,12 +50,43 @@ export default function AllPurchases() {
     setPurchaseDateFilter(e.target.value);
   };
 
+  const handleEdit = (id) => {
+    setEditPurchaseId(id);
+  };
+
+  const handlePaymentStatusUpdate = (value, id) => {
+    if (typeof value === 'string') {
+      // Send PUT request to update payment status
+      axios.put(`http://localhost:8070/purchase/update/${id}/paymentStatus`, { paymentStatus: value })
+        .then(response => {
+          console.log("Payment status updated successfully:", response.data);
+          // Update the purchases state to reflect the changes
+          setPurchases(prevPurchases => {
+            return prevPurchases.map(purchase => {
+              if (purchase._id === id) {
+                return { ...purchase, paymentStatus: value };
+              }
+              return purchase;
+            });
+          });
+        })
+        .catch(error => {
+          console.error("Error updating payment status:", error);
+        });
+    } else {
+      console.error("Invalid value for payment status:", value);
+    }
+  };
+  
+  
+  
+  
   const filteredPurchases = purchases.filter(purchase =>
     (purchase.supplier.toLowerCase().includes(searchQuery.toLowerCase()) ||
     purchase.product.toLowerCase().includes(searchQuery.toLowerCase()) ||
     purchase.invoiceNumber.toLowerCase().includes(searchQuery.toLowerCase())) &&
     (paymentStatusFilter === "All" || purchase.paymentStatus.toLowerCase() === paymentStatusFilter.toLowerCase()) &&
-    (!purchaseDateFilter || new Date(purchase.purchaseDate).toLocaleDateString() === purchaseDateFilter)
+    (!purchaseDateFilter || new Date(purchase.purchaseDate).toISOString().slice(0, 10) === purchaseDateFilter)
   );
 
   return (
@@ -84,6 +118,7 @@ export default function AllPurchases() {
               <option value="All">All</option>
               <option value="Paid">Paid</option>
               <option value="Unpaid">Unpaid</option>
+              <option value="Pending">Pending</option>
             </select>
           </div>
           <div style={{ marginLeft: "150px" ,fontWeight:'bold'  }}>
@@ -120,7 +155,43 @@ export default function AllPurchases() {
                   <td>{purchase.product}</td>
                   <td>{purchase.invoiceNumber}</td>
                   <td>{new Date(purchase.purchaseDate).toLocaleDateString()}</td>
-                  <td>{purchase.paymentStatus}</td>
+                  <td>
+                    {editPurchaseId === purchase._id ? (
+                      <div>
+                        <select
+                          value={updatedPaymentStatus}
+                          onChange={(e) => setUpdatedPaymentStatus(e.target.value)}
+                          style={{ width: "100px", marginRight: "5px" }}
+                        >
+
+                          <option value="Paid">Paid</option>
+                          <option value="Unpaid">Unpaid</option>
+                          <option value="Pending">Pending</option>
+                        </select>
+                        <button
+                          className="btn btn-primary"
+                          onClick={() => {
+                            handlePaymentStatusUpdate(updatedPaymentStatus, purchase._id);
+                            setEditPurchaseId(null);
+                          }}
+                        >
+                          Save
+                        </button>
+
+
+                      </div>
+                    ) : (
+                      <span>
+                        {purchase.paymentStatus}
+                        <img
+                          src={editIcon}
+                          alt="Edit"
+                          style={{ marginLeft: "5px", cursor: "pointer", width: "20px", height: "20px" }}
+                          onClick={() => handleEdit(purchase._id)}
+                        />
+                      </span>
+                    )}
+                  </td>
                   <td>{purchase.qty}</td>
                   <td>{purchase.unitPrice}</td>
                   <td>{purchase.totalPrice}</td>

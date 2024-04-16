@@ -48,33 +48,20 @@ router.route("/").get((req, res) => {
         });
 });
 
-// Update purchase details
-router.route("/update/:id").put(async (req, res) => {
+// Update payment status of a purchase
+router.route("/update/:id/paymentStatus").put(async (req, res) => {
     const purchaseId = req.params.id;
-    const { supplier, product, invoiceNumber, purchaseDate, paymentStatus, qty, unitPrice } = req.body;
-
-    // Calculate totalPrice
-    const totalPrice = qty * unitPrice;
-
-    const updatePurchase = {
-        supplier,
-        product,
-        invoiceNumber,
-        purchaseDate,
-        paymentStatus,
-        qty,
-        unitPrice,
-        totalPrice // Automatically calculated
-    };
+    const { paymentStatus } = req.body; // Only update payment status
 
     try {
-        const update = await Purchase.findByIdAndUpdate(purchaseId, updatePurchase);
-        res.status(200).send({ status: "Purchase Details Updated", purchase: update });
+        const update = await Purchase.findByIdAndUpdate(purchaseId, { paymentStatus }, { new: true });
+        res.status(200).send({ status: "Payment Status Updated", purchase: update });
     } catch (err) {
-        console.log(err);
-        res.status(500).send({ status: "Error with updating data", error: err.message });
+        console.error(err);
+        res.status(500).send({ status: "Error with updating payment status", error: err.message });
     }
 });
+
 
 // Delete purchase
 router.route("/delete/:id").delete(async (req, res) => {

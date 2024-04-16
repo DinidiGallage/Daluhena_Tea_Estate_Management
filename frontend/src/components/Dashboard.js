@@ -280,8 +280,8 @@ export default function Dashboard() {
                 {column === "Type" && fertilizer.fertilizerType}
                 {column === "Manufacturer" && fertilizer.manufacturer}
                 {column === "Quantity (kg)" && fertilizer.quantity}
-                {column === "Manufactured Date" && fertilizer.manufacturedDate}
-                {column === "Expired Date" && fertilizer.expiredDate}
+                {column === "Manufactured Date" && new Date(fertilizer.manufacturedDate).toISOString().split('T')[0]}
+                {column === "Expired Date" && new Date(fertilizer.expiredDate).toISOString().split('T')[0]}
               </td>
             ))}
           </tr>

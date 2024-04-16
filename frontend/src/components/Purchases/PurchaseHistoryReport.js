@@ -35,22 +35,28 @@ function PurchaseHistoryReport() {
     const styles = StyleSheet.create({
         page: {
             flexDirection: 'row',
-            backgroundColor: '#E4E4E4'
+            backgroundColor: '#E4E4E4',
         },
         section: {
             margin: 10,
             padding: 10,
-            flexGrow: 1
+            flexGrow: 1,
+        },
+        title: {
+            textAlign: 'center', // Align the title text to the center
+            fontSize: 20,
+            marginBottom: 10, // Add some space below the title
+            fontWeight: 'bold',
         },
         table: {
             display: 'table',
             width: '100%',
             borderStyle: 'solid',
             borderWidth: 1,
-            borderColor: '#000'
+            borderColor: '#000',
         },
         tableRow: {
-            flexDirection: 'row'
+            flexDirection: 'row',
         },
         tableCol: {
             width: '20%',
@@ -59,11 +65,11 @@ function PurchaseHistoryReport() {
             borderColor: '#000',
             padding: 8,
             textAlign: 'center',
-            fontSize: 10
+            fontSize: 10,
         },
         headerCol: {
             backgroundColor: '#ccc',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
         },
         totalCol: {
             width: '20%',
@@ -72,7 +78,7 @@ function PurchaseHistoryReport() {
             borderColor: '#000',
             padding: 8,
             textAlign: 'center',
-            fontSize: 10
+            fontSize: 10,
         },
         totalExpense: {
             textAlign: 'right',
@@ -86,6 +92,19 @@ function PurchaseHistoryReport() {
             paddingBottom: 8,
             marginBottom: 10,
         },
+        subtitleContainer: {
+            flexDirection: 'row', // Display the "From" and "To" dates horizontally
+            justifyContent: 'space-between', // Add space between the "From" and "To" dates
+            marginBottom: 20, // Adjust the margin between From Date and To Date
+            paddingLeft: 10, // Add left padding
+            paddingRight: 10, // Add right padding
+        },
+        subtitle: {
+            fontSize: 14,
+            fontWeight: 'bold',
+        },
+        
+        
     });
 
     const formatCurrency = (amount) => {
@@ -96,6 +115,11 @@ function PurchaseHistoryReport() {
         <Document>
             <Page size="A4" style={styles.page}>
                 <View style={styles.section}>
+                    <Text style={styles.title}>Fertilizer Purchase History Report</Text>
+                    <View style={styles.subtitleContainer}>
+                        <Text style={styles.subtitle}>From: {fromDate}</Text>
+                        <Text style={styles.subtitle}>To: {toDate}</Text>
+                    </View>
                     <View style={styles.table}>
                         <View style={styles.tableRow}>
                             <Text style={[styles.tableCol, styles.headerCol]}>Supplier</Text>
@@ -104,21 +128,23 @@ function PurchaseHistoryReport() {
                             <Text style={[styles.tableCol, styles.headerCol]}>Purchase Date</Text>
                             <Text style={[styles.tableCol, styles.headerCol]}>Total Price</Text>
                         </View>
-                        {reportData.map((purchase, index) => (
-                            <View key={index} style={styles.tableRow}>
-                                <Text style={styles.tableCol}>{purchase.supplier}</Text>
-                                <Text style={styles.tableCol}>{purchase.product}</Text>
-                                <Text style={styles.tableCol}>{purchase.invoiceNumber}</Text>
-                                <Text style={styles.tableCol}>{purchase.purchaseDate}</Text>
-                                <Text style={styles.totalCol}>{formatCurrency(purchase.totalPrice)}</Text>
-                            </View>
-                        ))}
+                            {reportData.map((purchase, index) => (
+                                <View key={index} style={styles.tableRow}>
+                                    <Text style={styles.tableCol}>{purchase.supplier}</Text>
+                                    <Text style={styles.tableCol}>{purchase.product}</Text>
+                                    <Text style={styles.tableCol}>{purchase.invoiceNumber}</Text>
+                                    <Text style={styles.tableCol}>{purchase.purchaseDate.split('T')[0]}</Text> {/* Format the date */}
+                                    <Text style={styles.totalCol}>{formatCurrency(purchase.totalPrice)}</Text>
+                                </View>
+                            ))}
                     </View>
                     <Text style={styles.totalExpense}>Total Expense: {formatCurrency(totalExpense)}</Text>
                 </View>
             </Page>
         </Document>
     );
+    
+    
 
     return (
         <div className="report-container">
