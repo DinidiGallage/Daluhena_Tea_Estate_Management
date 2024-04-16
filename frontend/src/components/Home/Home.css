@@ -1,0 +1,44 @@
+.home-container-custom {
+  padding: 20px;
+  background-image: url('../../images/DashboardBackground.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+.tiles-container-custom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.tile-custom {
+  width: calc(25% - 20px);
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.tile-custom a {
+  display: block;
+  margin: 10px;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.tile-custom a:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .tile-custom {
+    width: calc(50% - 20px);
+  }
+}

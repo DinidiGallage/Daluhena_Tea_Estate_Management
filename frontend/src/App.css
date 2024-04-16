@@ -75,11 +75,11 @@ label {
 }
 .side-nav {
   width: 225px;
-  height: 580px;
+  height: 590px;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #fffffffc;
+  background-color: #ffffffef; /* Transparent white background */
   padding-top: 10px;
   border-radius: 15px;
   margin: 10px;
@@ -109,7 +109,7 @@ label {
     width: 150px; /* Fixed width for all nav-links */
     border: 1px solid #1E421D;
     border-radius: 50px; /* Make it round */
-    margin-bottom: 3px; /* Adjust as needed */
+    margin-bottom: 0px; /* Adjust as needed */
   }
   .nav-link:hover,
   .nav-link:focus { /* Add :focus pseudo-class */
@@ -144,21 +144,6 @@ label {
     filter: invert(100%);
   }
 
- 
-  
-.logout-btn {
-  background-color: #d32000; /* Change to your desired color */
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 50px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.logout-btn:hover {
-  background-color: #FF4500; /* Change to your desired hover color */
-}
 /* DashBoard Tiles styles */
 /* DashBoard Tiles styles */
 .dashboard-container-view {
@@ -510,4 +495,20 @@ tbody tr:nth-child(even) {
 
 tbody tr:hover {
   background-color: #CFD8DC;
+}
+
+/*logout button */
+.logout-btn {
+  background-color: #d32000; /* Change to your desired color */
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 15px; /* Adjust padding to increase button height */
+}
+
+
+.logout-btn:hover {
+  background-color: #FF4500; /* Change to your desired hover color */
 }

@@ -12,6 +12,8 @@ import AllEmployeeLeaves from './components/AllEmployeeLeaves';
 import ViewMoreEmployee from './components/ViewMoreEmployee';
 import AttendanceReport from './components/AttendanceReport';
 import LeaveReport from './components/LeaveReport';
+import Login from './components/Login/Login';
+import Home from './components/Home/Home';
 
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -43,8 +45,14 @@ function App() {
           <Route path="/attendance-report" element={<AttendanceReport />} />
           <Route path="/leave-report" element={<LeaveReport/>} />
 
-         
 
+          
+
+          {/* Route for the Login */}
+          <Route path="/login" element={<Login/>}/>
+
+         {/* Home route */}
+        <Route path="/" element={<Home />} />
 
         </Routes>
       </div>

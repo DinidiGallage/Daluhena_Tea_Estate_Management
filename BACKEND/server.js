@@ -31,6 +31,9 @@ app.use("/EmployeeLeave",EmployeeLeavesRouter)
 const EmployeeAttendancesRouter= require("./routes/EmployeeAttendanceRouter.js");
 app.use("/EmployeeAttendance",EmployeeAttendancesRouter)
 
+const userRouter = require("./routes/users.js");
+app.use("/users", userRouter)
+
 
 
 app.listen(PORT, () => {
