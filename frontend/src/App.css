@@ -223,9 +223,13 @@ label {
 } 
 
 .report-container {
-  margin-left: 260px; /* Adjust this value according to your side navigation panel width */
+  margin-left: 270px; /* Adjust this value according to your side navigation panel width */
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-top: 10px;
+  border-radius: 15px;
+  margin-right: 10px;
+
 }
 
 .calendar-container {
@@ -233,4 +237,31 @@ label {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
+}
+
+.report-controls {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+.date-input {
+ 
+  width: 200px; /* width */
+  height: 40px; /* height */
+  border-radius: 15px; 
+  border: 1px solid #ced4da; /* Refined border width */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Inner shadow for a subtle inset effect */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transitions for interactions */
+  margin-bottom: 10px;
+  margin-right: 250px;
+  padding-right: 10px;
+  padding-left: 20px;
+  
+}
+.date-input:focus {
+  border-color: #80bdff; /* Highlighted border color on focus */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Outer glow effect on focus */
+
 }

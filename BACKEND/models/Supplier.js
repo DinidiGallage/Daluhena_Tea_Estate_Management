@@ -19,7 +19,7 @@ const supplierSchema = new Schema({
         required: true,
         validate: {
             validator: function(v) {
-                return /\d{3}-\d{3}-\d{4}/.test(v); // Example format: 123-456-7890
+                return /\d{3}\d{3}\d{4}/.test(v); // Example format: 123-456-7890
             },
             message: props => `${props.value} is not a valid phone number! Please use the format: XXX-XXX-XXXX`
         }

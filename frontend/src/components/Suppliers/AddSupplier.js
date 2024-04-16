@@ -37,8 +37,8 @@ export default function AddSupplier() {
     if (!phone) {
       setPhoneError("Phone is required.");
       isValid = false;
-    } else if (!/^(\d{3}-\d{3}-\d{4})$/.test(phone)) {
-      setPhoneError("Phone must be in the format XXX-XXX-XXXX.");
+    } else if (!/^(\d{3}\d{3}\d{4})$/.test(phone)) {
+      setPhoneError("Phone must be in the format XXXXXXXXXX.");
       isValid = false;
     } else {
       setPhoneError("");
@@ -145,7 +145,7 @@ export default function AddSupplier() {
                 type="text"
                 className="form-control"
                 id="phone"
-                placeholder="Enter phone number (XXX-XXX-XXXX)"
+                placeholder="Enter phone number (XXX XXX XXXX)"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />

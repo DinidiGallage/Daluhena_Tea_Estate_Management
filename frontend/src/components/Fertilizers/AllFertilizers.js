@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import backgroundImage from '../../images/DashboardBackground.png'; 
 
@@ -16,6 +16,7 @@ export default function AllFertilizers() {
   const [selectedFertilizerId, setSelectedFertilizerId] = useState(null);
   const [confirmation, setConfirmation] = useState(false);
   const [successMessage] = useState("");
+  const updateFormRef = useRef(null); // Ref for the update form
 
   useEffect(() => {
     axios.get("http://localhost:8070/fertilizer")
@@ -31,7 +32,12 @@ export default function AllFertilizers() {
     const updatedFertilizer = fertilizers.find(fertilizer => fertilizer._id === id);
     setUpdateData(updatedFertilizer);
     setSelectedFertilizerId(id);
+    // Ensure updateFormRef is not null before accessing scrollIntoView
+    if (updateFormRef.current) {
+      updateFormRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,10 +46,10 @@ export default function AllFertilizers() {
       [name]: value
     }));
   };
-
-  const handleSubmit = (id) => {
-    axios.put(`http://localhost:8070/fertilizer/update/${id}`, updateData)
-      .then(response => {
+const handleSubmit = (id) => {
+  axios.put(`http://localhost:8070/fertilizer/update/${id}`, updateData)
+    .then(response => {
+      if (response.data.success) {
         setFertilizers(fertilizers.map(fertilizer => {
           if (fertilizer._id === id) {
             return { ...fertilizer, ...updateData };
@@ -61,13 +67,17 @@ export default function AllFertilizers() {
           expiredDate: ""
         });
         setSelectedFertilizerId(null);
-      })
-      .catch(error => {
-        console.error("Error updating fertilizer:", error);
-        alert("Error updating fertilizer.");
-      });
-  };
-  
+      } else {
+        console.error("Error updating fertilizer:", response.data.message);
+        alert("Error updating fertilizer: " + response.data.message);
+      }
+    })
+    .catch(error => {
+      console.error("Error updating fertilizer:", error);
+      alert("Error updating fertilizer.");
+    });
+};
+
 
   const handleCancel = () => {
     setSelectedFertilizerId(null);
@@ -162,7 +172,7 @@ export default function AllFertilizers() {
           </table>
         </div>
         {selectedFertilizerId && (
-          <div style={{ marginTop: "20px", width: "60%", margin: "10px" }}>
+          <div ref={updateFormRef} style={{ marginTop: "20px", width: "60%", margin: "10px" }}>
             <h2 style={{ textAlign: "center" }}>Update Fertilizer</h2>
             <form onSubmit={() => handleSubmit(updateData._id)}>
               <div className="form-group">

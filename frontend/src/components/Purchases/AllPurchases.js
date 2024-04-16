@@ -5,6 +5,8 @@ import backgroundImage from '../../images/DashboardBackground.png';
 export default function AllPurchases() {
   const [purchases, setPurchases] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [paymentStatusFilter, setPaymentStatusFilter] = useState("All");
+  const [purchaseDateFilter, setPurchaseDateFilter] = useState(""); // State for purchase date filter
 
   useEffect(() => {
     axios.get("http://localhost:8070/purchase")
@@ -18,17 +20,13 @@ export default function AllPurchases() {
 
   // Function to handle delete button click
   const handleDelete = (id) => {
-    // Ask for confirmation
     const isConfirmed = window.confirm("Are you sure you want to delete this purchase?");
   
-    // If confirmed, proceed with deletion
     if (isConfirmed) {
       axios.delete(`http://localhost:8070/purchase/delete/${id}`)
         .then(response => {
-          // Remove the deleted purchase from the state
           setPurchases(purchases.filter(purchase => purchase._id !== id));
           console.log("Purchase deleted successfully");
-          // Show success message
           alert("Purchase deleted successfully");
         })
         .catch(error => {
@@ -37,35 +35,68 @@ export default function AllPurchases() {
     }
   };
 
-  // Function to handle update button click
-  const handleUpdate = (id) => {
-    // Implement update logic here
-    console.log("Update button clicked for purchase id:", id);
-  };
-
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
   };
 
+  const handlePaymentStatusFilterChange = (e) => {
+    setPaymentStatusFilter(e.target.value);
+  };
+
+  const handlePurchaseDateFilterChange = (e) => {
+    setPurchaseDateFilter(e.target.value);
+  };
+
   const filteredPurchases = purchases.filter(purchase =>
-    purchase.supplier.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    (purchase.supplier.toLowerCase().includes(searchQuery.toLowerCase()) ||
     purchase.product.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    purchase.invoiceNumber.toLowerCase().includes(searchQuery.toLowerCase())
+    purchase.invoiceNumber.toLowerCase().includes(searchQuery.toLowerCase())) &&
+    (paymentStatusFilter === "All" || purchase.paymentStatus.toLowerCase() === paymentStatusFilter.toLowerCase()) &&
+    (!purchaseDateFilter || new Date(purchase.purchaseDate).toLocaleDateString() === purchaseDateFilter)
   );
 
   return (
-    <div style={{ marginLeft: "280px" }}>
+    <div style={{ marginLeft: "280px" ,marginTop:"10px",marginRight:"10px"}}>
       <div style={{ backgroundColor: "#FFFFFF", borderRadius: "15px", padding: "20px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)" }}>
         <h1 style={{ textAlign: "center", marginBottom: "20px", color: "white", backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', padding: '40px 60px' }}>
           All Purchase Details
         </h1>
-        <input
-          type="text"
-          placeholder="Search by Supplier, Product or Invoice"
-          value={searchQuery}
-          onChange={handleSearch}
-          style={{ width: "400px", marginBottom: "10px", marginLeft: "20px" }} // Adjust the width and margins as needed
-        />
+        <div style={{ display: "flex", marginBottom: "10px", marginLeft: "20px" }}>
+        <div style={{ marginRight: "10px" ,fontWeight:'bold'  }}>
+            <label htmlFor="search">Search:</label>
+            <input
+              type="text"
+              id="search"
+              placeholder="Search by Supplier, Product or Invoice"
+              value={searchQuery}
+              onChange={handleSearch}
+              style={{ width: "300px", borderRadius: "5px", padding: "5px" }}
+            />
+          </div>
+          <div style={{ marginRight: "10px",marginLeft: "200px"  ,fontWeight:'bold'  }}>
+            <label htmlFor="paymentStatus">Payment Status:</label>
+            <select
+              id="paymentStatus"
+              value={paymentStatusFilter}
+              onChange={handlePaymentStatusFilterChange}
+              style={{ width: "180px",height:"35px",borderRadius: "5px", padding: "5px",marginBottom:"10px" }}
+            >
+              <option value="All">All</option>
+              <option value="Paid">Paid</option>
+              <option value="Unpaid">Unpaid</option>
+            </select>
+          </div>
+          <div style={{ marginLeft: "150px" ,fontWeight:'bold'  }}>
+            <label htmlFor="purchaseDate">Purchase Date:</label>
+            <input
+              type="date"
+              id="purchaseDate"
+              value={purchaseDateFilter}
+              onChange={handlePurchaseDateFilterChange}
+              style={{ borderRadius: "5px", padding: "5px" }}
+            />
+          </div>
+        </div>
 
         <div style={{ overflowX: "auto" }}>
           <table className="table" style={{ width: "100%" }}>
@@ -79,7 +110,7 @@ export default function AllPurchases() {
                 <th>Quantity (kg)</th>
                 <th>Unit Price (LKR)</th>
                 <th>Total Price (LKR)</th>
-                <th>Operation</th> {/* New column for buttons */}
+                <th>Operation</th>
               </tr>
             </thead>
             <tbody>
@@ -94,22 +125,12 @@ export default function AllPurchases() {
                   <td>{purchase.unitPrice}</td>
                   <td>{purchase.totalPrice}</td>
                   <td>
-                    {/* Horizontal flex container for buttons */}
                     <div style={{ display: "flex" }}>
-                      {/* Update button */}
-                      <button
-                        className="btn btn-success"
-                        onClick={() => handleUpdate(purchase._id)}
-                        style={{ marginRight: "5px" }}
-                      >
-                        Update
-                      </button>
-                      {/* Delete button */}
                       <button
                         className="btn btn-danger"
                         onClick={() => handleDelete(purchase._id)}
                       >
-                        Delete
+                        Remove
                       </button>
                     </div>
                   </td>

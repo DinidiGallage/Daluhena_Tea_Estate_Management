@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Login.css'; // Import the CSS file
-import Dashboard from '../Dashboard'; // Import the Dashboard component
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -20,6 +19,7 @@ function Login() {
       setLoginError(''); // Clear any previous login error
       console.log('Login successful:', response.data);
       setLoggedIn(true); // Set login status to true
+      window.location.href = '/dashboard'; // Redirect to dashboard after successful login
     } catch (error) {
       setLoggedIn(false); // Set login status to false
       setLoginError(error.response.data.message); // Set login error message
@@ -45,9 +45,7 @@ function Login() {
             {loginError && <p className="login-error">{loginError}</p>}
           </form>
         </div>
-      ) : (
-        <Dashboard />
-      )}
+      ) : null}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import DownloadPDFIcon from '../../images/Icons/downloadPdf.png';
 import { Document, Page, View, Text, StyleSheet, PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
 
 function PurchaseHistoryReport() {
@@ -7,11 +8,11 @@ function PurchaseHistoryReport() {
     const [loading, setLoading] = useState(false);
     const [fromDate, setFromDate] = useState('');
     const [toDate, setToDate] = useState('');
-    const [totalExpense, setTotalExpense] = useState(0); // Add state for total expense
+    const [totalExpense, setTotalExpense] = useState(0);
 
     useEffect(() => {
         fetchReport();
-    }, [fromDate, toDate]); // Fetch report data whenever fromDate or toDate changes
+    }, [fromDate, toDate]);
 
     const fetchReport = async () => {
         try {
@@ -22,8 +23,8 @@ function PurchaseHistoryReport() {
                     toDate
                 }
             });
-            setReportData(response.data.reportData); // Set report data
-            setTotalExpense(response.data.totalExpense); // Set total expense
+            setReportData(response.data.reportData);
+            setTotalExpense(response.data.totalExpense);
             setLoading(false);
         } catch (error) {
             console.error('Error fetching purchase history report:', error);
@@ -52,47 +53,44 @@ function PurchaseHistoryReport() {
             flexDirection: 'row'
         },
         tableCol: {
-            width: '20%', // Adjusted width to accommodate the new column
+            width: '20%',
             borderStyle: 'solid',
             borderWidth: 1,
             borderColor: '#000',
             padding: 8,
             textAlign: 'center',
-            fontSize: 10 // Reduced font size
+            fontSize: 10
         },
         headerCol: {
             backgroundColor: '#ccc',
             fontWeight: 'bold'
         },
         totalCol: {
-            width: '20%', // Adjusted width to accommodate the new column
+            width: '20%',
             borderStyle: 'solid',
             borderWidth: 1,
             borderColor: '#000',
             padding: 8,
             textAlign: 'center',
-            fontSize: 10 // Reduced font size
+            fontSize: 10
         },
         totalExpense: {
-            textAlign: 'right', // Align the total expense text to the right
-            marginTop: 15, // Add some margin at the top
-            fontSize: 14, // Increase font size for prominence
-            fontWeight: 'bold', // Make the text bold
-            borderTopWidth: 1, // Add border at the top to separate from table
-            borderBottomWidth: 2, // Add border at the bottom to separate from the next content
-            borderColor: '#000', // Border color
-            paddingTop: 8, // Padding at the top
-            paddingBottom: 8, // Padding at the bottom
-            marginBottom: 10,// Add some margin at the bottom to separate from the next content
+            textAlign: 'right',
+            marginTop: 15,
+            fontSize: 14,
+            fontWeight: 'bold',
+            borderTopWidth: 1,
+            borderBottomWidth: 2,
+            borderColor: '#000',
+            paddingTop: 8,
+            paddingBottom: 8,
+            marginBottom: 10,
         },
     });
-    
 
     const formatCurrency = (amount) => {
-        // Format amount as currency with LKR (e.g., LKR 1,234.56)
         return `LKR ${amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
     };
-    
 
     const PDFDocument = (
         <Document>
@@ -104,7 +102,7 @@ function PurchaseHistoryReport() {
                             <Text style={[styles.tableCol, styles.headerCol]}>Product</Text>
                             <Text style={[styles.tableCol, styles.headerCol]}>Invoice Number</Text>
                             <Text style={[styles.tableCol, styles.headerCol]}>Purchase Date</Text>
-                            <Text style={[styles.tableCol, styles.headerCol]}>Total Price</Text> {/* New column for total price */}
+                            <Text style={[styles.tableCol, styles.headerCol]}>Total Price</Text>
                         </View>
                         {reportData.map((purchase, index) => (
                             <View key={index} style={styles.tableRow}>
@@ -112,7 +110,7 @@ function PurchaseHistoryReport() {
                                 <Text style={styles.tableCol}>{purchase.product}</Text>
                                 <Text style={styles.tableCol}>{purchase.invoiceNumber}</Text>
                                 <Text style={styles.tableCol}>{purchase.purchaseDate}</Text>
-                                <Text style={styles.totalCol}>{formatCurrency(purchase.totalPrice)}</Text> {/* Display total price */}
+                                <Text style={styles.totalCol}>{formatCurrency(purchase.totalPrice)}</Text>
                             </View>
                         ))}
                     </View>
@@ -124,20 +122,27 @@ function PurchaseHistoryReport() {
 
     return (
         <div className="report-container">
-            <h1>Purchase History Report</h1>
-            <div>
-                <label>From Date:</label>
-                <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} />
+            <h1 style={{ textAlign:'center',paddingBottom:'10px' }} >Purchase History Report</h1>
+            <div className="report-controls">
+                <div className="date-inputall">
+                    <label htmlFor="fromDate" style={{ fontWeight:'bold' }} >From Date:</label>
+                    <input type="date" className="date-input" id="fromDate" value={fromDate} onChange={(e) => setFromDate(e.target.value)} />
+                </div>
+                <div className="date-inputall">
+                    <label htmlFor="toDate"  style={{ fontWeight:'bold' }}>To Date:</label>
+                    <input type="date" className="date-input" id="toDate" value={toDate} onChange={(e) => setToDate(e.target.value)} />
+                </div>
+                <div className="download-pdf">
+                    <PDFDownloadLink document={PDFDocument} fileName="purchase_report.pdf">
+                        {({ blob, url, loading, error }) => (
+                            <div style={{ display: 'flex', alignItems: 'center', fontWeight:'bold' }}>
+                                <img src={DownloadPDFIcon} alt="Download PDF Icon" style={{ marginRight: '5px',width:'40px',height:'40px' }} />
+                                {loading ? 'Loading document...' : 'Download PDF'}
+                            </div>
+                        )}
+                    </PDFDownloadLink>
+                </div>
             </div>
-            <div>
-                <label>To Date:</label>
-                <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} />
-            </div>
-            <PDFDownloadLink document={PDFDocument} fileName="purchase_report.pdf">
-                {({ blob, url, loading, error }) =>
-                    loading ? 'Loading document...' : 'Download PDF'
-                }
-            </PDFDownloadLink>
             <PDFViewer width="100%" height="600">
                 {PDFDocument}
             </PDFViewer>

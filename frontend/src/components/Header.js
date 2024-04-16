@@ -10,12 +10,19 @@ import dashboardIcon from '../images/Icons/dashboard.png';
 function Header() {
     const location = useLocation();
 
-    // Check if the current location is the home page
+    // Check if the user is authenticated (logged in)
+    const isAuthenticated = localStorage.getItem('token') !== null;
+
+    // Check if the current page is the home page or login page
     const isHomePage = location.pathname === "/";
+    const isLoginPage = location.pathname === "/login";
+
+    // Determine whether to display the navigation panel
+    const showNavPanel = isAuthenticated && !isHomePage && !isLoginPage;
 
     return (
         <div>
-            {!isHomePage && (
+            {showNavPanel && (
                 <div className="side-nav">
                     <div className="brand" style={{ textAlign: "center", marginBottom: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
                         <img src={logo} alt="Logo" style={{ width: "100px", height: "100px" }} />

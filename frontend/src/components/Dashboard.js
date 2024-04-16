@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Chart from "chart.js/auto";
 import 'chartjs-adapter-moment';
-import moment from 'moment';
 import backgroundImage from '../images/DashboardBackground.png';
 
 export default function Dashboard() {
@@ -91,7 +90,7 @@ export default function Dashboard() {
           datasets: [{
             label: 'Fertilizer Amount (kg)',
             data: [organicAmount, mineralAmount],
-            backgroundColor: ['#A9B523', '#A9B523'],
+            backgroundColor: ['#1E421D', '#A9B523'], // Specify colors for each bar
             borderColor: ['#1E421D', '#1E421D'],
             borderWidth: 1
           }]
@@ -110,6 +109,16 @@ export default function Dashboard() {
             x: {
               ticks: {
                 color: '#121400' 
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              labels: {
+                color: '#000000', // Set the font color to black
+                font: {
+                  size: 14 // Increase font size
+                }
               }
             }
           }
@@ -131,7 +140,7 @@ export default function Dashboard() {
         data: {
           labels: dates,
           datasets: [{
-            label: 'Fertilizer Usage Trend',
+            label: 'Fertilizer Usage Trends',
             data: quantities,
             fill: false,
             borderColor: '#1E421D',
@@ -157,24 +166,43 @@ export default function Dashboard() {
                 color: '#121400' // Change text color to a darker shade
               }
             }
+          },
+          plugins: {
+            legend: {
+              labels: {
+                color: '#000000', // Set the font color to black
+                font: {
+                  size: 14 // Increase font size
+                }
+              }
+            }
           }
         }
       });
     }
   }, [fertilizers]);
   
+
+  
   return (
     <div className="transparent-box" style={{ marginLeft: "270px", paddingLeft: "20px", paddingRight: "20px", paddingTop: "20px"}}>
   <div style={{ textAlign: "center" }}>
     <h1 style={{ marginBottom: "20px", color: "white", backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', padding: '50px 70px' }}>Welcome to Dashboard</h1>
     <div style={{ marginBottom: "20px" }}> 
-      <input
+    <input
         type="text"
         placeholder="Search for available fertilizers..."
         value={searchTerm}
         onChange={handleSearch}
-        style={{ marginRight: "10px", padding: "8px", width: "calc(100% - 200px)" }}
+        style={{
+          marginRight: "10px",
+          padding: "8px",
+          width: "calc(100% - 200px)",
+          borderRadius: "15px", // Add border radius
+          border: "1px solid #ccc", // Add border
+        }}
       />
+
       <p style={{ fontSize: "0.9rem", marginTop: "5px", color: "#666" }}>
         Enter your query in the search box above. You can filter by selecting the checkboxes for the specific fields you want to include in the search.
       </p>
@@ -261,14 +289,22 @@ export default function Dashboard() {
       </tbody>
     </table>
   </div>
-  <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
-    <div style={{ width: "100%", height: "340px", marginBottom: "5px" }}>
-      <canvas ref={barChartRef} style={{ width: "100%", height: "100%" , marginLeft: "160px"}}></canvas>
-    </div>
-    <div style={{ width: "100%", height: "340px", marginBottom: "5px", margin: "0 auto" }}>
-      <canvas ref={lineChartRef} style={{ width: "100%", height: "100%" }}></canvas>
+  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
+  <div style={{ flex: "1", marginRight: "10px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <div style={{ backgroundColor: "rgba(240, 240, 240, 0.9)", borderRadius: "10px", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", width: "100%", height: "350px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <canvas ref={barChartRef} style={{ width: "80%", height: "80%" }}></canvas>
     </div>
   </div>
+  <div style={{ flex: "1", marginLeft: "10px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <div style={{ backgroundColor: "rgba(240, 240, 240, 0.9)", borderRadius: "10px", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", width: "100%", height: "360px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <canvas ref={lineChartRef} style={{ width: "80%", height: "80%" }}></canvas>
+    </div>
+  </div>
+</div>
+
+
+
+
 </div>
 
   );
