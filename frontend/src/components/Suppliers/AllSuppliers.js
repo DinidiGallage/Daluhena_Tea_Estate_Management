@@ -6,6 +6,15 @@ export default function AllSuppliers() {
   const [suppliers, setSuppliers] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("");
+  const [updateFormData, setUpdateFormData] = useState({
+    supplierName: "",
+    contactPerson: "",
+    phone: "",
+    email: "",
+    address: "",
+    productTypes: []
+  });
+  const [updateId, setUpdateId] = useState(null);
 
   useEffect(() => {
     axios.get("http://localhost:8070/supplier")
@@ -34,7 +43,45 @@ export default function AllSuppliers() {
   };
 
   const handleUpdate = (id) => {
-    console.log("Update button clicked for supplier id:", id);
+    setUpdateId(id);
+    const supplierToUpdate = suppliers.find(supplier => supplier._id === id);
+    setUpdateFormData(supplierToUpdate);
+  };
+
+  const handleUpdateFormSubmit = (e) => {
+    e.preventDefault();
+    axios.put(`http://localhost:8070/supplier/update/${updateId}`, updateFormData)
+      .then(response => {
+        alert("Supplier updated successfully");
+        setUpdateFormData({
+          supplierName: "",
+          contactPerson: "",
+          phone: "",
+          email: "",
+          address: "",
+          productTypes: []
+        });
+        setUpdateId(null);
+        // Fetch updated supplier data...
+        axios.get("http://localhost:8070/supplier")
+          .then(response => {
+            setSuppliers(response.data);
+          })
+          .catch(error => {
+            console.error("Error fetching suppliers:", error);
+          });
+      })
+      .catch(error => {
+        console.error("Error updating supplier:", error);
+        alert("Error updating supplier");
+      });
+  };
+
+  const handleUpdateFormChange = (e) => {
+    setUpdateFormData({
+      ...updateFormData,
+      [e.target.name]: e.target.value
+    });
   };
 
   const handleSearch = (e) => {
@@ -124,6 +171,38 @@ export default function AllSuppliers() {
           </table>
         </div>
       </div>
+      {updateId && (
+        <div style={{ marginTop: "20px" }}>
+          <h2>Update Supplier</h2>
+          <form onSubmit={handleUpdateFormSubmit}>
+            <div>
+              <label htmlFor="supplierName">Supplier Name:</label>
+              <input type="text" name="supplierName" id="supplierName" value={updateFormData.supplierName} onChange={handleUpdateFormChange} />
+            </div>
+            <div>
+              <label htmlFor="contactPerson">Contact Person:</label>
+              <input type="text" name="contactPerson" id="contactPerson" value={updateFormData.contactPerson} onChange={handleUpdateFormChange} />
+            </div>
+            <div>
+              <label htmlFor="phone">Phone:</label>
+              <input type="text" name="phone" id="phone" value={updateFormData.phone} onChange={handleUpdateFormChange} />
+            </div>
+            <div>
+              <label htmlFor="email">Email:</label>
+              <input type="text" name="email" id="email" value={updateFormData.email} onChange={handleUpdateFormChange} />
+            </div>
+            <div>
+              <label htmlFor="address">Address:</label>
+              <input type="text" name="address" id="address" value={updateFormData.address} onChange={handleUpdateFormChange} />
+            </div>
+            <div>
+              <label htmlFor="productTypes">Product Types:</label>
+              <input type="text" name="productTypes" id="productTypes" value={updateFormData.productTypes} onChange={handleUpdateFormChange} />
+            </div>
+            <button type="submit">Update Supplier</button>
+          </form>
+        </div>
+      )}
     </div>
   );
 }

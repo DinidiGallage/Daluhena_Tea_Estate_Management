@@ -11,6 +11,7 @@ import SuppliersPage from './components/Suppliers/SuppliersPage';
 import FertilizersPage from './components/Fertilizers/FertilizersPage'; 
 import ScheduleProcess from './components/Fertilizers/ScheduleProcess'; 
 import Login from './components/Login/Login'; // Import the Login component
+import ContactSupplier from './components/Suppliers/ContactSupplier'; 
 
 import Header from './components/Header';
 import Home from './components/Home/Home';
@@ -56,6 +57,9 @@ function App() {
 
           {/* Route for the Login */}
           <Route path="/login" element={<Login />} />
+
+          {/* Route for the Contact Supplier Page */}
+          <Route path="/supplier/contact" element={<ContactSupplier />} />
         </Routes>
       </div>
     </Router>

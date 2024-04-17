@@ -108,7 +108,7 @@ export default function AddPurchase() {
     <div>
       {showConfirmation && (
         <div className="transparent-box">
-        <div className="confirmation-box">
+        <div className="confirmation-box" style={{ width: "600px",marginTop: "40px",marginBottom: "40px", padding: "50px"}}>
         <h2>Confirm Purchase</h2>
         <p><strong>Supplier:</strong> {supplier}</p>
         <p><strong>Product:</strong> {product}</p>

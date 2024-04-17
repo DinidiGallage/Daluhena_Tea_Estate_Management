@@ -220,7 +220,7 @@ export default function AddFertilizer() {
             </div>
           </div>
         ) : (
-          <div className="confirmation-container" style={{ width: "500px", marginLeft: "300px", marginTop: "20px", padding: "20px", backgroundColor: "#f8f9fa", borderRadius: "8px", boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)" }}>
+          <div className="confirmation-container" style={{ width: "600px", marginLeft: "100px", marginTop: "40px",marginBottom: "40px", padding: "60px", backgroundColor: "#f8f9fa", borderRadius: "8px", boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)" }}>
             <h2 style={{ textAlign: "center", marginBottom: "20px", color: "#1E421D", fontSize: "24px" }}>Confirm Entry</h2>
             <div className="confirmation-details" style={{ marginBottom: "20px" }}>
               <p style={{ marginBottom: "10px" }}><strong>Fertilizer Name:</strong> {formData.fertilizerName}</p>

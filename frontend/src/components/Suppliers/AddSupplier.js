@@ -212,7 +212,7 @@ export default function AddSupplier() {
           </div>
         </div>
       ) : (
-        <div className="confirmation-box">
+        <div className="confirmation-box" style={{ width: "600px",marginTop: "40px",marginBottom: "40px", padding: "60px"}}>
           <h2>Confirm Supplier Details</h2>
           <p><strong>Supplier Name:</strong> {supplierName}</p>
           <p><strong>Contact Person:</strong> {contactPerson}</p>
