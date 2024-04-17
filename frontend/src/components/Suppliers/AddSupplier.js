@@ -24,12 +24,18 @@ export default function AddSupplier() {
     if (!supplierName) {
       setSupplierNameError("Supplier Name is required.");
       isValid = false;
+    } else if (!/^[a-zA-Z ]+$/.test(supplierName)) {
+      setSupplierNameError("Please enter a valid supplier name.");
+      isValid = false;
     } else {
       setSupplierNameError("");
     }
 
     if (!contactPerson) {
       setContactPersonError("Contact Person is required.");
+      isValid = false;
+    } else if (!/^[a-zA-Z ]+$/.test(contactPerson)) {
+      setContactPersonError("Please enter a valid name.");
       isValid = false;
     } else {
       setContactPersonError("");

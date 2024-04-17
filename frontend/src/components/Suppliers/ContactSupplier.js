@@ -10,6 +10,7 @@ export default function ContactSupplierPage() {
     email: "",
     message: ""
   });
+  const [successMessage, setSuccessMessage] = useState(""); // State for success message
 
   const handleChange = (e) => {
     setFormData({
@@ -24,6 +25,7 @@ export default function ContactSupplierPage() {
     emailjs.sendForm('service_hdfcilv', 'template_yabuzgi', e.target, 'ID5hHST5nKht9tr22')
       .then((result) => {
         console.log(result.text);
+        setSuccessMessage("Email sent successfully!"); // Update success message state
       }, (error) => {
         console.log(error.text);
       });
@@ -49,6 +51,7 @@ export default function ContactSupplierPage() {
         <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Enter Email" style={{ marginBottom: "20px", padding: "10px", borderRadius: "5px", border: "1px solid #ccc" }} required />
         <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Your Message" rows="4" style={{ marginBottom: "20px", padding: "10px", borderRadius: "5px", border: "1px solid #ccc" }} required />
         <button type="submit" style={{ padding: "10px 20px", backgroundColor: "#1E421D", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }}>Send Email</button>
+        {successMessage && <p style={{ color: "green", marginTop: "10px" }}>{successMessage}</p>} {/* Display success message */}
       </form>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "20px" }}>
         <img src={supplierIcon} alt="Back Icon" style={{ marginRight: "10px", width: "30px", height: "30px" }} onClick={handleBack} />
