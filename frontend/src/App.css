@@ -265,3 +265,25 @@ label {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Outer glow effect on focus */
 
 }
+
+.confirmation-box {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 400px;
+  margin: auto;
+}
+
+.confirmation-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.confirmation-box p {
+  margin-bottom: 10px;
+}
+
+.confirmation-box button {
+  margin-right: 10px;
+}

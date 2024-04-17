@@ -14,8 +14,8 @@ export default function AllFertilizers() {
   });
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFertilizerId, setSelectedFertilizerId] = useState(null);
-  const [confirmation, setConfirmation] = useState(false);
-  const [successMessage] = useState("");
+  const [quantityError, setQuantityError] = useState("");
+  const [selectedType, setSelectedType] = useState(""); // State variable for selected type
   const updateFormRef = useRef(null); // Ref for the update form
 
   useEffect(() => {
@@ -38,7 +38,6 @@ export default function AllFertilizers() {
     }
   };
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUpdateData(prevState => ({
@@ -46,39 +45,49 @@ export default function AllFertilizers() {
       [name]: value
     }));
   };
-const handleSubmit = (id) => {
-  axios.put(`http://localhost:8070/fertilizer/update/${id}`, updateData)
-    .then(response => {
-      if (response.data.success) {
-        setFertilizers(fertilizers.map(fertilizer => {
-          if (fertilizer._id === id) {
-            return { ...fertilizer, ...updateData };
-          }
-          return fertilizer;
-        }));
-        console.log("Fertilizer updated successfully");
-        alert("Fertilizer updated successfully");
-        setUpdateData({
-          fertilizerName: "",
-          fertilizerType: "",
-          manufacturer: "",
-          quantity: 0,
-          manufacturedDate: "",
-          expiredDate: ""
-        });
-        setSelectedFertilizerId(null);
-      } else {
-        console.error("Error updating fertilizer:", response.data.message);
-        alert("Error updating fertilizer: " + response.data.message);
-      }
-    })
-    .catch(error => {
-      console.error("Error updating fertilizer:", error);
-      alert("Error updating fertilizer.");
-    });
-};
 
-
+  const handleSubmit = (id) => {
+    // Validation: Ensure quantity is greater than 0
+    if (updateData.quantity <= 0) {
+      alert("Quantity must be greater than 0.");
+      return; // Exit if quantity is not valid
+    }
+  
+    // Trigger confirmation popup
+    const isConfirmed = window.confirm("Are you sure you want to update this fertilizer?");
+    if (!isConfirmed) {
+      return; // Exit if not confirmed
+    }
+  
+    axios.put(`http://localhost:8070/fertilizer/update/${id}`, updateData)
+      .then(response => {
+        if (response.data.success) {
+          setFertilizers(fertilizers.map(fertilizer => {
+            if (fertilizer._id === id) {
+              return { ...fertilizer, ...updateData };
+            }
+            return fertilizer;
+          }));
+          console.log("Fertilizer updated successfully");
+          alert("Fertilizer updated successfully");
+          setUpdateData({
+            fertilizerName: "",
+            fertilizerType: "",
+            manufacturer: "",
+            quantity: 0,
+            manufacturedDate: "",
+            expiredDate: ""
+          });
+          setSelectedFertilizerId(null);
+        } 
+      })
+      .catch(error => {
+        console.error("Error updating fertilizer:", error);
+        alert("Error updating fertilizer.");
+      });
+  };
+  
+  
   const handleCancel = () => {
     setSelectedFertilizerId(null);
     setUpdateData({
@@ -111,21 +120,44 @@ const handleSubmit = (id) => {
     setSearchQuery(e.target.value);
   };
 
+  const handleTypeFilterChange = (e) => {
+    setSelectedType(e.target.value);
+  };
+
+  // Get unique fertilizer types for dropdown options
+  const uniqueFertilizerTypes = [...new Set(fertilizers.map(fertilizer => fertilizer.fertilizerType))];
+
+  // Filter fertilizers based on selected type
   const filteredFertilizers = fertilizers.filter(fertilizer =>
-    fertilizer.fertilizerName.toLowerCase().includes(searchQuery.toLowerCase())
+    (selectedType === "" || fertilizer.fertilizerType === selectedType) &&
+    fertilizer.fertilizerName.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   return (
     <div style={{ marginLeft: "280px", marginRight: "10px", marginTop: "10px"}}>
       <div style={{ backgroundColor: "#FFFFFF", borderRadius: "15px", padding: "20px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)" }}>
         <h1 style={{ textAlign: "center", marginBottom: "20px", color: "white", backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', padding: '40px 60px', display: "flex" }}>All Fertilizer Details</h1>
-        <input
-          type="text"
-          placeholder="Search Fertilizer"
-          value={searchQuery}
-          onChange={handleSearch}
-          style={{ marginLeft: "20px", marginBottom: "10px" }}
-        />
+        <div style={{ marginBottom: "25px", display: "flex", alignItems: "center" }}>
+          <input
+            type="text"
+            placeholder="Search Fertilizer"
+            value={searchQuery}
+            onChange={handleSearch}
+            style={{ marginLeft: "20px", borderRadius: "10px", padding: "8px", boxShadow: "0 0 5px rgba(0, 0, 0, 0.1)" }}
+          />
+          <label htmlFor="typeFilter" style={{ marginLeft: "20px" }}>Filter by Type:</label>
+          <select
+            id="typeFilter"
+            value={selectedType}
+            onChange={handleTypeFilterChange}
+            style={{ marginLeft: "10px", borderRadius: "10px", padding: "8px", boxShadow: "0 0 5px rgba(0, 0, 0, 0.1)" }}
+          >
+            <option value="">All Types</option>
+            {uniqueFertilizerTypes.map((type, index) => (
+              <option key={index} value={type}>{type}</option>
+            ))}
+          </select>
+        </div>
         <div style={{ overflowX: "auto" }}>
           <table className="table" style={{ width: "100%" }}>
             <thead>
@@ -214,6 +246,7 @@ const handleSubmit = (id) => {
                   value={updateData.quantity}
                   onChange={handleChange}
                 />
+                {quantityError && <p style={{ color: "red" }}>{quantityError}</p>}
               </div>
               <div className="form-group">
                 <label>Manufactured Date:</label>
@@ -223,6 +256,7 @@ const handleSubmit = (id) => {
                   name="manufacturedDate"
                   value={updateData.manufacturedDate}
                   onChange={handleChange}
+                  disabled // Disable date input field
                 />
               </div>
               <div className="form-group">
@@ -233,6 +267,7 @@ const handleSubmit = (id) => {
                   name="expiredDate"
                   value={updateData.expiredDate}
                   onChange={handleChange}
+                  disabled // Disable date input field
                 />
               </div>
               <div style={{ textAlign: "center" }}>
@@ -244,22 +279,6 @@ const handleSubmit = (id) => {
                 </button>
               </div>
             </form>
-            {confirmation && (
-              <div style={{ textAlign: "center", marginTop: "10px" }}>
-                <p>Are you sure you want to update this fertilizer?</p>
-                <button className="btn btn-danger" onClick={() => handleSubmit(selectedFertilizerId)} style={{ marginRight: "10px" }}>
-                  Yes
-                </button>
-                <button className="btn btn-secondary" onClick={() => setConfirmation(false)}>
-                  No
-                </button>
-              </div>
-            )}
-            {successMessage && (
-              <div style={{ textAlign: "center", marginTop: "10px", color: "green" }}>
-                <p>{successMessage}</p>
-              </div>
-            )}
           </div>
         )}
       </div>

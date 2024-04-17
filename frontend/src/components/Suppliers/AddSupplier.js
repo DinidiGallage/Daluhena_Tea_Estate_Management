@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import backgroundImage from '../../images/DashboardBackground.png'; 
+import backgroundImage from '../../images/DashboardBackground.png';
 
 export default function AddSupplier() {
   const [supplierName, setSupplierName] = useState("");
@@ -16,6 +16,7 @@ export default function AddSupplier() {
   const [addressError, setAddressError] = useState("");
   const [productTypesError, setProductTypesError] = useState("");
   const [error, setError] = useState("");
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   function validateInputs() {
     let isValid = true;
@@ -79,6 +80,10 @@ export default function AddSupplier() {
       return;
     }
 
+    setShowConfirmation(true);
+  }
+
+  function handleConfirm() {
     const newSupplier = {
       supplierName,
       contactPerson,
@@ -98,108 +103,129 @@ export default function AddSupplier() {
         setAddress("");
         setProductTypes("");
         setError("");
+        setShowConfirmation(false);
       })
       .catch((err) => {
         alert(err.response.data.message); // Display error message from server
       });
   }
 
+  function handleEdit() {
+    setShowConfirmation(false);
+  }
+
   return (
     <div className="transparent-box">
-    <div className="form-container">
-      <div className="form-wrapper" style={{ backgroundColor: "#ffffff", padding: "20px", borderRadius: "8px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", width: "800px" }}>
-        <form style={{ margin: "0 auto" }} onSubmit={sendData}>
-          <h2 style={{ textAlign: "center", marginBottom: "20px", color: "white", backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', padding: '40px 60px' }}>Add New Supplier Details</h2>
-          <div className="form-row">
-            <div className="form-group col" style={{ marginRight: "10px" }}>
-              <label htmlFor="supplierName">Supplier Name</label>
-              <input
-                type="text"
-                className="form-control"
-                id="supplierName"
-                placeholder="Enter supplier name"
-                value={supplierName}
-                onChange={(e) => setSupplierName(e.target.value)}
-              />
-              {supplierNameError && <div className="text-danger">{supplierNameError}</div>}
-            </div>
+      {!showConfirmation ? (
+        <div className="form-container">
+          <div className="form-wrapper" style={{ backgroundColor: "#ffffff", padding: "20px", borderRadius: "8px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", width: "800px" }}>
+            <form style={{ margin: "0 auto" }} onSubmit={sendData}>
+              <h2 style={{ textAlign: "center", marginBottom: "20px", color: "white", backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', padding: '40px 60px' }}>Add New Supplier Details</h2>
+              <div className="form-row">
+                <div className="form-group col" style={{ marginRight: "10px" }}>
+                  <label htmlFor="supplierName">Supplier Name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="supplierName"
+                    placeholder="Enter supplier name"
+                    value={supplierName}
+                    onChange={(e) => setSupplierName(e.target.value)}
+                  />
+                  {supplierNameError && <div className="text-danger">{supplierNameError}</div>}
+                </div>
 
-            <div className="form-group col" style={{ marginLeft: "10px" }}>
-              <label htmlFor="contactPerson">Contact Person</label>
-              <input
-                type="text"
-                className="form-control"
-                id="contactPerson"
-                placeholder="Enter contact person"
-                value={contactPerson}
-                onChange={(e) => setContactPerson(e.target.value)}
-              />
-              {contactPersonError && <div className="text-danger">{contactPersonError}</div>}
-            </div>
+                <div className="form-group col" style={{ marginLeft: "10px" }}>
+                  <label htmlFor="contactPerson">Contact Person</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="contactPerson"
+                    placeholder="Enter contact person"
+                    value={contactPerson}
+                    onChange={(e) => setContactPerson(e.target.value)}
+                  />
+                  {contactPersonError && <div className="text-danger">{contactPersonError}</div>}
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="form-group col" style={{ marginRight: "10px" }}>
+                  <label htmlFor="phone">Phone</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="phone"
+                    placeholder="Enter phone number (XXX XXX XXXX)"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                  {phoneError && <div className="text-danger">{phoneError}</div>}
+                </div>
+
+                <div className="form-group col" style={{ marginLeft: "10px" }}>
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    placeholder="Enter email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  {emailError && <div className="text-danger">{emailError}</div>}
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="address">Address</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="address"
+                  placeholder="Enter address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+                {addressError && <div className="text-danger">{addressError}</div>}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="productTypes">Product Types</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="productTypes"
+                  placeholder="Enter product types"
+                  value={productTypes}
+                  onChange={(e) => setProductTypes(e.target.value)}
+                />
+                {productTypesError && <div className="text-danger">{productTypesError}</div>}
+              </div>
+
+              {error && <div className="alert alert-danger">{error}</div>}
+
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
+            </form>
           </div>
-
-          <div className="form-row">
-            <div className="form-group col" style={{ marginRight: "10px" }}>
-              <label htmlFor="phone">Phone</label>
-              <input
-                type="text"
-                className="form-control"
-                id="phone"
-                placeholder="Enter phone number (XXX XXX XXXX)"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
-              {phoneError && <div className="text-danger">{phoneError}</div>}
-            </div>
-
-            <div className="form-group col" style={{ marginLeft: "10px" }}>
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                placeholder="Enter email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              {emailError && <div className="text-danger">{emailError}</div>}
-            </div>
+        </div>
+      ) : (
+        <div className="confirmation-box">
+          <h2>Confirm Supplier Details</h2>
+          <p><strong>Supplier Name:</strong> {supplierName}</p>
+          <p><strong>Contact Person:</strong> {contactPerson}</p>
+          <p><strong>Phone:</strong> {phone}</p>
+          <p><strong>Email:</strong> {email}</p>
+          <p><strong>Address:</strong> {address}</p>
+          <p><strong>Product Types:</strong> {productTypes}</p>
+          <div>
+            <button onClick={handleConfirm} className="btn btn-primary">Confirm</button>
+            <button onClick={handleEdit} className="btn btn-warning">Edit Entry</button>
           </div>
-
-          <div className="form-group">
-            <label htmlFor="address">Address</label>
-            <input
-              type="text"
-              className="form-control"
-              id="address"
-              placeholder="Enter address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
-            {addressError && <div className="text-danger">{addressError}</div>}
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="productTypes">Product Types</label>
-            <input
-              type="text"
-              className="form-control"
-              id="productTypes"
-              placeholder="Enter product types"
-              value={productTypes}
-              onChange={(e) => setProductTypes(e.target.value)}
-            />
-            {productTypesError && <div className="text-danger">{productTypesError}</div>}
-          </div>
-
-          {error && <div className="alert alert-danger">{error}</div>}
-
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
-      </div>
-    </div>
+        </div>
+      )}
     </div>
   );
 }

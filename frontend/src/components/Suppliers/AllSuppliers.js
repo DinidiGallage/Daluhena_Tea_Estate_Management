@@ -5,6 +5,7 @@ import backgroundImage from '../../images/DashboardBackground.png';
 export default function AllSuppliers() {
   const [suppliers, setSuppliers] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState("");
 
   useEffect(() => {
     axios.get("http://localhost:8070/supplier")
@@ -40,25 +41,44 @@ export default function AllSuppliers() {
     setSearchQuery(e.target.value);
   };
 
+  const handleFilterChange = (e) => {
+    setSelectedFilter(e.target.value);
+  };
+
   const filteredSuppliers = suppliers.filter(supplier => {
     const lowercaseQuery = searchQuery.toLowerCase();
     return (
-      supplier.supplierName.toLowerCase().includes(lowercaseQuery) ||
-      (supplier.productTypes && supplier.productTypes.some(type => type.toLowerCase().includes(lowercaseQuery)))
+      (selectedFilter === "" || supplier.productTypes.includes(selectedFilter)) &&
+      (supplier.supplierName.toLowerCase().includes(lowercaseQuery) ||
+      supplier.productTypes.some(type => type.toLowerCase().includes(lowercaseQuery)))
     );
   });
 
+  const uniqueProductTypes = [...new Set(suppliers.flatMap(supplier => supplier.productTypes))];
+
   return (
-    <div style={{  marginLeft: "280px", marginRight: "10px", marginTop: "10px" }}>
+    <div style={{ marginLeft: "280px", marginRight: "10px", marginTop: "10px" }}>
       <div style={{ backgroundColor: "#FFFFFF", borderRadius: "15px", padding: "20px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)" }}>
         <h1 style={{ textAlign: "center", marginBottom: "20px", color: "white", backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', padding: '40px 60px' }}>All Supplier Details</h1>
-        <input
-          type="text"
-          placeholder="Search Supplier or Product Type"
-          value={searchQuery}
-          onChange={handleSearch}
-          style={{ marginLeft: "20px", marginBottom: "10px" }}
-        />
+        <div style={{ marginBottom: "25px", display: "flex", alignItems: "center" }}>
+          <input
+            type="text"
+            placeholder="Search Supplier or Product Type"
+            value={searchQuery}
+            onChange={handleSearch}
+            style={{ marginLeft: "20px", width: "600px", borderRadius: "10px", padding: "8px", boxShadow: "0 0 5px rgba(0, 0, 0, 0.1)" , marginRight: "100px"}}
+          />
+          <select
+            value={selectedFilter}
+            onChange={handleFilterChange}
+            style={{ marginLeft: "10px", borderRadius: "10px", padding: "8px", boxShadow: "0 0 5px rgba(0, 0, 0, 0.1)" }}
+          >
+            <option value="">All Product Types</option>
+            {uniqueProductTypes.map((type, index) => (
+              <option key={index} value={type}>{type}</option>
+            ))}
+          </select>
+        </div>
         <div style={{ overflowX: "auto" }}>
           <table className="table" style={{ width: "100%" }}>
             <thead>

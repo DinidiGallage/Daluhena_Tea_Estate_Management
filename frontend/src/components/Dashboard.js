@@ -88,10 +88,16 @@ export default function Dashboard() {
         data: {
           labels: ['Organic', 'Mineral'],
           datasets: [{
-            label: 'Fertilizer Amount (kg)',
-            data: [organicAmount, mineralAmount],
-            backgroundColor: ['#1E421D', '#A9B523'], // Specify colors for each bar
-            borderColor: ['#1E421D', '#1E421D'],
+            label: 'Organic',
+            data: [organicAmount, 0],
+            backgroundColor: '#1E421D', // Specify color for organic bars
+            borderColor: '#1E421D',
+            borderWidth: 1
+          }, {
+            label: 'Mineral',
+            data: [0, mineralAmount],
+            backgroundColor: '#A9B523', // Specify color for mineral bars
+            borderColor: '#A9B523',
             borderWidth: 1
           }]
         },
@@ -126,6 +132,7 @@ export default function Dashboard() {
       });
     }
   }, [fertilizers]);
+  
   
   useEffect(() => {
     if (lineChartRef.current) {

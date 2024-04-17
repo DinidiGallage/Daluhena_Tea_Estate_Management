@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import backgroundImage from '../../images/DashboardBackground.png';
 
-
 export default function AddFertilizer() {
   const [fertilizerName, setFertilizerName] = useState("");
   const [fertilizerType, setFertilizerType] = useState("");
@@ -147,14 +146,16 @@ export default function AddFertilizer() {
 
                 <div className="form-group">
                   <label htmlFor="fertilizerType">Fertilizer Type</label>
-                  <input
-                    type="text"
+                  <select
                     className="form-control"
                     id="fertilizerType"
-                    placeholder="Enter fertilizer type"
                     value={fertilizerType}
                     onChange={(e) => setFertilizerType(e.target.value)}
-                  />
+                  >
+                    <option value="">Select fertilizer type</option>
+                    <option value="Organic">Organic</option>
+                    <option value="Mineral">Mineral</option>
+                  </select>
                   {typeError && <div className="text-danger">{typeError}</div>}
                 </div>
 
@@ -225,7 +226,7 @@ export default function AddFertilizer() {
               <p style={{ marginBottom: "10px" }}><strong>Fertilizer Name:</strong> {formData.fertilizerName}</p>
               <p style={{ marginBottom: "10px" }}><strong>Fertilizer Type:</strong> {formData.fertilizerType}</p>
               <p style={{ marginBottom: "10px" }}><strong>Manufacturer:</strong> {formData.manufacturer}</p>
-              <p style={{ marginBottom: "10px" }}><strong>Quantity:</strong> {formData.quantity}</p>
+              <p style={{ marginBottom: "10px" }}><strong>Quantity:</strong> {formData.quantity} kg</p>
               <p style={{ marginBottom: "10px" }}><strong>Manufactured Date:</strong> {formData.manufacturedDate}</p>
               <p style={{ marginBottom: "10px" }}><strong>Expired Date:</strong> {formData.expiredDate}</p>
             </div>
@@ -233,7 +234,7 @@ export default function AddFertilizer() {
               <button className="btn btn-primary" onClick={handleConfirm} style={{ marginRight: "10px", padding: "10px 20px", fontSize: "16px" }}>
                 Confirm
               </button>
-              <button className="btn btn-secondary" onClick={() => setSubmitted(false)} style={{ marginLeft: "10px", padding: "10px 20px", fontSize: "16px" }}>
+              <button className="btn btn-warning" onClick={() => setSubmitted(false)} style={{ marginLeft: "10px", padding: "10px 20px", fontSize: "16px" }}>
                 Edit Entry
               </button>
             </div>
