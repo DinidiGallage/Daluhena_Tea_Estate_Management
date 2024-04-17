@@ -14,22 +14,34 @@ function Login() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [usernameIconVisible, setUsernameIconVisible] = useState(true);
   const [passwordIconVisible, setPasswordIconVisible] = useState(true);
+  const [usernameError, setUsernameError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   // Event handler for username change
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
+    setUsernameError('');
     setUsernameIconVisible(e.target.value === '');
   };
 
   // Event handler for password change
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+    setPasswordError('');
     setPasswordIconVisible(e.target.value === '');
   };
 
   // Form submission handler
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!username) {
+      setUsernameError('Please enter your username.');
+      return;
+    }
+    if (!password) {
+      setPasswordError('Please enter your password.');
+      return;
+    }
     try {
       const response = await axios.post("http://localhost:8070/users/login", {
         username,
@@ -78,6 +90,7 @@ function Login() {
                 />
                 {usernameIconVisible && <img src={userNameIcon} alt="Username Icon" className="input-icon" />}
               </div>
+              {usernameError && <p className="error-message">{usernameError}</p>}
               {/* Password Input */}
               <label className="login-label2">Password:</label>
               <div className="input-container">
@@ -90,6 +103,7 @@ function Login() {
                 />
                 {passwordIconVisible && <img src={passwordIcon} alt="Password Icon" className="input-icon" />}
               </div>
+              {passwordError && <p className="error-message">{passwordError}</p>}
               {/* Login Button */}
               <button className="login-button" type="submit">Login</button>
               {/* Login Error */}

@@ -142,7 +142,7 @@ function AllEmployeeAttendance() {
                 </div>
             </div>
             <div className="mb-4" style={{ marginLeft: '20px' }}>
-                <Link to="/attendance-report" className="btn btn-primary" style={{ width: '160px'}}>Generate Report</Link>
+                <Link to="/attendance-report" className="btn btn-primary" style={{ width: '160px',height:'60px',fontWeight:'bold'}}>Attendance Report</Link>
             </div>
         </div>
         <table className="table mt-3">

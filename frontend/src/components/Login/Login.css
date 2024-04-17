@@ -130,3 +130,8 @@
   width: 20px; /* Adjust the width of the icon */
   height: 20px; /* Adjust the height of the icon */
 }
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}

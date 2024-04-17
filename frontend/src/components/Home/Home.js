@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="home-container-custom">
       <h1>Welcome to Daluhena Tea Estate</h1>
-      <div className="tiles-container-custom">
+      <div className="home-tiles-container-custom">
         <Tile title="Fertilizer and Supplier Management" />
         <Tile title="Employee and Attendance Management" to="/login"/>
         <Tile title="Harvest and Inventory Management" />
@@ -22,7 +22,7 @@ export default function Home() {
 
 function Tile({ title, to }) {
   return (
-    <div className="tile-custom">
+    <div className="home-tile-custom">
       <Link to={to}>
         <h2>{title}</h2>
       </Link>

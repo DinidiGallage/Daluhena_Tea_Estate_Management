@@ -7,17 +7,21 @@ export default function AddEmployeeAttendance() {
   const [loading, setLoading] = useState(true);
   const [attendanceData, setAttendanceData] = useState([]);
   const [errors, setErrors] = useState([]);
+  const [attendanceExists, setAttendanceExists] = useState(false);
 
   useEffect(() => {
     fetchEmployees();
   }, []);
+
+  useEffect(() => {
+    checkAttendanceExists();
+  }, [date]);
 
   const fetchEmployees = async () => {
     try {
       const response = await axios.get("http://localhost:8070/employee/");
       setEmployees(response.data);
       setLoading(false);
-      // Initialize attendance data based on the number of employees
       setAttendanceData(
         response.data.map((employee) => ({
           employeeId: employee._id,
@@ -36,7 +40,6 @@ export default function AddEmployeeAttendance() {
 
   const handleDateChange = (selectedDate) => {
     setDate(selectedDate);
-    // Fetch attendance data for the selected date if needed
   };
 
   const handleAttendanceChange = (index, value) => {
@@ -73,15 +76,29 @@ export default function AddEmployeeAttendance() {
     setErrors([...attendanceErrors, ...dayTypeErrors]);
     return attendanceErrors.length === 0 && dayTypeErrors.length === 0;
   };
+
+  const checkAttendanceExists = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8070/EmployeeAttendance/report?date=${date}`);
+      setAttendanceExists(response.data.length > 0);
+    } catch (error) {
+      console.error("Error checking attendance:", error);
+    }
+  };
+
   const saveAttendance = async () => {
     try {
       if (!validateData()) {
         return;
       }
-      
-      // Filter out employees with empty attendance data
+
+      if (attendanceExists) {
+        alert("Attendance has already been marked for the employees on the selected date.");
+        return;
+      }
+
       const employeesWithAttendance = attendanceData.map((employee) => ({
-        _id: employee.employeeId, // Include employeeId to identify the employee
+        _id: employee.employeeId,
         name: employee.name,
         nic: employee.nic,
         jobrole: employee.jobrole,
@@ -90,7 +107,6 @@ export default function AddEmployeeAttendance() {
         dayType: employee.dayType,
       }));
 
-      // Send a POST request to save the attendance data
       await axios.post("http://localhost:8070/EmployeeAttendance/add", employeesWithAttendance);
       alert("Attendance saved successfully");
     } catch (error) {
@@ -101,90 +117,88 @@ export default function AddEmployeeAttendance() {
 
   return (
     <div className="background-container">
-    <div className="container mt-3" style={{ maxWidth: "calc(100% - 255px)", paddingLeft: "20px",paddingRight: "20px",paddingTop: "20px" ,paddingBottom: "20px"}} >
-      <h2>Add Employee Attendance</h2>
-      <div className="row">
-        <div className="col-md-6">
-          {/* Calendar Component */}
-          <label htmlFor="date" style={{ fontWeight: 'bold' }}>Select the date in here :  
-                <input type="date"  className="AttendancedateSelect" value={date} onChange={(e) => handleDateChange(e.target.value)} />
-          </label>
-         
+      <div className="container mt-3" style={{ maxWidth: "calc(100% - 255px)", paddingLeft: "20px", paddingRight: "20px", paddingTop: "20px", paddingBottom: "20px" }} >
+        <h2>Add Employee Attendance</h2>
+        <div className="row">
+          <div className="col-md-6">
+            <label htmlFor="date" style={{ fontWeight: 'bold' }}>Select the date in here :
+              <input type="date" className="AttendancedateSelect" value={date} onChange={(e) => handleDateChange(e.target.value)} />
+            </label>
+          </div>
+        </div>
+        <table className="table mt-2">
+          <thead>
+            <tr>
+              <th>Employee Name</th>
+              <th>NIC</th>
+              <th>Job Role</th>
+              <th>Attendance</th>
+              <th>Day Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {loading ? (
+              <tr>
+                <td colSpan="5">Loading...</td>
+              </tr>
+            ) : employees.length === 0 ? (
+              <tr>
+                <td colSpan="5">No employees available</td>
+              </tr>
+            ) : (
+              attendanceData.map((employee, index) => (
+                <tr key={employee._id}>
+                  <td>{employee.name}</td>
+                  <td>{employee.nic}</td>
+                  <td>{employee.jobrole}</td>
+                  <td>
+                    <div className="form-check form-check-inline">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name={`attendance-${index}`}
+                        value="present"
+                        checked={employee.attendance === "present"}
+                        onChange={() => handleAttendanceChange(index, "present")}
+                      />
+                      <label className="form-check-label">Present</label>
+                    </div>
+                    <div className="form-check form-check-inline">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name={`attendance-${index}`}
+                        value="absent"
+                        checked={employee.attendance === "absent"}
+                        onChange={() => handleAttendanceChange(index, "absent")}
+                      />
+                      <label className="form-check-label">Absent</label>
+                    </div>
+                    <p className="text-danger">{errors[index]}</p>
+                  </td>
+                  <td>
+                    <select
+                      className="form-selectAttendance"
+                      value={employee.dayType}
+                      onChange={(e) => handleDayTypeChange(index, e.target.value)}
+                    >
+                      <option value="">Select Day Type</option>
+                      <option value="workday">Workday</option>
+                      <option value="holiday">Holiday</option>
+                    </select>
+                    <p className="text-danger">{errors[index + attendanceData.length]}</p>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+        <div className="col-12 text-center">
+          <button type="button" className="btn btn-primary btn-lg" onClick={saveAttendance}>
+            Save
+          </button>
         </div>
       </div>
-      <table className="table mt-2">
-        <thead>
-          <tr>
-            <th>Employee Name</th>
-            <th>NIC</th>
-            <th>Job Role</th>
-            <th>Attendance</th>
-            <th>Day Type</th>
-          </tr>
-        </thead>
-        <tbody>
-        {loading ? (
-  <tr>
-    <td colSpan="5">Loading...</td>
-  </tr>
-) : employees.length === 0 ? (
-  <tr>
-    <td colSpan="5">No employees available</td>
-  </tr>
-) : (
-  attendanceData.map((employee, index) => (
-    <tr key={employee._id}>
-      <td>{employee.name}</td>
-      <td>{employee.nic}</td>
-      <td>{employee.jobrole}</td>
-      <td>
-        <div className="form-check form-check-inline">
-          <input
-            className="form-check-input"
-            type="radio"
-            name={`attendance-${index}`}
-            value="present"
-            checked={employee.attendance === "present"}
-            onChange={() => handleAttendanceChange(index, "present")}
-          />
-          <label className="form-check-label">Present</label>
-        </div>
-        <div className="form-check form-check-inline">
-          <input
-            className="form-check-input"
-            type="radio"
-            name={`attendance-${index}`}
-            value="absent"
-            checked={employee.attendance === "absent"}
-            onChange={() => handleAttendanceChange(index, "absent")}
-          />
-          <label className="form-check-label">Absent</label>
-        </div>
-        <p className="text-danger">{errors[index]}</p> {/* Display attendance error message */}
-      </td>
-      <td>
-        <select
-          className="form-selectAttendance"
-          value={employee.dayType}
-          onChange={(e) => handleDayTypeChange(index, e.target.value)}
-        >
-          <option value="">Select Day Type</option>
-          <option value="workday">Workday</option>
-          <option value="holiday">Holiday</option>
-        </select>
-        <p className="text-danger">{errors[index + attendanceData.length]}</p> {/* Display day type error message */}
-      </td>
-    </tr>
-  ))
-)}
-        </tbody>
-      </table>
-      <div className="col-12 text-center">
-        <button type="button" className="btn btn-primary btn-lg" onClick={saveAttendance}>
-          Save
-        </button>
-      </div>
-    </div>
     </div>
   );
 }
