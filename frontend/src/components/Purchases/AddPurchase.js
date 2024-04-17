@@ -20,9 +20,9 @@ export default function AddPurchase() {
 
     if (!supplier) {
       errors.supplier = "Supplier name is required";
-    } else if (!/^[a-zA-Z ]+$/.test(supplier)) {
+    } else if (!/^[a-zA-Z ()]*[a-zA-Z][a-zA-Z ()]*$/.test(supplier)) {
       errors.supplier = "Please enter a valid supplier.";
-    }
+    }    
     
     if (!product) {
       errors.product = "Product name is required";
