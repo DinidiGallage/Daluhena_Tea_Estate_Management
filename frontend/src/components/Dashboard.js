@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import backgroundImage from '../images/DashboardBackground.png'; 
+//import backgroundImage from '../images/DashboardBackground.png'; 
+import backgroundImage from '../images/daluhenabg.png'; 
 import employeeIcon from '../icons/employee.png';
 import AttendanceIcon from '../icons/attendance.png';
 import LeaveIcon from '../icons/leave.png';

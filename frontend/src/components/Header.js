@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import logoicon from '../images/logo.png';
-import DashboardIcon from '../icons/dashboard.png';
+import DashboardIcon from '../icons/dashboard1.png';
 import HomeIcon from '../icons/home1.png';
 import AddNewIcon from '../icons/add.png';
 

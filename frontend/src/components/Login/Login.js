@@ -7,23 +7,27 @@ import userNameIcon from '../../icons/userName.png'; // Import the username icon
 import passwordIcon from '../../icons/password.png'; // Import the password icon
 
 function Login() {
+  // State variables
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false); // State to track login status
+  const [loggedIn, setLoggedIn] = useState(false);
   const [usernameIconVisible, setUsernameIconVisible] = useState(true);
   const [passwordIconVisible, setPasswordIconVisible] = useState(true);
 
+  // Event handler for username change
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
     setUsernameIconVisible(e.target.value === '');
   };
 
+  // Event handler for password change
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
     setPasswordIconVisible(e.target.value === '');
   };
 
+  // Form submission handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -32,13 +36,13 @@ function Login() {
         password,
       });
       localStorage.setItem('token', response.data.token);
-      setLoginError(''); // Clear any previous login error
+      setLoginError('');
       console.log('Login successful:', response.data);
-      setLoggedIn(true); // Set login status to true
-      window.location.href = '/dashboard'; // Redirect to dashboard after successful login
+      setLoggedIn(true);
+      window.location.href = '/dashboard';
     } catch (error) {
-      setLoggedIn(false); // Set login status to false
-      setLoginError(error.response.data.message); // Set login error message
+      setLoggedIn(false);
+      setLoginError(error.response.data.message);
       console.error('Login failed:', error.response.data.message);
     }
   };
@@ -58,11 +62,12 @@ function Login() {
     }}>
       {!loggedIn ? (
         <div className="login-container">
-          <img src={loginBG} alt="Login Background" className="login-bg" /> {/* Add the image here */}
+          <img src={loginBG} alt="Login Background" className="login-bg" />
           <div className="login-content">
             <span className="login-heading">Welcome to Login</span>
             <form className="login-form" onSubmit={handleSubmit}>
-            <label className="login-label1">Username:</label>
+              {/* Username Input */}
+              <label className="login-label1">Username:</label>
               <div className="input-container">
                 <input 
                   className="login-input" 
@@ -71,8 +76,9 @@ function Login() {
                   value={username} 
                   onChange={handleUsernameChange} 
                 />
-                {usernameIconVisible && <img src={userNameIcon} alt="Username Icon" className="input-icon" />} {/* Username icon */}
+                {usernameIconVisible && <img src={userNameIcon} alt="Username Icon" className="input-icon" />}
               </div>
+              {/* Password Input */}
               <label className="login-label2">Password:</label>
               <div className="input-container">
                 <input 
@@ -82,9 +88,11 @@ function Login() {
                   value={password} 
                   onChange={handlePasswordChange} 
                 />
-                {passwordIconVisible && <img src={passwordIcon} alt="Password Icon" className="input-icon" />} {/* Password icon */}
+                {passwordIconVisible && <img src={passwordIcon} alt="Password Icon" className="input-icon" />}
               </div>
+              {/* Login Button */}
               <button className="login-button" type="submit">Login</button>
+              {/* Login Error */}
               {loginError && <p className="login-error">{loginError}</p>}
             </form>
           </div>
