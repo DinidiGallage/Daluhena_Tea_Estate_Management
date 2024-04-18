@@ -248,28 +248,19 @@ export default function AllFertilizers() {
                 />
                 {quantityError && <p style={{ color: "red" }}>{quantityError}</p>}
               </div>
-              <div className="form-group">
-                <label>Manufactured Date:</label>
-                <input
-                  type="date"
-                  className="form-control"
-                  name="manufacturedDate"
-                  value={updateData.manufacturedDate}
-                  onChange={handleChange}
-                  disabled // Disable date input field
-                />
-              </div>
-              <div className="form-group">
-                <label>Expired Date:</label>
-                <input
-                  type="date"
-                  className="form-control"
-                  name="expiredDate"
-                  value={updateData.expiredDate}
-                  onChange={handleChange}
-                  disabled // Disable date input field
-                />
-              </div>
+                <div className="form-group">
+                  <label>Manufactured Date:</label>
+                  <div className="form-control">
+                    {updateData.manufacturedDate}
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label>Expired Date:</label>
+                  <div className="form-control">
+                    {updateData.expiredDate}
+                  </div>
+                </div>
+
               <div style={{ textAlign: "center" }}>
                 <button type="submit" className="btn btn-primary" style={{ width: "90px", height: "40px", marginRight: "10px" }}>
                   Update
