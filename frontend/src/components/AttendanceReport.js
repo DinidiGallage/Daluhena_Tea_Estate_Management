@@ -148,12 +148,12 @@ function AttendanceReport() {
   };
 
   return (
-    <div className="background-container">
-    <div className="container mt-3" style={{ maxWidth: "calc(100% - 255px)", paddingLeft: "20px" ,paddingBottom: "20px",paddingTop: "30px", position: 'relative' }}>
+    <div className="emp-att-background-container">
+    <div className="container mt-3" style={{  paddingLeft: "20px" ,paddingBottom: "20px",paddingTop: "30px", position: 'relative' }}>
       <h2>Employee Attendance Report</h2>
       <form style={{ paddingLeft: "30px"  }}>
         <label htmlFor="date" style={{ fontWeight: 'bold' }}>Select Date :</label>
-        <input type="date" className="dateSelect" id="date" name="date" value={date} onChange={handleDateChange}  />
+        <input type="date" className="emp-att-dateSelect" id="date" name="date" value={date} onChange={handleDateChange}  />
         <button type="button" className="btn-for-generateReport" onClick={handleGenerateReport } >Generate Report</button>
       </form>
       {error && <div className="alert alert-danger" role="alert">{error}</div>}

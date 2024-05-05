@@ -22,6 +22,11 @@ export default function AddEmployee() {
     // Perform validation checks
     if (!name) {
       errors.name = "Name is required";
+    } else if (!/^[a-zA-Z ]+$/.test(name)) {
+      errors.name = "Name should only contain letters";
+    }
+    if (!name) {
+      errors.name = "Name is required";
     }
     if (!nic) {
       errors.nic = "NIC is required";
@@ -81,8 +86,8 @@ export default function AddEmployee() {
   }
 
   return (
-    <div className="background-container">
-    <div className="container mt-2" style={{ maxWidth: "calc(100% - 235px)", paddingLeft: "30px",paddingBottom: "10px",paddingTop: "30px"}}>
+    <div className="emp-att-background-container">
+    <div className="emp-att-container mt-2" style={{ maxWidth: "calc(100% - 235px)", paddingLeft: "30px",paddingBottom: "10px",paddingTop: "30px",paddingRight: "30px"}}>
       <h2>Add New Employee</h2>
       <form onSubmit={sendData}>
         <div className="row">
@@ -142,7 +147,7 @@ export default function AddEmployee() {
           </div>
         </div >
         <div className="col-12 text-center" >
-          <button type="submit" className="btn btn-primary btn-lg">Submit</button>
+          <button type="submit" className="emp-att-btn-primary">Submit</button>
         </div>
       </form>
     </div>

@@ -75,8 +75,8 @@ function AllEmployeesDisplay() {
     
     
     return (
-        <div className="background-container">
-            <div className="container mt-3" style={{ maxWidth: "calc(100% - 255px)", paddingLeft: "20px", paddingBottom: "10px", paddingTop: "10px" }}>
+        <div className="emp-att-background-container">
+            <div className="emp-att-container mt-3" style={{ maxWidth: "calc(100% - 255px)", paddingLeft: "20px", paddingBottom: "10px", paddingTop: "10px" }}>
                 <h1>All Employees</h1>
                 {error && <div className="alert alert-danger" role="alert">{error}</div>}
                 <div className="d-flex justify-content-between align-items-center mb-3" style={{ width: "1000px", textAlign: 'center' }}>
@@ -95,7 +95,7 @@ function AllEmployeesDisplay() {
                         </div>
                     </div>
                     <div style={{ flex: '1', display: 'flex', alignItems: 'center' }}>
-                        <Link to="/view-more-employee" className="btn btn-primary" style={{ width: '200px', display: 'flex', alignItems: 'center' }}>
+                        <Link to="/view-more-employee" className="emp-att-btn-primary" style={{ width: '200px', display: 'flex', alignItems: 'center',textDecoration: 'none'  }}>
                            
                             <span style={{ flex: '1' }}>View More</span>  <img src={ViewMoreIcon} alt="view" style={{ width: '40px', height: '40px', marginRight: '1px' }} />
                         </Link>

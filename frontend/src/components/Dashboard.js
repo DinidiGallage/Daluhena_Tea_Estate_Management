@@ -84,7 +84,7 @@ function Dashboard() {
   };
   
   return (
-    <div className="dashboard-container-view" style={{  
+    <div className="emp-att-dashboard-container-view" style={{  
       backgroundImage: `url(${backgroundImage})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
@@ -96,29 +96,29 @@ function Dashboard() {
       margin: '0',
       padding: '0'
     }}>
-      <div className="main-content" style={{ marginLeft: '290px', marginRight: '50px', paddingTop: '35px' }}>
-        <div className="tiles-container" >
+      <div className="main-content" style={{ marginLeft: '250px', marginRight: '30px', paddingTop: '15px' }}>
+        <div className="emp-att-tiles-container" >
           {/* Total Employee Count Section */}
-          <div className="total-count">
+          <div className="emp-att-total-count">
             <span>Total Employee Count: {employeeCount}</span>
           </div>
 
           {/* Tiles Section */}
-          <div className="tiles">
-            <a href="/all-employees" className="tile">
-              <div className="btn-tile" >
+          <div className="emp-att-tiles">
+            <a href="/all-employees" className="emp-att-tile">
+              <div className="emp-att-btn-tile" >
                 <img src={employeeIcon} alt="Employee Icon" style={{ width: '50px', height: '50px' }} />
                 <span style={{ display: 'block', textAlign: 'center' }}>Employee Details</span>
               </div>
             </a>
-            <a href="/all-attendance-details" className="tile">
-              <div className="btn-tile" >
+            <a href="/all-attendance-details" className="emp-att-tile">
+              <div className="emp-att-btn-tile" >
                 <img src={AttendanceIcon} alt="Attendance Icon" style={{ width: '55px', height: '55px' }} />
                 <span style={{ display: 'block', textAlign: 'center' }}>Employee Attendance Details</span>
               </div>
             </a>
-            <a href="/all-leave-details" className="tile">
-              <div className="btn-tile" >
+            <a href="/all-leave-details" className="emp-att-tile">
+              <div className="emp-att-btn-tile" >
                 <img src={LeaveIcon} alt="Leave Icon" style={{ width: '50px', height: '50px' }} />
                 <span style={{ display: 'block', textAlign: 'center' }}>Employee Leave Status</span>
               </div>
@@ -127,10 +127,10 @@ function Dashboard() {
         </div>
 
         {/* Attendance and Job Role Charts Section */}
-        <div className="charts-section" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '50px' }}>
+        <div className="emp-att-charts-section" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
           {/* Attendance Count Section */}
-          <div className="attendance-count" style={{ width: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div style={{ width: '400px', height: '350px', backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '10px', padding: '10px', marginTop: '10px', marginBottom: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center', overflow: 'hidden' }}>
+          <div className="emp-att-attendance-count" style={{ width: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div style={{ width: '400px', height: '350px', backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '10px', padding: '10px', marginTop: '10px', marginBottom: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', overflow: 'hidden' }}>
               {attendanceCounts && (attendanceCounts.presentCount || attendanceCounts.absentCount) ? (
                 <>
                   <span style={{ fontWeight:'bold' }}>Today's Attendance Count: Present - {attendanceCounts.presentCount}, Absent - {attendanceCounts.absentCount}</span>
@@ -153,7 +153,7 @@ function Dashboard() {
           </div>
 
           {/* Job Role Count Section */}
-          <div className="jobrole-count" style={{ width: '60%', display: 'flex', flexDirection: 'column', alignItems: 'center',fontWeight:'bold'}}>
+          <div className="emp-att-jobrole-count" style={{ width: '60%', display: 'flex', flexDirection: 'column', alignItems: 'center',fontWeight:'bold'}}>
             <div style={{ width: '500px', height: '350px', backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '10px', padding: '20px', marginTop: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <span>Employee count with Job Role</span>
               <Bar 

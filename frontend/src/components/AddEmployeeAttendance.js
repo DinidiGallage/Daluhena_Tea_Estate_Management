@@ -116,8 +116,8 @@ export default function AddEmployeeAttendance() {
   };
 
   return (
-    <div className="background-container">
-      <div className="container mt-3" style={{ maxWidth: "calc(100% - 255px)", paddingLeft: "20px", paddingRight: "20px", paddingTop: "20px", paddingBottom: "20px" }} >
+    <div className="emp-att-background-container">
+      <div className="container mt-3" style={{ maxWidth: "calc(190% - 225px)", paddingLeft: "20px", paddingRight: "20px", paddingTop: "20px", paddingBottom: "20px" }} >
         <h2>Add Employee Attendance</h2>
         <div className="row">
           <div className="col-md-6">
@@ -194,7 +194,7 @@ export default function AddEmployeeAttendance() {
           </tbody>
         </table>
         <div className="col-12 text-center">
-          <button type="button" className="btn btn-primary btn-lg" onClick={saveAttendance}>
+          <button type="button" className="emp-att-btn-primary" onClick={saveAttendance}>
             Save
           </button>
         </div>

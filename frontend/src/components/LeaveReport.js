@@ -183,18 +183,18 @@ function LeaveReport() {
   
 
   return (
-    <div className="background-container">
+    <div className="emp-att-background-container">
       <div className="container mt-3" style={{ maxWidth: "calc(100% - 255px)", paddingLeft: "20px" ,paddingBottom: "20px",paddingTop: "30px", position: 'relative' }}>
         <h2>Employee Leave Report</h2>
         <form>
           <div className="row">
             <div className="col">
               <label htmlFor="leaveFrom" style={{ fontWeight: 'bold' }}>Leave From:</label>
-              <input type="date" className="dateSelect" id="leaveFrom" value={leaveFrom} onChange={handleLeaveFromChange} />
+              <input type="date" className="emp-att-dateSelect" id="leaveFrom" value={leaveFrom} onChange={handleLeaveFromChange} />
             </div>
             <div className="col">
               <label htmlFor="leaveTo" style={{ fontWeight: 'bold' }}>Leave To:</label>
-              <input type="date" className="dateSelect" id="leaveTo" value={leaveTo} onChange={handleLeaveToChange} />
+              <input type="date" className="emp-att-dateSelect" id="leaveTo" value={leaveTo} onChange={handleLeaveToChange} />
             </div>
             <div className="col">
               <label htmlFor="leaveType" style={{ fontWeight: 'bold' }}>Leave Type:</label>

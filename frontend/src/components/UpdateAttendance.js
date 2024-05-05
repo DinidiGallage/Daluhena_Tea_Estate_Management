@@ -55,8 +55,8 @@ function UpdateAttendance({ attendance, onUpdate, onCancel }) {
                         <option value="Late">Late</option>
                     </select>
                 </div>
-                <button type="submit" className="btn btn-primary me-2">Update</button>
-                <button type="button" className="btn btn-secondary" onClick={onCancel}>Cancel</button>
+                <button type="submit" className="emp-att-btn-primary"  style={{ marginRight: '20px' }} >Update</button>
+                <button type="button" className="emp-att-btn-secondary" onClick={onCancel}  style={{marginRight: '20px' }}>Cancel</button>
             </form>
         </div>
     );

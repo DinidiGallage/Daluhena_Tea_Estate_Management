@@ -200,8 +200,8 @@ const UpdateEmployeeDetails = ({ id, onCancel }) => {
           {errors.qualifications && <div className="invalid-feedback">{errors.qualifications}</div>}
         </div>
         <div className="form-group">
-          <button type="submit" className="btn btn-primary" style={{ marginTop:'20px',marginRight: '20px' }}>Update</button>
-          <button type="button" className="btn btn-secondary ml-2" style={{ marginTop:'20px',marginRight: '20px' }}onClick={onCancel}>Cancel</button>
+          <button type="submit" className="emp-att-btn-primary" style={{ marginTop:'20px',marginRight: '20px' }}>Update</button>
+          <button type="button" className="emp-att-btn-secondary" style={{ marginTop:'20px'}}onClick={onCancel}>Cancel</button>
         </div>
       </form>
     </div>

@@ -113,8 +113,8 @@ function AllEmployeeAttendance() {
     };
 
     return (
-        <div className="background-container">
-    <div className="container mt-3" style={{ maxWidth: "calc(100% - 255px)", paddingLeft: "20px", paddingBottom: "20px", paddingTop: "10px" }}>
+        <div className="emp-att-background-container">
+    <div className="emp-att-container mt-3" style={{ maxWidth: "calc(100% - 255px)", paddingLeft: "20px", paddingBottom: "20px", paddingTop: "10px" }}>
         <h1>All Attendance Details</h1>
         {error && <div className="alert alert-danger" role="alert">{error}</div>}
         <div className="d-flex justify-content-between align-items-center mb-3" style={{ width: "1000px", textAlign: 'center' }}>
@@ -142,7 +142,7 @@ function AllEmployeeAttendance() {
                 </div>
             </div>
             <div className="mb-4" style={{ marginLeft: '20px' }}>
-                <Link to="/attendance-report" className="btn btn-primary" style={{ width: '160px',height:'60px',fontWeight:'bold'}}>Attendance Report</Link>
+                <Link to="/attendance-report" className="emp-att-btn-primary" style={{  width: '200px', display: 'flex', alignItems: 'center', fontWeight:'bold',textDecoration: 'none',marginRight:'30px' }}>Attendance Report</Link>
             </div>
         </div>
         <table className="table mt-3">

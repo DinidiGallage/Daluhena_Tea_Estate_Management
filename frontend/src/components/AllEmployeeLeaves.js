@@ -136,8 +136,8 @@ function AllEmployeeLeaves() {
     };
 
     return (
-       <div className="background-container">
-      <div className="container mt-3" style={{ maxWidth: "calc(100% - 255px)", paddingLeft: "20px", paddingBottom: "20px", paddingTop: "10px",paddingRight:"30px" }}>
+       <div className="emp-att-background-container">
+      <div className="emp-att-container mt-3" style={{ maxWidth: "calc(100% - 255px)", paddingLeft: "20px", paddingBottom: "20px", paddingTop: "10px",paddingRight:"30px" }}>
     <h1>All Leave Details</h1>
     {error && <div className="alert alert-danger" role="alert">{error}</div>}
     <div className="row mb-3" >
@@ -155,8 +155,8 @@ function AllEmployeeLeaves() {
                 />
             </div>
         </div>
-        <div className="col-md-5"  style={{ paddingBottom:"30px",paddingRight:"30px" }}> 
-            <Link to="/leave-report" className="btn btn-primary" style={{ width: '50%', height: '100%' }}>Generate Leave report</Link>
+        <div className="col-md-6" > 
+            <Link to="/leave-report" className="emp-att-btn-primary" style={{  width: '210px', display: 'flex', alignItems: 'center', textDecoration: 'none' }}>Generate Leave report</Link>
         </div>
    
                 <table className="table mt-2">
@@ -192,7 +192,7 @@ function AllEmployeeLeaves() {
                 </table>
 
                 {editLeave && (
-                    <div className="container mt-2" ref={updateFormRef}  style={{ maxWidth: "calc(80% - 255px)", paddingLeft: "20px" ,paddingBottom: "20px",paddingTop: "10px" }}>
+                    <div className="emp-att-container mt-2" ref={updateFormRef}  style={{ maxWidth: "calc(80% - 255px)", paddingLeft: "20px" ,paddingBottom: "20px",paddingTop: "10px" }}>
                         <h2 style={{ textAlign: "center" }}>Update Leave Details</h2>
 
                         <form>
@@ -231,8 +231,8 @@ function AllEmployeeLeaves() {
                                 <input type="text" className={`form-control ${errors.leaveStatus && "is-invalid"}`} name="leaveStatus" value={editLeave.leaveStatus} onChange={handleEditInputChange} />
                                 {errors.leaveStatus && <div className="invalid-feedback">{errors.leaveStatus}</div>}
                             </div>
-                            <button type="button" className="btn btn-primary me-2" onClick={handleEditSubmit}>Update</button>
-                            <button type="button" className="btn btn-secondary" onClick={handleCancelEdit}>Cancel</button>
+                            <button type="button" className="emp-att-btn-primary" onClick={handleEditSubmit} style={{marginRight: '20px' }}>Update</button>
+                            <button type="button" className="emp-att-btn-secondary" onClick={handleCancelEdit}  >Cancel</button>
                         </form>
                     </div>
                 )}

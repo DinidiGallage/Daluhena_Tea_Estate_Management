@@ -29,48 +29,49 @@ function Header() {
     return (
         <div>
             {showNavPanel && (
-                <nav className="side-nav" style={{ overflowY: 'hidden', maxHeight: 'calc(100vh - 20px)' }}>
+                <nav className="emp-att-side-nav" style={{ overflowY: 'hidden', maxHeight: 'calc(100vh - 20px)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
                         <img src={logoicon} alt="logoIcon" style={{ width: '80px', height: '80px' }} /> 
                     </div>
-                    <div className="brand" style={{ color: "#1E421D", fontWeight: "bold", textAlign: "center", fontSize: "18px", marginBottom: "10px" }}>
+                    <div className="emp-att-brand" style={{ color: "#1E421D", fontWeight: "bold", textAlign: "center", fontSize: "18px", marginBottom: "10px" }}>
                         Employee & Attendance Management
                     </div>
-                    <div className="navbar">
+                    <div className="emp-att-navbar">
                         <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <NavLink  exact className="nav-link" activeClassName="active" to="/">
-                                    <img src={HomeIcon} alt="Home" className="nav-icon home-icon" />
+                            <li className="emp-att-nav-item">
+                                <NavLink  exact className="emp-att-nav-link" activeClassName="emp-att-active" to="/">
+                                    <img src={HomeIcon} alt="Home" className="emp-att-nav-icon home-icon" />
                                     Home
                                 </NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" activeClassName="active" to="/Dashboard">
-                                    <img src={DashboardIcon} alt="Dashboard" className="nav-icon" />
+                            <li className="emp-att-nav-item">
+                                <NavLink className="emp-att-nav-link" activeClassName="emp-att-active" to="/Dashboard">
+                                    <img src={DashboardIcon} alt="Dashboard" className="emp-att-nav-icon" />
                                     Dashboard
                                 </NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" activeClassName="active" to="/employee/add">
-                                    <img src={AddNewIcon} alt="add" className="nav-icon add-icon" />
+                            <li className="emp-att-nav-item">
+                                <NavLink className="emp-att-nav-link" activeClassName="emp-att-active" to="/employee/add">
+                                    <img src={AddNewIcon} alt="add" className="emp-att-nav-icon add-icon" />
                                     Employee
                                 </NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" activeClassName="active" to="/EmployeeLeave/add">
-                                    <img src={AddNewIcon} alt="add" className="nav-icon add-icon" />
+                            <li className="emp-att-nav-item">
+                                <NavLink className="emp-att-nav-link" activeClassName="emp-att-active" to="/EmployeeLeave/add">
+                                    <img src={AddNewIcon} alt="add" className="emp-att-nav-icon add-icon" />
                                     New Leave
                                 </NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" activeClassName="active" to="/EmployeeAttendance/add">
-                                    <img src={AddNewIcon} alt="add" className="nav-icon add-icon" />
+                            <li className="emp-att-nav-item">
+                                <NavLink className="emp-att-nav-link" activeClassName="emp-att-active" to="/EmployeeAttendance/add">
+                                    <img src={AddNewIcon} alt="add" className="emp-att-nav-icon add-icon" />
                                     Attendance
                                 </NavLink>
                             </li>
+                           
                         </ul>
                     </div>
-                    <div className="logout-btn" style={{ marginLeft: '68px',marginRight: "68px" , textAlign: "center" }}>
+                    <div className="emp-att-logout-btn" style={{ marginLeft: '68px',marginRight: "68px" , textAlign: "center" }}>
                         <button onClick={handleLogout} style={{ background: "none", border: "none", cursor: "pointer", color: "#fff" }}>Logout</button>
                     </div>
                 </nav>
