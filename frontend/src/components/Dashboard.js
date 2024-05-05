@@ -127,10 +127,10 @@ function Dashboard() {
         </div>
 
         {/* Attendance and Job Role Charts Section */}
-        <div className="emp-att-charts-section" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
+        <div className="emp-att-charts-section" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '8px' }}>
           {/* Attendance Count Section */}
           <div className="emp-att-attendance-count" style={{ width: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div style={{ width: '400px', height: '350px', backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '10px', padding: '10px', marginTop: '10px', marginBottom: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', overflow: 'hidden' }}>
+            <div style={{ width: '400px', height: '330px', backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '10px', padding: '10px', marginTop: '8px', marginBottom: '8px', display: 'flex', flexDirection: 'column', alignItems: 'center', overflow: 'hidden' }}>
               {attendanceCounts && (attendanceCounts.presentCount || attendanceCounts.absentCount) ? (
                 <>
                   <span style={{ fontWeight:'bold' }}>Today's Attendance Count: Present - {attendanceCounts.presentCount}, Absent - {attendanceCounts.absentCount}</span>
@@ -154,7 +154,7 @@ function Dashboard() {
 
           {/* Job Role Count Section */}
           <div className="emp-att-jobrole-count" style={{ width: '60%', display: 'flex', flexDirection: 'column', alignItems: 'center',fontWeight:'bold'}}>
-            <div style={{ width: '500px', height: '350px', backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '10px', padding: '20px', marginTop: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div style={{ width: '500px', height: '330px', backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '10px', padding: '20px', marginTop: '8px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <span>Employee count with Job Role</span>
               <Bar 
                 data={barChartData} 
