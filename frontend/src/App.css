@@ -16,15 +16,7 @@ body {
   margin-bottom: 15px;
   margin-top: 5px;
 }
-.container { 
-  background-color: white;
-  border-radius: 15px;
-  max-width: calc(100% - 230px); 
-  margin-left: 250px; 
-  margin-right: 15px;
-  margin-bottom: 15px;
-  margin-top: 5px;
-}
+
 .emp-att-background-container {
   background-image: url('./images/formbg.jpeg'); /* Path to background image */
   background-size: cover; /* Adjust to cover the container */
@@ -46,22 +38,8 @@ h2 {
  
 }
 
-/*.emp-att-dashboard-container {
-  background-image: url('./images/daluhenabg.png');
-  background-position: center;
-  background-size: 100% 100%; 
-  min-height: 100vh;
-  width: 100%; 
-  margin: 0; 
-  padding: 0; 
-  overflow: hidden;
-}*/
-
-
-
 label {
   display: block;
-  font-weight: bold;
   margin-bottom: 5px;
   color: #000000;
 }
@@ -86,7 +64,6 @@ label {
 .emp-att-side-nav {
   width: 225px;
   height: 650px;
-  /*height: 630px; Ensure proper line height */
   position: fixed;
   top: 0;
   left: 0;
@@ -277,42 +254,29 @@ label {
 
 
 /*Form css add*/
-.form-container {
-  display: flex;
-  justify-content: center;
-  overflow: hidden; 
-  margin-top: 50px; 
-  margin-bottom: 50px;
-  padding: 20px;
-  
-}
-.form-card {
-  backdrop-filter: blur(10px); /* Slightly increased blur for a smoother effect */
-  background-color: rgba(255, 255, 255, 0.5); /* Refined transparency for a cleaner look */
-  border-radius: 30px; /* Softened rounded corners */
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Subtle shadow for depth */
-  border: 1px solid rgba(255, 255, 255, 0.18); /* Light border to complement the blur effect */
-  padding: 20px; /* Adequate padding for content breathing room */
-  overflow: hidden;
-}
-
-.form-control, .form-select {
+.emp-att-form-control, .emp-att-form-select {
   width: 500px; /* Adjust the width as needed */
-  border-radius: 15px; 
+  padding-left: 10px;
+  padding-right: 20px;
+  height: 37px;
+  border-radius: 8px; 
   border: 1px solid #ced4da; /* Refined border width */
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Inner shadow for a subtle inset effect */
   transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transitions for interactions */
 }
 
-.form-control:focus, .form-select:focus {
+.emp-att-form-control:focus, .emp-att-form-select:focus {
+  outline: none;
   border-color: #80bdff; /* Highlighted border color on focus */
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.2); /* Outer glow effect on focus */
 
 }
 
-.form-selectAttendance{
+/*Attendance Form select values*/
+.emp-att-form-selectAttendance{
   width: 150px; /* Adjust width as needed */
   height: 31px;
+  text-align: center;
   font-size: 13px;
   border-radius: 10px;
   border: 1px solid #ced4da;
@@ -320,6 +284,12 @@ label {
   transition: border-color 0.3s, box-shadow 0.3s;
   margin: 0 auto; /* Set horizontal margin to auto */
   display: block; /* Ensure it takes up the full width */
+}
+.emp-att-form-selectAttendance:focus{
+  outline: none;
+  border-color: #80bdff; /* Highlighted border color on focus */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.2); /* Outer glow effect on focus */
+
 }
 
 

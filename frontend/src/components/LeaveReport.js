@@ -184,7 +184,23 @@ function LeaveReport() {
 
   return (
     <div className="emp-att-background-container">
-      <div className="container mt-3" style={{ maxWidth: "calc(100% - 255px)", paddingLeft: "20px" ,paddingBottom: "20px",paddingTop: "30px", position: 'relative' }}>
+     <div
+    className="emp-att-container"
+    style={{
+      backgroundColor: "white",
+      borderRadius: "15px",
+      maxWidth: "calc(100% - 255px)", // Adjust the max-width to increase the width
+      width: "90%", // Adjust the width to increase the width
+      marginLeft: "250px", // Adjust margin-left to match layout
+      marginRight: "15px",
+      marginBottom: "15px",
+      marginTop: "15px",
+      paddingLeft: "20px",
+      paddingRight: "20px",
+      paddingTop: "20px",
+      paddingBottom: "20px",
+    }}
+  >
         <h2>Employee Leave Report</h2>
         <form>
           <div className="row">

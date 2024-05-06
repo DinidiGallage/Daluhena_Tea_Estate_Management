@@ -117,7 +117,23 @@ export default function AddEmployeeAttendance() {
 
   return (
     <div className="emp-att-background-container">
-      <div className="container mt-3" style={{ maxWidth: "calc(190% - 225px)", paddingLeft: "20px", paddingRight: "20px", paddingTop: "20px", paddingBottom: "20px" }} >
+    <div
+    className="emp-att-container"
+    style={{
+      backgroundColor: "white",
+      borderRadius: "15px",
+      maxWidth: "calc(100% - 255px)", // Adjust the max-width to increase the width
+      width: "90%", // Adjust the width to increase the width
+      marginLeft: "250px", // Adjust margin-left to match layout
+      marginRight: "15px",
+      marginBottom: "15px",
+      marginTop: "5px",
+      paddingLeft: "20px",
+      paddingRight: "20px",
+      paddingTop: "20px",
+      paddingBottom: "20px",
+    }}
+  >
         <h2>Add Employee Attendance</h2>
         <div className="row">
           <div className="col-md-6">
@@ -126,7 +142,7 @@ export default function AddEmployeeAttendance() {
             </label>
           </div>
         </div>
-        <table className="table mt-2">
+        <table className="table mt-3" style={{ width: "100%" }}>
           <thead>
             <tr>
               <th>Employee Name</th>
@@ -178,7 +194,7 @@ export default function AddEmployeeAttendance() {
                   </td>
                   <td>
                     <select
-                      className="form-selectAttendance"
+                      className="emp-att-form-selectAttendance"
                       value={employee.dayType}
                       onChange={(e) => handleDayTypeChange(index, e.target.value)}
                     >
