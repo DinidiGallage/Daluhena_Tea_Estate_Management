@@ -1,0 +1,92 @@
+/* Sidebar Container */
+.sidebar-container {
+  width: 280px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: all 0.5s ease;
+  background: linear-gradient(145deg, #2e4b36, #2e4b36); /* Vibrant gradient background */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 10px 10px 30px #000000, -10px -10px 30px #9b9a9a; /* Neumorphism effect */
+  border-radius: 0px; /* Rounded corners for sidebar */
+  padding: 20px; /* Padding for inner spacing */
+  background-color:   #2e4b36;
+}
+
+/* Navbar Brand/Logo */
+.navbar-brand {
+  font-size: 1.8em; /* Slightly larger for emphasis */
+  margin-bottom: 30px; /* Increased space */
+  text-decoration: none; /* Removes underline */
+  display: flex; /* Align items horizontally */
+  align-items: center; /* Center items vertically */
+}
+
+.navbar-brand img {
+  max-width: 100%; /* Ensure image doesn't exceed container width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Nav Pills Styling */
+.nav-pills .nav-link {
+  color: #000000;
+  background-color:#e3ecc9;
+  margin-bottom: 15px; /* Adjusted spacing */
+  transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 7px; /* Smooth rounded corners */
+  padding: 15px 25px; /* Increased padding for better touch target */
+  font-weight: 500; /* Medium font weight for readability */
+  display: flex; /* Flex display to align icons and text */
+  align-items: center; /* Center items vertically */
+  text-decoration: none; /* Removes underline */
+  list-style-type: none; /* Removes the list item markers */
+}
+
+.nav-pills .nav-link:hover, .nav-pills .nav-link.active {
+  color: #ffffff;
+  background-color: rgba(186, 224, 192, 0.81); /* Adjusted background for hover/active */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+  list-style-type: none; /* Removes the list item markers */
+}
+
+/* Submenu Styling */
+.submenu {
+  list-style: none;
+  padding-left: 20px; /* Indent submenu items */
+}
+
+.submenu .nav-link {
+  font-size: 0.9em; /* Slightly smaller font size for submenu items */
+  padding: 10px 15px; /* Smaller padding for submenu links */
+}
+
+/* Logout Link Styling */
+.logout-link {
+  color: #fff;
+  background-color:#4B6F44; /* Vibrant red color for emphasis */
+  margin-top: auto; /* Pushes to the bottom */
+  border-radius: 25px; /* Smooth rounded corners */
+  padding: 15px 25px; /* Increased padding for emphasis */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 500; /* Medium font weight for visibility */
+  text-align: center; /* Centers text in button */
+  width: calc(100% - 50px); /* Full width minus padding */
+  box-shadow: 0 2px 4px rgba(205, 151, 151, 0.1); /* Subtle shadow for depth */
+  border: none; /* Removes border */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.logout-link:hover {
+  background-color: #ff0000; /* Darker shade on hover for interaction feedback */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+}
+/* Submenu Styling */
+.submenu {
+  list-style-type: none; /* Removes the list item markers */
+  padding-left: 20px; /* Indent submenu items */
+}
+
+.submenu .nav-link {
+  font-size: 0.9em; /* Slightly smaller font size for submenu items */
+  padding: 10px 15px; /* Smaller padding for submenu links */
+}

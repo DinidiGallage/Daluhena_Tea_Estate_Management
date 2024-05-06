@@ -1,0 +1,66 @@
+/* WelcomePage.css */
+
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #bdc465; /* Light earthy background color */
+  background-image: url('images/tea.jpg'); /* Background image of tea estate */
+  background-size: cover; /* Ensure the background image covers the entire container */
+  background-position: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.welcome-title {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean, modern font */
+  color: #3e4e50; /* Darker, earthy tone for text */
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Soft shadow for better readability */
+  background-color: rgba(255, 255, 255, 0.8); /* Light background for the title for better readability */
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 24px; /* Larger font size for prominence */
+  font-weight: bold; /* Bold font weight for clarity */
+}
+
+.welcome-btn {
+  width: 150px; /* Set a specific width */
+  background-color: 	#2e4b36;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+}
+
+.welcome-btn:hover {
+  background-color: 	#2e4b36;
+  transform: scale(1.05);
+}
+
+
+/* Ensuring text is easily readable over the background image */
+.welcome-container * {
+  z-index: 10;
+  position: relative;
+}
+
+/* Optional: Add a dark/semi-transparent overlay to make text more readable over the background image */
+.welcome-container:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3); /* Dark overlay */
+  z-index: 1;
+}
