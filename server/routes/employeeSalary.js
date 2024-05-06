@@ -1,80 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const employeeSalary = require("../models/employeeSalary");
-
-
-
-
-// POST request to add new employee details
-// Add Employee Details
-router.post("/addEmployeeDetails", (req, res) => {
-    const { employee_ID, designation, basic_salary } = req.body;
-
-    const newEmployeeDetails = new employeeSalary({
-        employee_ID,
-        designation,
-        basic_salary,
-        salary_package_name: null,
-        ot_payment_per_hour: null,
-        tax: null,
-        bonus: null,
-        total_salary: null,
-        expenses_type: null,
-        expense_amount: null,
-        sales_type: null,
-        sales_amount: null
-    });
-
-    newEmployeeDetails.save()
-        .then(() => res.json({ message: 'Employee details added successfully!' }))
-        .catch(err => res.status(500).json({ error: 'Failed to add employee details', details: err }));
-});
-// Fetch All Employee Details
-// Fetch All Employee Details with employee_ID, designation, and basic_salary not null
-router.get("/getEmployeeDetails", (req, res) => {
-    employeeSalary.find(
-        { 
-            employee_ID: { $ne: null, $exists: true, $ne: "" }, 
-            designation: { $ne: null, $exists: true, $ne: "" },
-            basic_salary: { $ne: null, $exists: true } 
-        }, 
-        'employee_ID designation basic_salary date' // Include 'date' in the fields you are selecting
-    )
-    .then(details => res.json(details))
-    .catch(err => res.status(500).json({ error: 'Error fetching employee details', details: err }));
-});
-
-
-// Fetch Single Employee Detail
-router.get("/getEmployee/:id", (req, res) => {
-    employeeSalary.findById(req.params.id)
-        .then(employee => res.json(employee))
-        .catch(err => res.status(500).json({ error: 'Error fetching employee data', details: err }));
-});
-
-// Update Employee Details
-router.put("/updateEmployee/:id", (req, res) => {
-    employeeSalary.findByIdAndUpdate(req.params.id, req.body, { new: true })
-        .then(employee => res.json({ message: 'Employee updated successfully', employee }))
-        .catch(err => res.status(500).json({ error: 'Error updating employee data', details: err }));
-});
-
-// Delete Employee Details
-router.delete("/deleteEmployee/:id", (req, res) => {
-    employeeSalary.findByIdAndDelete(req.params.id)
-        .then(() => res.json({ message: 'Employee deleted successfully' }))
-        .catch(err => res.status(500).json({ error: 'Error deleting employee data', details: err }));
-});
+const { startOfMonth, subMonths } = require('date-fns');
 
 // Add Salary Package Details
 router.post("/addSalaryPackage", (req, res) => {
-    const { salary_package_name, ot_payment_per_hour, tax, bonus } = req.body;
+    const { salary_package_name, ot_payment_per_hour, tax, bonus, designation, basic_salary,no_of_hours_worked } = req.body;
 
     const newSalaryPackage = new employeeSalary({
         salary_package_name,
         ot_payment_per_hour,
+        no_of_hours_worked,
         tax,
-        bonus
+        bonus,
+        designation,
+        basic_salary
     });
 
     newSalaryPackage.save()
@@ -86,16 +26,21 @@ router.post("/addSalaryPackage", (req, res) => {
 router.get("/getAllSalaryPackages", (req, res) => {
     employeeSalary.find(
         {
+
             salary_package_name: { $ne: null, $exists: true, $ne: "" },
             ot_payment_per_hour: { $ne: null, $exists: true },
             tax: { $ne: null, $exists: true },
             bonus: { $ne: null, $exists: true },
-            date: { $ne: null, $exists: true } // Assuming 'date' is the field containing the date
+            date: { $ne: null, $exists: true },// Assuming 'date' is the field containing the date
+            designation: { $ne: null, $exists: true },
+            basic_salary: { $ne: null, $exists: true },
+            no_of_hours_worked: { $ne: null, $exists: true }
+
         },
-        'salary_package_name ot_payment_per_hour tax bonus date' // Include 'date' in the projection
+        'salary_package_name ot_payment_per_hour tax bonus date designation basic_salary  no_of_hours_worked' // Include 'date' in the projection
     )
-    .then(packages => res.json(packages))
-    .catch(err => res.status(500).json({ error: 'Error fetching salary packages', details: err }));
+        .then(packages => res.json(packages))
+        .catch(err => res.status(500).json({ error: 'Error fetching salary packages', details: err }));
 });
 
 // Delete a salary package
@@ -107,8 +52,8 @@ router.delete("/deleteSalaryPackage/:id", (req, res) => {
 
 // Update a salary package
 router.put("/updateSalaryPackage/:id", (req, res) => {
-    const { salary_package_name, ot_payment_per_hour, tax, bonus } = req.body;
-    employeeSalary.findByIdAndUpdate(req.params.id, { salary_package_name, ot_payment_per_hour, tax, bonus }, { new: true })
+    const { salary_package_name, ot_payment_per_hour, tax, bonus, designation, basic_salary } = req.body;
+    employeeSalary.findByIdAndUpdate(req.params.id, { salary_package_name, ot_payment_per_hour, tax, bonus, designation, basic_salary, no_of_hours_worked }, { new: true })
         .then(updatedPackage => res.json(updatedPackage))
         .catch(err => res.status(500).json({ error: 'Failed to update salary package', details: err }));
 });
@@ -138,17 +83,18 @@ router.post("/addExpense", (req, res) => {
         .catch(err => res.status(400).json({ error: 'Failed to add expense', details: err }));
 });
 
+// Get expenses
 router.get("/getExpenses", (req, res) => {
     employeeSalary.find(
-        { 
-            expenses_type: { $ne: null }, 
-            expense_amount: { $ne: null }, 
+        {
+            expenses_type: { $ne: null },
+            expense_amount: { $ne: null },
             date: { $ne: null } // Assuming date field exists and is not null
         },
         'expenses_type expense_amount date' // selecting expenses fields and date
     )
-    .then(expenses => res.json(expenses))
-    .catch(err => res.status(500).json({ error: 'Failed to fetch expenses', details: err }));
+        .then(expenses => res.json(expenses))
+        .catch(err => res.status(500).json({ error: 'Failed to fetch expenses', details: err }));
 });
 
 // Delete an expense
@@ -166,7 +112,7 @@ router.put("/updateExpense/:id", (req, res) => {
         .catch(err => res.status(500).json({ error: 'Failed to update expense', details: err }));
 });
 
-// Assuming EmployeeSalary is your model containing expense data
+// Get expense by ID
 router.get("/getExpense/:id", (req, res) => {
     employeeSalary.findById(req.params.id)
         .then(expense => {
@@ -176,14 +122,6 @@ router.get("/getExpense/:id", (req, res) => {
             res.json(expense);
         })
         .catch(err => res.status(500).json({ error: 'Error fetching expense details', details: err }));
-});
-
-// Update an expense
-router.put("/updateExpense/:id", (req, res) => {
-    const { expenses_type, expense_amount } = req.body;
-    employeeSalary.findByIdAndUpdate(req.params.id, { expenses_type, expense_amount }, { new: true })
-        .then(expense => res.json({ message: 'Expense updated successfully', expense }))
-        .catch(err => res.status(500).json({ error: 'Failed to update expense', details: err }));
 });
 
 // Add a new sale
@@ -199,16 +137,17 @@ router.post("/addSale", (req, res) => {
         .catch(err => res.status(400).json({ error: 'Failed to add sale', details: err }));
 });
 
+// Get sales
 router.get("/getSales", (req, res) => {
     employeeSalary.find(
-        { 
-            sales_type: { $ne: null }, 
-            sales_amount: { $ne: null } 
+        {
+            sales_type: { $ne: null },
+            sales_amount: { $ne: null }
         },
         'sales_type sales_amount date' // Added 'date' to the projection
     )
-    .then(sales => res.json(sales))
-    .catch(err => res.status(500).json({ error: 'Failed to fetch sales', details: err }));
+        .then(sales => res.json(sales))
+        .catch(err => res.status(500).json({ error: 'Failed to fetch sales', details: err }));
 });
 
 // Delete a sale
@@ -223,8 +162,7 @@ router.delete("/deleteSale/:id", (req, res) => {
         .catch(err => res.status(500).json({ error: 'Failed to delete sale', details: err }));
 });
 
-
-// GET request to fetch a sale by ID
+// Get sale by ID
 router.get("/getSale/:id", (req, res) => {
     employeeSalary.findById(req.params.id)
         .then(sale => {
@@ -236,15 +174,13 @@ router.get("/getSale/:id", (req, res) => {
         .catch(err => res.status(500).json({ error: 'Error fetching sale details', details: err }));
 });
 
-// PUT request to update a sale
+// Update a sale
 router.put("/updateSale/:id", (req, res) => {
     const { sales_type, sales_amount } = req.body;
     employeeSalary.findByIdAndUpdate(req.params.id, { sales_type, sales_amount }, { new: true })
         .then(sale => res.json({ message: 'Sale updated successfully', sale }))
         .catch(err => res.status(500).json({ error: 'Failed to update sale', details: err }));
 });
-
-const { startOfMonth, subMonths } = require('date-fns');
 
 // GET request to fetch total sales amount for each month in previous months
 router.get("/getTotalSalesInPreviousMonths", (req, res) => {
@@ -257,8 +193,8 @@ router.get("/getTotalSalesInPreviousMonths", (req, res) => {
 
     employeeSalary.aggregate([
         {
-            $match: { 
-                sales_amount: { $ne: null }, 
+            $match: {
+                sales_amount: { $ne: null },
                 date: { $ne: null, $gte: startOfPreviousMonth, $lt: startOfCurrentMonth } // Filter documents from previous months
             }
         },
@@ -280,8 +216,8 @@ router.get("/getTotalSalesInPreviousMonths", (req, res) => {
             $sort: { year: 1, month: 1 } // Sort by year and month in ascending order
         }
     ])
-    .then(totalSalesInPreviousMonths => res.json(totalSalesInPreviousMonths))
-    .catch(err => res.status(500).json({ error: 'Failed to fetch total sales in previous months', details: err }));
+        .then(totalSalesInPreviousMonths => res.json(totalSalesInPreviousMonths))
+        .catch(err => res.status(500).json({ error: 'Failed to fetch total sales in previous months', details: err }));
 });
 
 
@@ -295,7 +231,7 @@ router.get("/getTotalExpensesInPreviousMonths", (req, res) => {
 
     employeeSalary.aggregate([
         {
-            $match: { 
+            $match: {
                 expense_amount: { $ne: null }, // Filter documents with non-null expense_amount
                 date: { $ne: null, $gte: startOfPreviousMonth, $lt: startOfCurrentMonth } // Filter documents from previous months
             }
@@ -318,8 +254,8 @@ router.get("/getTotalExpensesInPreviousMonths", (req, res) => {
             $sort: { year: 1, month: 1 } // Sort by year and month in ascending order
         }
     ])
-    .then(totalExpensesInPreviousMonths => res.json(totalExpensesInPreviousMonths))
-    .catch(err => res.status(500).json({ error: 'Failed to fetch total expenses in previous months', details: err }));
+        .then(totalExpensesInPreviousMonths => res.json(totalExpensesInPreviousMonths))
+        .catch(err => res.status(500).json({ error: 'Failed to fetch total expenses in previous months', details: err }));
 });
 
 router.get("/getTotalProfitInPreviousMonths", (req, res) => {
@@ -333,8 +269,8 @@ router.get("/getTotalProfitInPreviousMonths", (req, res) => {
     // Fetch total sales in previous months
     const salesPromise = employeeSalary.aggregate([
         {
-            $match: { 
-                sales_amount: { $ne: null }, 
+            $match: {
+                sales_amount: { $ne: null },
                 date: { $ne: null, $gte: startOfPreviousMonth, $lt: startOfCurrentMonth } // Filter documents from previous months
             }
         },
@@ -357,7 +293,7 @@ router.get("/getTotalProfitInPreviousMonths", (req, res) => {
     // Fetch total expenses in previous months
     const expensesPromise = employeeSalary.aggregate([
         {
-            $match: { 
+            $match: {
                 expense_amount: { $ne: null }, // Filter documents with non-null expense_amount
                 date: { $ne: null, $gte: startOfPreviousMonth, $lt: startOfCurrentMonth } // Filter documents from previous months
             }
@@ -396,82 +332,14 @@ router.get("/getTotalProfitInPreviousMonths", (req, res) => {
         .catch(err => res.status(500).json({ error: 'Failed to fetch total profit in previous months', details: err }));
 });
 
-
-// Update Employee Salary Package Name
-router.put("/updateEmployeeSalaryPackage/:id", async (req, res) => {
-    const { salary_package_name } = req.body;
-    const employeeId = req.params.id;
-    try {
-        const updatedEmployee = await employeeSalary.findByIdAndUpdate(employeeId, { salary_package_name }, { new: true });
-        res.json(updatedEmployee);
-    } catch (err) {
-        console.error('Failed to update employee salary package name:', err);
-        res.status(500).json({ error: 'Failed to update employee salary package name', details: err });
-    }
+// Endpoint to get total sales
+router.get('/getTotalSales', (req, res) => {
+    res.json(totalSalesData);
 });
 
-
-// Route to fetch all employee details with specified fields
-router.get('/getEmployeeDetailsSalaryPackage', async (req, res) => {
-    try {
-        const employeeDetails = await employeeSalary.find({}, 'employee_ID designation basic_salary salary_package_name');
-        res.json(employeeDetails);
-    } catch (error) {
-        console.error('Error fetching employee details:', error);
-        res.status(500).json({ error: 'Failed to fetch employee details' });
-    }
-});
-router.get('/employee-details', async (req, res) => {
-    try {
-        const employees = await Employee.find();
-        res.json(employees);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Internal Server Error' });
-    }
-});
-
-router.get('/employee-details/:employeeId/add-salary-package/:packageName', async (req, res) => {
-    try {
-        const { employeeId, packageName } = req.params;
-
-        const employee = await Employee.findById(employeeId);
-        employee.salary_package_name = packageName;
-        await employee.save();
-
-        res.status(200).send('Salary package added successfully');
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Internal Server Error' });
-    }
-});
-router.get('/employeeDetails', async (req, res) => {
-    try {
-        const employees = await EmployeeSalary.find();
-        const updatedEmployees = employees.map(employee => {
-            const taxAmount = (employee.basic_salary * employee.tax) / 100;
-            const bonusAmount = (employee.basic_salary * employee.bonus) / 100;
-            const totalSalary = employee.basic_salary - taxAmount + bonusAmount;
-            return { ...employee.toObject(), total_salary: totalSalary };
-        });
-        res.json(updatedEmployees);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Internal Server Error' });
-    }
-});
-// Backend code
-router.get("/getEmployeeDetails", (req, res) => {
-    employeeSalary.find(
-        { 
-            employee_ID: { $ne: null, $exists: true, $ne: "" }, 
-            designation: { $ne: null, $exists: true, $ne: "" },
-            basic_salary: { $ne: null, $exists: true } 
-        }, 
-        'employee_ID designation basic_salary salary_package_name' // Include 'salary_package_name' in the fields you are selecting
-    )
-    .then(details => res.json(details))
-    .catch(err => res.status(500).json({ error: 'Error fetching employee details', details: err }));
+// Endpoint to get total expenses
+router.get('/getTotalExpenses', (req, res) => {
+    res.json(totalExpensesData);
 });
 
 module.exports = router;
