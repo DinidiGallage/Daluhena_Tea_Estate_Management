@@ -321,18 +321,18 @@ body {
 }
 
 .fertilizer-btn-warning:hover {
-  background-color: #FFD700; /* Lighter orange background on hover */
+  background-color: #FFD700; 
 }
 
 .fertilizer-form-group-col {
-  display: flex; /* Set display to flex */
-  flex-direction: column; /* Arrange items in a column */
-  margin-right: 10px; /* Right margin */
+  display: flex; 
+  flex-direction: column; 
+  margin-right: 10px; 
 }
 
 .fertilizer-form-row {
-  display: flex; /* Display as flex container */
-  justify-content: space-between; /* Distribute items evenly */
+  display: flex; 
+  justify-content: space-between; 
   padding-bottom: 10px;
 }
 
