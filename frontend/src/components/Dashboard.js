@@ -192,7 +192,7 @@ export default function Dashboard() {
 
   
   return (
-    <div className="transparent-box" style={{ marginLeft: "270px", paddingLeft: "20px", paddingRight: "20px", paddingTop: "20px"}}>
+    <div className="fertilizer-transparent-box" style={{ marginLeft: "270px", paddingLeft: "20px", paddingRight: "20px", paddingTop: "20px"}}>
   <div style={{ textAlign: "center" }}>
     <h1 style={{ marginBottom: "20px", color: "white", backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', padding: '50px 70px' }}>Welcome to Dashboard</h1>
     <div style={{ marginBottom: "20px" }}> 
@@ -270,7 +270,7 @@ export default function Dashboard() {
         </label>
       </div>
     </div>
-    <table className="table" style={{ width: "100%", borderCollapse: "collapse", margin: "0 auto" }}>
+    <table className="fertilizer-table" style={{ width: "100%", borderCollapse: "collapse", margin: "0 auto" }}>
       <thead>
         <tr>
           {getColumns().map(column => (

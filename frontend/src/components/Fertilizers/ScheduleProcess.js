@@ -21,7 +21,7 @@ const ScheduleProcess = () => {
   };
 
   return (
-    <div className="transparent-box" style={{ marginLeft: "280px", marginRight: "auto", marginTop: "10px", marginBottom: "10px", padding: "20px", borderRadius: "15px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", maxWidth: "1140px" }}>
+    <div className="fertilizer-transparent-box" style={{ marginLeft: "280px", marginRight: "auto", marginTop: "10px", marginBottom: "10px", padding: "20px", borderRadius: "15px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", maxWidth: "1140px" }}>
       <h2>Schedule Task</h2>
       <div className="calendar-container" style={{ height: 620 }}>
         <Calendar

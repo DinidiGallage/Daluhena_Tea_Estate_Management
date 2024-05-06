@@ -4,6 +4,7 @@
   background-size: cover;
   background-position: center;
   min-height: 100vh; /* Use min-height to ensure the background covers the entire viewport */
+  overflow: hidden; /* Hide any overflow content */
 }
 
 .header {
@@ -13,7 +14,7 @@
   background-color: #1e421d;
   padding: 10px;
   border-radius: 8px; /* Add border-radius to the header tile container */
-  margin-bottom: 50px;
+  margin-bottom: 20px; /* Adjust margin to fit within viewport */
 }
 
 .logo {
@@ -38,13 +39,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between; /* Distribute items evenly along the main axis */
-  margin-top: 20px; /* Add margin-top to create a gap between the green box and white boxes */
+  margin-top: 10px; /* Add margin-top to create a gap between the green box and white boxes */
 }
 
 .tile {
   width: calc(25% - 20px); /* Adjust width to occupy 25% of the container's width */
-  margin-bottom: 20px; /* Add margin-bottom for spacing between rows */
-  padding: 20px;
+  margin-bottom: 10px; /* Add margin-bottom for spacing between rows */
+  padding: 10px;
   background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -54,7 +55,7 @@
 .tile a {
   display: block;
   margin: 10px;
-  padding: 40px;
+  padding: 20px;
   background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;

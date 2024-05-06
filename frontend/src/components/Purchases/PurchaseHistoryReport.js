@@ -147,18 +147,18 @@ function PurchaseHistoryReport() {
     
 
     return (
-        <div className="report-container">
+        <div className="fertilizer-report-container">
             <h1 style={{ textAlign:'center',paddingBottom:'10px' }} >Purchase History Report</h1>
-            <div className="report-controls">
-                <div className="date-inputall">
+            <div className="fertilizer-report-controls">
+                <div className="fertilize-report-date-input">
                     <label htmlFor="fromDate" style={{ fontWeight:'bold' }} >From Date:</label>
-                    <input type="date" className="date-input" id="fromDate" value={fromDate} onChange={(e) => setFromDate(e.target.value)} />
+                    <input type="date" className="fertilizer-date-input" id="fromDate" value={fromDate} onChange={(e) => setFromDate(e.target.value)} />
                 </div>
-                <div className="date-inputall">
+                <div className="fertilizer-date-inputall">
                     <label htmlFor="toDate"  style={{ fontWeight:'bold' }}>To Date:</label>
-                    <input type="date" className="date-input" id="toDate" value={toDate} onChange={(e) => setToDate(e.target.value)} />
+                    <input type="date" className="fertilizer-date-input" id="toDate" value={toDate} onChange={(e) => setToDate(e.target.value)} />
                 </div>
-                <div className="download-pdf">
+                <div className="fertilizer-download-pdf">
                     <PDFDownloadLink document={PDFDocument} fileName="purchase_report.pdf">
                         {({ blob, url, loading, error }) => (
                             <div style={{ display: 'flex', alignItems: 'center', fontWeight:'bold' }}>

@@ -123,14 +123,14 @@ export default function AddFertilizer() {
   }
 
   return (
-    <div className="transparent-box" style={{ paddingTop: "20px", paddingBottom: "35px", paddingLeft: "10px" }}>
+    <div className="fertilizer-transparent-box" style={{ paddingTop: "20px", paddingBottom: "35px", paddingLeft: "10px" }}>
       
       <div style={{ display: "flex", justifyContent: "center" }}>
         {!submitted ? (
-          <div className="form-container" style={{ paddingTop: "1px" }}>
-            <div className="form-wrapper" style={{ backgroundColor: "#ffffff", padding: "20px", borderRadius: "8px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", width: "800px" }}>
+          <div className="fertilizer-form-container" style={{ paddingTop: "1px", paddingLeft:"40px" }}>
+            <div className="fertilizer-form-wrapper" style={{ backgroundColor: "#ffffff", padding: "20px", borderRadius: "8px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", width: "800px" }}>
               <form onSubmit={sendData}>
-                <div className="form-group">
+                <div className="fertilizer-form-group">
                   <h2 style={{ textAlign: "center", marginBottom: "20px", color: "white", backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', padding: '40px 60px' }}>Add New Fertilizer</h2>
                   <label htmlFor="fertilizerName">Fertilizer Name</label>
                   <input
@@ -141,10 +141,10 @@ export default function AddFertilizer() {
                     value={fertilizerName}
                     onChange={(e) => setFertilizerName(e.target.value)}
                   />
-                  {nameError && <div className="text-danger">{nameError}</div>}
+                  {nameError && <div className="fertilizer-text-danger">{nameError}</div>}
                 </div>
 
-                <div className="form-group">
+                <div className="fertilizer-form-group">
                   <label htmlFor="fertilizerType">Fertilizer Type</label>
                   <select
                     className="form-control"
@@ -156,10 +156,10 @@ export default function AddFertilizer() {
                     <option value="Organic">Organic</option>
                     <option value="Mineral">Mineral</option>
                   </select>
-                  {typeError && <div className="text-danger">{typeError}</div>}
+                  {typeError && <div className="fertilizer-text-danger">{typeError}</div>}
                 </div>
 
-                <div className="form-group">
+                <div className="fertilizer-form-group">
                   <label htmlFor="manufacturer">Manufacturer</label>
                   <input
                     type="text"
@@ -169,10 +169,10 @@ export default function AddFertilizer() {
                     value={manufacturer}
                     onChange={(e) => setManufacturer(e.target.value)}
                   />
-                  {manufacturerError && <div className="text-danger">{manufacturerError}</div>}
+                  {manufacturerError && <div className="fertilizer-text-danger">{manufacturerError}</div>}
                 </div>
 
-                <div className="form-group">
+                <div className="fertilizer-form-group">
                   <label htmlFor="quantity">Quantity</label>
                   <input
                     type="number"
@@ -182,47 +182,48 @@ export default function AddFertilizer() {
                     value={quantity}
                     onChange={(e) => setQuantity(e.target.value)}
                   />
-                  {quantityError && <div className="text-danger">{quantityError}</div>}
+                  {quantityError && <div className="fertilizer-text-danger">{quantityError}</div>}
                 </div>
 
-                <div className="form-row">
-                  <div className="form-group" style={{ marginRight: "10px" }}>
-                    <label htmlFor="manufacturedDate">Manufactured Date</label>
-                    <input
-                      type="date"
-                      className="form-control"
-                      id="manufacturedDate"
-                      value={manufacturedDate}
-                      onChange={(e) => setManufacturedDate(e.target.value)}
-                    />
-                    {manufacturedDateError && <div className="text-danger">{manufacturedDateError}</div>}
+                <div className="fertilizer-form-row">
+                    <div className="fertilizer-form-group" style={{ marginRight: "10px", display: "inline-block", width: "50%" }}>
+                      <label htmlFor="manufacturedDate">Manufactured Date</label>
+                      <input
+                        type="date"
+                        className="form-control"
+                        id="manufacturedDate"
+                        value={manufacturedDate}
+                        onChange={(e) => setManufacturedDate(e.target.value)}
+                      />
+                      {manufacturedDateError && <div className="fertilizer-text-danger">{manufacturedDateError}</div>}
+                    </div>
+
+                    <div className="fertilizer-form-group" style={{ marginLeft: "10px", display: "inline-block", width: "50%" }}>
+                      <label htmlFor="expiredDate">Expired Date</label>
+                      <input
+                        type="date"
+                        className="form-control"
+                        id="expiredDate"
+                        value={expiredDate}
+                        onChange={(e) => setExpiredDate(e.target.value)}
+                      />
+                      {expiredDateError && <div className="fertilizer-text-danger">{expiredDateError}</div>}
+                    </div>
                   </div>
 
-                  <div className="form-group" style={{ marginLeft: "10px" }}>
-                    <label htmlFor="expiredDate">Expired Date</label>
-                    <input
-                      type="date"
-                      className="form-control"
-                      id="expiredDate"
-                      value={expiredDate}
-                      onChange={(e) => setExpiredDate(e.target.value)}
-                    />
-                    {expiredDateError && <div className="text-danger">{expiredDateError}</div>}
-                  </div>
-                </div>
                 
-                {error && <div className="alert alert-danger">{error}</div>}
+                {error && <div className="fertilizer-alert fertilizer-alert-danger">{error}</div>}
 
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="fertilizer-btn-primary">
                   Submit
                 </button>
               </form>
             </div>
           </div>
         ) : (
-          <div className="confirmation-container" style={{ width: "600px", marginLeft: "100px", marginTop: "40px",marginBottom: "40px", padding: "60px", backgroundColor: "#f8f9fa", borderRadius: "8px", boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)" }}>
+          <div className="fertilizer-confirmation-container" style={{ width: "600px", marginLeft: "100px", marginTop: "40px",marginBottom: "40px", padding: "60px", backgroundColor: "#f8f9fa", borderRadius: "8px", boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)" }}>
             <h2 style={{ textAlign: "center", marginBottom: "20px", color: "#1E421D", fontSize: "24px" }}>Confirm Entry</h2>
-            <div className="confirmation-details" style={{ marginBottom: "20px" }}>
+            <div className="fertilizer-confirmation-details" style={{ marginBottom: "20px" }}>
               <p style={{ marginBottom: "10px" }}><strong>Fertilizer Name:</strong> {formData.fertilizerName}</p>
               <p style={{ marginBottom: "10px" }}><strong>Fertilizer Type:</strong> {formData.fertilizerType}</p>
               <p style={{ marginBottom: "10px" }}><strong>Manufacturer:</strong> {formData.manufacturer}</p>
@@ -231,10 +232,10 @@ export default function AddFertilizer() {
               <p style={{ marginBottom: "10px" }}><strong>Expired Date:</strong> {formData.expiredDate}</p>
             </div>
             <div style={{ textAlign: "center" }}>
-              <button className="btn btn-primary" onClick={handleConfirm} style={{ marginRight: "10px", padding: "10px 20px", fontSize: "16px" }}>
+              <button className="fertilizer-btn-primary" onClick={handleConfirm} style={{ marginRight: "10px", padding: "10px 20px", fontSize: "16px" }}>
                 Confirm
               </button>
-              <button className="btn btn-warning" onClick={() => setSubmitted(false)} style={{ marginLeft: "10px", padding: "10px 20px", fontSize: "16px" }}>
+              <button className="fertilizer-btn-warning" onClick={() => setSubmitted(false)} style={{ marginLeft: "10px", padding: "10px 20px", fontSize: "16px" }}>
                 Edit Entry
               </button>
             </div>

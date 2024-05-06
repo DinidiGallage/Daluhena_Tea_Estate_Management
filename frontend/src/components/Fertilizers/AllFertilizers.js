@@ -207,7 +207,7 @@ export default function AllFertilizers() {
           <div ref={updateFormRef} style={{ marginTop: "20px", width: "60%", margin: "10px" }}>
             <h2 style={{ textAlign: "center" }}>Update Fertilizer</h2>
             <form onSubmit={() => handleSubmit(updateData._id)}>
-              <div className="form-group">
+              <div className="fertilizer-form-group">
                 <label>Name:</label>
                 <input
                   type="text"
@@ -217,7 +217,7 @@ export default function AllFertilizers() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-group">
+              <div className="fertilizer-form-group">
                 <label>Type:</label>
                 <input
                   type="text"
@@ -227,7 +227,7 @@ export default function AllFertilizers() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-group">
+              <div className="fertilizer-form-group">
                 <label>Manufacturer:</label>
                 <input
                   type="text"
@@ -237,7 +237,7 @@ export default function AllFertilizers() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-group">
+              <div className="fertilizer-form-group">
                 <label>Quantity (kg):</label>
                 <input
                   type="number"
@@ -248,13 +248,13 @@ export default function AllFertilizers() {
                 />
                 {quantityError && <p style={{ color: "red" }}>{quantityError}</p>}
               </div>
-                <div className="form-group">
+                <div className="fertilizer-form-group">
                   <label>Manufactured Date:</label>
                   <div className="form-control">
                     {updateData.manufacturedDate}
                   </div>
                 </div>
-                <div className="form-group">
+                <div className="fertilizer-form-group">
                   <label>Expired Date:</label>
                   <div className="form-control">
                     {updateData.expiredDate}
@@ -262,10 +262,10 @@ export default function AllFertilizers() {
                 </div>
 
               <div style={{ textAlign: "center" }}>
-                <button type="submit" className="btn btn-primary" style={{ width: "90px", height: "40px", marginRight: "10px" }}>
+                <button type="submit" className="fertilizer-btn-primary" style={{ width: "90px", height: "40px", marginRight: "10px" }}>
                   Update
                 </button>
-                <button type="button" className="btn btn-secondary" style={{ width: "90px", height: "40px", }} onClick={handleCancel}>
+                <button type="button" className="fertilizer-btn-secondary" style={{ width: "90px", height: "40px", }} onClick={handleCancel}>
                   Cancel
                 </button>
               </div>

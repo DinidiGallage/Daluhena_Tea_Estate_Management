@@ -24,7 +24,7 @@ export default function AddSupplier() {
     if (!supplierName) {
       setSupplierNameError("Supplier Name is required.");
       isValid = false;
-    } else if (!/^[a-zA-Z ()]*[a-zA-Z][a-zA-Z ()]*$/.test(supplierName)) {
+    } else if (!/^[a-zA-Z ()]*[a-zA-Z][a-zA-Z () & .]*$/.test(supplierName)) {
       setSupplierNameError("Please enter a valid supplier name.");
       isValid = false;
     } else {
@@ -121,14 +121,14 @@ export default function AddSupplier() {
   }
 
   return (
-    <div className="transparent-box">
+    <div className="fertilizer-transparent-box">
       {!showConfirmation ? (
-        <div className="form-container">
-          <div className="form-wrapper" style={{ backgroundColor: "#ffffff", padding: "20px", borderRadius: "8px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", width: "800px" }}>
+        <div className="fertilizer-form-container">
+          <div className="fertilizer-form-wrapper" style={{ backgroundColor: "#ffffff", padding: "20px", borderRadius: "8px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", width: "800px" }}>
             <form style={{ margin: "0 auto" }} onSubmit={sendData}>
               <h2 style={{ textAlign: "center", marginBottom: "20px", color: "white", backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', padding: '40px 60px' }}>Add New Supplier Details</h2>
-              <div className="form-row">
-                <div className="form-group col" style={{ marginRight: "10px" }}>
+              <div className="fertilizer-form-row">
+                <div className="fertilizer-form-group-col" style={{ marginRight: "10px", width: "50%"}}>
                   <label htmlFor="supplierName">Supplier Name</label>
                   <input
                     type="text"
@@ -138,10 +138,10 @@ export default function AddSupplier() {
                     value={supplierName}
                     onChange={(e) => setSupplierName(e.target.value)}
                   />
-                  {supplierNameError && <div className="text-danger">{supplierNameError}</div>}
+                  {supplierNameError && <div className="fertilizer-text-danger">{supplierNameError}</div>}
                 </div>
 
-                <div className="form-group col" style={{ marginLeft: "10px" }}>
+                <div className="fertilizer-form-group-col" style={{ marginLeft: "10px", width: "50%"}}>
                   <label htmlFor="contactPerson">Contact Person</label>
                   <input
                     type="text"
@@ -151,12 +151,12 @@ export default function AddSupplier() {
                     value={contactPerson}
                     onChange={(e) => setContactPerson(e.target.value)}
                   />
-                  {contactPersonError && <div className="text-danger">{contactPersonError}</div>}
+                  {contactPersonError && <div className="fertilizer-text-danger">{contactPersonError}</div>}
                 </div>
               </div>
 
-              <div className="form-row">
-                <div className="form-group col" style={{ marginRight: "10px" }}>
+              <div className="fertilizer-form-row">
+                <div className="fertilizer-form-group-col" style={{ marginRight: "10px", width: "50%"}}>
                   <label htmlFor="phone">Phone</label>
                   <input
                     type="text"
@@ -166,10 +166,10 @@ export default function AddSupplier() {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
-                  {phoneError && <div className="text-danger">{phoneError}</div>}
+                  {phoneError && <div className="fertilizer-text-danger">{phoneError}</div>}
                 </div>
 
-                <div className="form-group col" style={{ marginLeft: "10px" }}>
+                <div className="fertilizer-form-group-col" style={{ marginLeft: "10px", width: "50%" }}>
                   <label htmlFor="email">Email</label>
                   <input
                     type="email"
@@ -179,11 +179,11 @@ export default function AddSupplier() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  {emailError && <div className="text-danger">{emailError}</div>}
+                  {emailError && <div className="fertilizer-text-danger">{emailError}</div>}
                 </div>
               </div>
 
-              <div className="form-group">
+              <div className="fertilizer-form-group">
                 <label htmlFor="address">Address</label>
                 <input
                   type="text"
@@ -193,10 +193,10 @@ export default function AddSupplier() {
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                 />
-                {addressError && <div className="text-danger">{addressError}</div>}
+                {addressError && <div className="fertilizer-text-danger">{addressError}</div>}
               </div>
 
-              <div className="form-group">
+              <div className="fertilizer-form-group">
                 <label htmlFor="productTypes">Product Types</label>
                 <input
                   type="text"
@@ -206,19 +206,19 @@ export default function AddSupplier() {
                   value={productTypes}
                   onChange={(e) => setProductTypes(e.target.value)}
                 />
-                {productTypesError && <div className="text-danger">{productTypesError}</div>}
+                {productTypesError && <div className="fertilizer-text-danger">{productTypesError}</div>}
               </div>
 
-              {error && <div className="alert alert-danger">{error}</div>}
+              {error && <div className="fertilizer-alert fertilizer-alert-danger">{error}</div>}
 
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="fertilizer-btn-primary">
                 Submit
               </button>
             </form>
           </div>
         </div>
       ) : (
-        <div className="confirmation-box" style={{ width: "600px",marginTop: "40px",marginBottom: "40px", padding: "60px"}}>
+        <div className="fertilizer-confirmation-box" style={{ width: "600px",marginTop: "40px",marginBottom: "40px", padding: "60px"}}>
           <h2>Confirm Supplier Details</h2>
           <p><strong>Supplier Name:</strong> {supplierName}</p>
           <p><strong>Contact Person:</strong> {contactPerson}</p>
@@ -227,8 +227,8 @@ export default function AddSupplier() {
           <p><strong>Address:</strong> {address}</p>
           <p><strong>Product Types:</strong> {productTypes}</p>
           <div>
-            <button onClick={handleConfirm} className="btn btn-primary">Confirm</button>
-            <button onClick={handleEdit} className="btn btn-warning">Edit Entry</button>
+            <button onClick={handleConfirm} className="fertilizer-btn-primary">Confirm</button>
+            <button onClick={handleEdit} className="fertilizer-btn-warning">Edit Entry</button>
           </div>
         </div>
       )}

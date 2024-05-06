@@ -12,12 +12,12 @@ body {
   padding: 20px;
 }
 
-.form-container {
+.fertilizer-form-container {
   display: flex;
   justify-content: center;
 }
 
-.form-wrapper {
+.fertilizer-form-wrapper {
   max-width: 900px; /* Adjusted max-width */
   width: 100%; /* Added width */
   padding: 5px;
@@ -26,17 +26,17 @@ body {
   box-sizing: border-box; /* Ensure padding is included in width calculation */
 }
 
-.form-group {
+.fertilizer-form-group {
   margin-bottom: 20px;
 }
 
-label {
+.fertilizer-label {
   display: block;
   margin-bottom: 5px;
   color: #333;
 }
 
-.input-field {
+.fertilizer-input-field {
   width: 100%;
   padding: 10px;
   border: 1px solid #1E421D;
@@ -44,7 +44,7 @@ label {
   font-size: 16px;
 }
 
-.btn-primary {
+.fertilizer-btn-primary {
   background-color: #32CD32;
   color: #fff;
   border: none;
@@ -54,24 +54,45 @@ label {
   font-size: 16px;
 }
 
-.btn-primary:hover {
+.fertilizer-btn-primary:hover {
   background-color: #1E421D; /* Changed hover color */
   color: #fff; /* Changed text color */
 }
 
-.alert {
+.fertilizer-btn-secondary {
+  background-color: #808080; /* Gray background */
+  color: #fff; /* Text color */
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding */
+  border-radius: 4px; /* Border radius */
+  cursor: pointer; /* Cursor style */
+  font-size: 16px; /* Font size */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.fertilizer-btn-secondary:hover {
+  background-color: #A9A9A9; /* Lighter gray background on hover */
+}
+
+.fertilizer-alert {
   padding: 15px;
   margin-bottom: 20px;
   border-radius: 4px;
 }
 
-.alert-danger {
+.fertilizer-alert-danger {
   background-color: #f8d7da;
   color: #721c24;
   border: 1px solid #f5c6cb;
 }
 
-.brand {
+.fertilizer-text-danger {
+  color: #ED4337; /* Text color for error messages */
+  font-size: 14px; /* Font size */
+  margin-top: 5px; /* Margin at the top of the error message */
+}
+
+.fertilizer-brand {
   padding: 10px;
   text-align: center;
   border-bottom: 1px solid #1E421D;
@@ -80,13 +101,13 @@ label {
   justify-content: center;
 }
 
-.brand span {
+.fertilizer-brand span {
   display: block;
   color: white;
   font-weight: bold;
 }
 
-.side-nav {
+.fertilizer-side-nav {
   height: auto;
   max-height: 100vh;
   width: 250px;
@@ -102,20 +123,20 @@ label {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
 }
 
-.navbar {
+.fertilizer-navbar {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.nav-item {
+.fertilizer-nav-item {
   padding: 10px;
   border-radius: 5px;
   transition: border-radius 0.3s, background-color 0.3s;
   text-align: center;
 }
 
-.nav-link {
+.fertilizer-nav-link {
   text-decoration: none;
   font-size: 16px;
   color: #1E421D; /* Changed text color */
@@ -127,26 +148,27 @@ label {
   margin-bottom: 5px; /* Add margin bottom to separate links */
 }
 
-.nav-link:hover,
-.nav-link:focus { /* Add :focus pseudo-class */
+.fertilizer-nav-link:hover,
+.fertilizer-nav-link:focus { /* Add :focus pseudo-class */
+  text-decoration: none; /* Remove underline on hover */
   background-color: #1E421D; /* Changed hover color */
   color: #fff; /* Changed text color */
   border-radius: 50px;
 }
 
-.active {
+.fertilizer-active {
   background-color: #1E421D;
   color: #fff;
   border-radius: 50px;
 }
 
-.nav-link:hover img,
-.nav-link:focus img,
-.active img {
+.fertilizer-nav-link:hover img,
+.fertilizer-nav-link:focus img,
+.fertilizer-active img {
   filter: brightness(0) invert(1); /* Change icon color to white */
 }
 
-.logout-btn {
+.fertilizer-logout-btn {
   background-color: #d32000; /* Change to your desired color */
   color: #fff;
   border: none;
@@ -156,11 +178,11 @@ label {
   font-size: 16px;
 }
 
-.logout-btn:hover {
+.fertilizer-logout-btn:hover {
   background-color: #FF4500; /* Change to your desired hover color */
 }
 
-.tile {
+.fertilizer-tile {
   background-color: #E1E587; /* Background color for the tile */
   padding: 10px; /* Padding around the tile content */
   border-radius: 15px; /* Border radius for rounded corners */
@@ -171,7 +193,7 @@ label {
   position: relative; /* Position for pseudo-element */
 }
 
-.tile::after {
+.fertilizer-tile::after {
   content: ""; /* Add pseudo-element for gradient overlay */
   position: absolute; /* Position the pseudo-element */
   top: 0;
@@ -183,35 +205,35 @@ label {
   pointer-events: none; /* Ensure the overlay doesn't interfere with mouse events */
 }
 
-.tile:hover {
+.fertilizer-tile:hover {
   background-color: #f5f5f5; /* Background color on hover */
   transform: translateY(-3px); /* Add slight lift effect */
 }
 
-.tile h2 {
+.fertilizer-tile h2 {
   margin-bottom: 10px; /* Add margin below heading */
   color: #333; /* Heading text color */
   font-size: 22px; /* Increase heading font size */
 }
 
-.tile p {
+.fertilizer-tile p {
   margin-bottom: 0; /* Remove margin below paragraph */
   color: #666; /* Paragraph text color */
 }
 
-.tile p:last-child {
+.fertilizer-tile p:last-child {
   margin-bottom: 15px; /* Add extra margin to last paragraph */
 }
 
-.tile:hover h2 {
+.fertilizer-tile:hover h2 {
   color: #1E421D; /* Heading text color on hover */
 }
 
-.tile:hover p {
+.fertilizer-tile:hover p {
   color: #444; /* Paragraph text color on hover */
 }
 
-.transparent-box {
+.fertilizer-transparent-box {
   background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
   padding: 71px; /* Adjusted padding */
   border-radius: 20px;
@@ -222,7 +244,7 @@ label {
   margin-right: 10px;
 } 
 
-.report-container {
+.fertilizer-report-container {
   margin-left: 270px; /* Adjust this value according to your side navigation panel width */
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.9);
@@ -232,21 +254,21 @@ label {
 
 }
 
-.calendar-container {
+.fertilizer-calendar-container {
   background-color: #ffffff; /* Adjust as needed */
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
 }
 
-.report-controls {
+.fertilizer-report-controls {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
 
 
-.date-input {
+.fertilizer-date-input {
  
   width: 200px; /* width */
   height: 40px; /* height */
@@ -260,13 +282,12 @@ label {
   padding-left: 20px;
   
 }
-.date-input:focus {
+.fertilizer-date-input:focus {
   border-color: #80bdff; /* Highlighted border color on focus */
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Outer glow effect on focus */
-
 }
 
-.confirmation-box {
+.fertilizer-confirmation-box {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -275,15 +296,46 @@ label {
   margin: auto;
 }
 
-.confirmation-box h2 {
+.fertilizer-confirmation-box h2 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.confirmation-box p {
+.fertilizer-confirmation-box p {
   margin-bottom: 10px;
 }
 
-.confirmation-box button {
+.fertilizer-confirmation-box button {
   margin-right: 10px;
+}
+
+.fertilizer-btn-warning {
+  background-color: #FFA500; /* Orange background */
+  color: #000000; /* Text color */
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding */
+  border-radius: 4px; /* Border radius */
+  cursor: pointer; /* Cursor style */
+  font-size: 16px; /* Font size */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.fertilizer-btn-warning:hover {
+  background-color: #FFD700; /* Lighter orange background on hover */
+}
+
+.fertilizer-form-group-col {
+  display: flex; /* Set display to flex */
+  flex-direction: column; /* Arrange items in a column */
+  margin-right: 10px; /* Right margin */
+}
+
+.fertilizer-form-row {
+  display: flex; /* Display as flex container */
+  justify-content: space-between; /* Distribute items evenly */
+  padding-bottom: 10px;
+}
+
+button:focus {
+  outline: none;
 }
