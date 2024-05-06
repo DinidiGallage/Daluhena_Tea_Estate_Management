@@ -1,6 +1,5 @@
 import { useRef, useEffect, useState } from "react"
 import emailjs from 'emailjs-com';
-import supplierIcon from '../../images/Icons/supplier.png';
 import contactIcon from '../../images/Icons/contact.png';
 
 export default function ContactSupplierPage() {
@@ -40,11 +39,11 @@ export default function ContactSupplierPage() {
       <form className="for" onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
         <div style={{ display: "flex", flexDirection: "column", marginBottom: "20px" }}>
           <label htmlFor="name">Name</label>
-          <input ref={nameRef} type="text" id="name" placeholder="Enter your name" style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ccc" }} />
+          <input ref={nameRef} type="text" id="name" placeholder="Enter name" style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ccc" }} />
         </div>
         <div style={{ display: "flex", flexDirection: "column", marginBottom: "20px" }}>
           <label htmlFor="email">Email</label>
-          <input ref={emailRef} type="email" id="email" placeholder="Enter your email" style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ccc" }} />
+          <input ref={emailRef} type="email" id="email" placeholder="Enter email" style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ccc" }} />
         </div>
         <div style={{ display: "flex", flexDirection: "column", marginBottom: "20px" }}>
           <label htmlFor="message">Message</label>
