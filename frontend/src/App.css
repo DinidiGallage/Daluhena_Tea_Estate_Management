@@ -61,8 +61,9 @@ h2 {
 
 label {
   display: block;
+  font-weight: bold;
   margin-bottom: 5px;
-  color: #333;
+  color: #000000;
 }
 
 /* Side NavBar CSS styles  */
@@ -351,6 +352,7 @@ label {
 /*Css for All documents buttons and input fields*/
 /*All Documents*/
       .AttendancedateSelect {
+        font-weight: bold;
         border-radius: 5px;
         text-align: center;
         margin-left: 5px;
@@ -365,7 +367,11 @@ label {
         transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transitions for interactions */
         padding-right: 15px;
       }
-
+      .AttendancedateSelect:focus {
+        outline: none;
+        border-color: #80bdff; /* Highlighted border color on focus */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Outer glow effect on focus */
+      }
       /*Date Selector*/
       .emp-att-dateSelect {
         text-align: center;
@@ -380,8 +386,9 @@ label {
         
       }
       .emp-att-dateSelect:focus {
+        outline: none;
         border-color: #80bdff; /* Highlighted border color on focus */
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.55); /* Outer glow effect on focus */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Outer glow effect on focus */
       
       }
 
