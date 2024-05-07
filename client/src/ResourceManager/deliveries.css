@@ -1,0 +1,111 @@
+/* Base styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f4f4;
+}
+
+.pm-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Table styling */
+.pm-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.9em;
+  min-width: 400px; /* Minimum width of the table */
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+
+.pm-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.table th, .table td {
+  padding: 12px 15px;
+}
+
+.pm-table tbody tr {
+  border-bottom: thin solid #dddddd;
+}
+
+.pm-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.pm-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+/* Button styling */
+.pm-edit-button {
+  display: inline-block;
+  padding: 8px 12px;
+  color: white;
+  background-color: #4CAF50; /* Green background */
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none; /* Remove underline from link */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.pm-edit-button:hover, .pm-edit-button:focus {
+  background-color: #45a049; /* Darker green */
+  color: #f1f1f1; /* Slightly off-white text */
+}
+
+/* Responsive table styling */
+@media (max-width: 768px) {
+  .table, .table thead, .table tbody, .table th, .table td, .table tr {
+      display: block;
+  }
+
+  .pm-table {
+      width: 100%;
+      overflow-x: auto; /* Allows table to scroll horizontally on small devices */
+  }
+
+  .pm-table thead {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+  }
+
+  .pm-table tr { border: 1px solid #ccc; }
+
+  .pm-table td {
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 50%;
+      text-align: left;
+  }
+
+  .pm-table td:before {
+      position: absolute;
+      top: 12px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      content: attr(data-label);
+      text-align: left;
+      font-weight: bold;
+  }
+}

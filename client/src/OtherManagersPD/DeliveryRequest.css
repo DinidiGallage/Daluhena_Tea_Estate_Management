@@ -1,0 +1,27 @@
+.pd-delivery-request-container {
+    margin: 20px;
+  }
+  
+  .pd-delivery-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .pd-table-header {
+    padding: 10px;
+    border-bottom: 2px solid #28a745; /* Green theme color */
+  }
+  
+  .pd-table-row:nth-child(even) {
+    background-color: #f2f2f2; /* Alternate row color */
+  }
+  
+  .pd-table-row:hover {
+    background-color: #e6e6e6; /* Row color on hover */
+  }
+  
+  .pd-table-row td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  

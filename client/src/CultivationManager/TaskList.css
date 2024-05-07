@@ -1,0 +1,184 @@
+/* TaskList.css */
+
+.task-list-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* White background */
+}
+
+.add-task-button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.add-task-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.task-table th,
+.task-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.task-table th {
+    background-color: #4CAF50; /* Green table header */
+    color: #fff;
+}
+
+.edit-link,
+.delete-button {
+    color: #007bff; /* Blue color for links and buttons */
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.edit-link:hover,
+.delete-button:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+/* TaskList.css */
+
+.task-list-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+}
+
+.add-task-button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.add-task-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.task-table th,
+.task-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.task-table th {
+    background-color: #4CAF50; /* Green table header */
+    color: #fff;
+}
+
+.edit-link,
+.delete-button {
+    color: #007bff; /* Blue color for links and buttons */
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.edit-link:hover,
+.delete-button:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+/* TaskList.css */
+
+.task-list-container {
+    max-width: 1000px; /* Increase the max-width as needed */
+    margin: 0 auto;
+    padding: 20px;
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+}
+
+.add-task-button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.add-task-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.task-table th,
+.task-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.task-table th {
+    background-color: #4CAF50; /* Green table header */
+    color: #fff;
+}
+
+.edit-link,
+.delete-button {
+    color: #007bff; /* Blue color for links and buttons */
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.edit-link:hover,
+.delete-button:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+/* Media query for mobile responsiveness */
+@media only screen and (max-width: 600px) {
+    .task-list-container {
+        padding: 10px;
+    }
+
+    .add-task-button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .task-table th,
+    .task-table td {
+        padding: 6px;
+        font-size: 14px;
+    }
+
+    .edit-link,
+    .delete-button {
+        font-size: 14px;
+    }
+}

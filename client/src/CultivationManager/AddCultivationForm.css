@@ -1,0 +1,53 @@
+.WC-add-cultivation-container {
+    background-color: white;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.WC-add-cultivation-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.WC-form-label {
+    color: #444;
+}
+
+.WC-form-input,
+.WC-form-select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.WC-submit-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.WC-submit-button:hover {
+    background-color: #218838;
+}
+
+.WC-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #dc3545;
+}
+/* Adjustments for smaller screens */
+@media (max-width: 600px) {
+    .add-cultivation-container {
+      padding: 15px;
+    }
+  }

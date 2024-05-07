@@ -1,0 +1,59 @@
+/* adddeliver.css */
+
+/* Container styles */
+.HI-add-delivery-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading styles */
+  .HI-add-delivery-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Form styles */
+  .HI-add-delivery-form {
+    display: grid;
+    gap: 15px;
+  }
+  
+  .HI-add-delivery-label {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .HI-add-delivery-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .HI-add-delivery-date-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* Adjust appearance for date input */
+  }
+  
+  .HI-add-delivery-submit-btn {
+    padding: 12px 20px;
+    background-color: #0c4409;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .HI-add-delivery-submit-btn:hover {
+    background-color: #0c4409;
+  }
+  

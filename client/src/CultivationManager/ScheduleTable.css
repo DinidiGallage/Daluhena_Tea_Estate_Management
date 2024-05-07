@@ -1,0 +1,81 @@
+/* ScheduleTable.css */
+
+.schedule-table-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* White background */
+}
+
+.add-schedule-button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green background color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.add-schedule-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.schedule-table th,
+.schedule-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.schedule-table th {
+    background-color: #4CAF50; /* Green table header */
+    color: #fff;
+}
+
+.edit-button,
+.delete-button {
+    padding: 5px 10px;
+    background-color: #007bff; /* Blue buttons */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    margin-right: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+/* Media query for mobile responsiveness */
+@media only screen and (max-width: 600px) {
+    .schedule-table-container {
+        padding: 10px;
+    }
+
+    .add-schedule-button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+        padding: 6px;
+    }
+
+    .edit-button,
+    .delete-button {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+}

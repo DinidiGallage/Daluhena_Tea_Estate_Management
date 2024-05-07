@@ -1,0 +1,85 @@
+/* CultivationData.css */
+
+.cultivation-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white; /* Set background color to white */
+}
+
+.add-plant-button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green background color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.add-plant-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.cultivation-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cultivation-table th,
+.cultivation-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.cultivation-table th {
+    background-color: #4CAF50; /* Green table header */
+    color: #fff;
+}
+
+/* Style for edit and delete buttons */
+.edit-delete-cell {
+    white-space: nowrap; /* Prevent line breaks */
+}
+
+.edit-button,
+.delete-button {
+    padding: 5px 10px;
+    background-color: #007bff; /* Blue buttons */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    margin-right: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+/* Adjustments for smaller screens */
+@media (max-width: 600px) {
+    .cultivation-container {
+        padding: 10px;
+    }
+
+    .add-plant-button {
+        padding: 8px 16px;
+        margin-bottom: 15px;
+    }
+
+    .cultivation-table th,
+    .cultivation-table td {
+        padding: 6px;
+    }
+
+    .edit-button,
+    .delete-button {
+        padding: 4px 8px;
+    }
+}

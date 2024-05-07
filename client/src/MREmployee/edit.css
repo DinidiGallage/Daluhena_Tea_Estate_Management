@@ -1,0 +1,99 @@
+/* General Enhancements for a Modern Look */
+.mr-body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Cleaner font */
+}
+
+.mr-modal-content {
+    border-radius: 0.8rem; /* Softer corners */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+.mr-modal-header, .mr-modal-footer {
+    border: none; /* Cleaner lines */
+    padding: 1.5rem; /* More space */
+}
+
+.mr-modal-body {
+    padding: 1.5rem; /* Consistent spacing */
+}
+
+/* Enhanced Modal Animation */
+.mr-modal.fade .mr-modal-dialog {
+    transform: translateY(-100px); /* Starts further up */
+    transition: transform 0.5s ease-out; /* Smoother transition */
+}
+
+.mr-modal.show .mr-modal-dialog {
+    transform: translateY(0);
+}
+
+/* Form Enhancements for Elegance and Focus */
+.mr-form-control {
+    border-radius: 0.3rem; /* Slightly rounder */
+    border: 2px solid #e3e3e3; /* Subtler border */
+    transition: all 0.3s ease; /* Smoother transition */
+}
+
+.mr-form-control:focus {
+    border-color: #007bff; /* Brighter focus color */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Subtle glow */
+}
+
+/* Modern Buttons with Gradient and Shadow */
+.mr-btn-outline-success, .mr-btn-outline-danger {
+    border: none; /* Remove borders for a cleaner look */
+    transition: all 0.3s ease; /* Smooth transition */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    text-transform: uppercase; /* Modern typography */
+    font-weight: bold; /* Emphasis */
+}
+
+.mr-btn-outline-success {
+    background: linear-gradient(45deg, #28a745, #4caf50); /* Green gradient */
+    color: #fff;
+}
+
+.mr-btn-outline-success:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+.mr-btn-outline-danger {
+    background: linear-gradient(45deg, #dc3545, #f44336); /* Red gradient */
+    color: #fff;
+}
+
+.mr-btn-outline-danger:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+/* Layout and Spacing for Cleanliness and Responsiveness */
+.mr-view-status-container, .mr-top-section, .mr-button-group button {
+    padding: 20px;
+    margin: 20px 0; /* Consistent spacing */
+}
+
+.mr-top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Wraps items for smaller screens */
+}
+
+.mr-button-group button {
+    margin: 0 10px 10px 0; /* Adjusted for wrapping */
+    border-radius: 0.5rem; /* Rounded buttons */
+}
+
+/* Improved Responsiveness */
+@media (max-width: 768px) {
+    .mr-top-section, .mr-button-group {
+        flex-direction: column;
+        align-items: stretch; /* Full-width components on small screens */
+    }
+
+    .mr-button-group button {
+        margin-bottom: 15px; /* Spacing between buttons */
+    }
+}
+
+

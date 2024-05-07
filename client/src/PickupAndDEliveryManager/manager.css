@@ -1,0 +1,54 @@
+.pd-edit-delivery-container {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  margin-bottom: 20px;
+}
+
+.pd-edit-delivery-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.pd-form-group {
+  margin-bottom: 15px;
+}
+
+.pd-form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.pd-form-select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.pd-submit-btn {
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.pd-loading {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.pd-error {
+  margin-top: 20px;
+  color: red;
+  font-size: 18px;
+}

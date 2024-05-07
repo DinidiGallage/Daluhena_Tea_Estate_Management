@@ -1,0 +1,58 @@
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #bdc465; /* Light earthy background color */
+    background-image: url('../WCimages/image2.jpg'); /* Optional: Add a background image related to tea */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .welcome-title {
+    color: #3e4e50; /* Darker, earthy tone for text */
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Soft shadow for better readability */
+    background-color: rgba(255, 255, 255, 0.8); /* Light background for the title for better readability */
+    padding: 10px 20px;
+    border-radius: 8px;
+  }
+  
+  .welcome-btn {
+    background-color: #8a7f70; /* Earthy tone for buttons */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  .welcome-btn:hover {
+    background-color: #6d6659; /* Darkened tone on hover */
+    transform: scale(1.05); /* Slightly enlarge buttons on hover */
+  }
+  
+  /* Ensuring text is easily readable over the background image */
+  .welcome-container * {
+    z-index: 10;
+    position: relative;
+  }
+  
+  /* Optional: Add a dark/semi-transparent overlay to make text more readable over the background image */
+  .welcome-container:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3); /* Dark overlay */
+    z-index: 1;
+  }
+  

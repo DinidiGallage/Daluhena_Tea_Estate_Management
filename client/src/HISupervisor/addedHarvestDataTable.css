@@ -1,0 +1,42 @@
+/* addedHarvestDataTable.HI-css */
+
+.HI-added-harvest-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .HI-added-harvest-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .HI-harvest-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .HI-harvest-table th,
+  .HI-harvest-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .HI-harvest-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .HI-harvest-table td {
+    text-align: center;
+  }
+  
+  .HI-edit-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .HI-edit-link:hover {
+    text-decoration: underline;
+  }
+  

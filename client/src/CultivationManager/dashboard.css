@@ -1,0 +1,65 @@
+.dashboard-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.dashboard-section {
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.section-heading {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.section-content {
+  margin-top: 0;
+}
+
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.employee-table th,
+.employee-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.button.green {
+  background-color: #4caf50;
+}
+
+.calendar {
+  width: 100%;
+  max-width: 300px;
+}
+
+.time {
+  font-size: 24px;
+}
+
+.weather-data p {
+  margin: 5px 0;
+}
+.button-container {
+  display: flex;
+  gap: 10px; /* Adjust the gap between buttons as needed */
+}

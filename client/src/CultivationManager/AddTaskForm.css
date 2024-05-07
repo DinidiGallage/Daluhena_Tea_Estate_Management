@@ -1,0 +1,126 @@
+/* AddTaskForm.css */
+.WC-add-task-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f8f2; /* Light green background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.WC-add-task-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.WC-form-table {
+    width: 100%;
+}
+
+.WC-form-label {
+    padding: 10px;
+    color: #444;
+}
+
+.WC-form-select,
+.WC-form-input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+.WC-submit-button {
+    padding: 10px 20px;
+    background-color: #28a745; /* Green submit button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.WC-submit-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.WC-success-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #28a745; /* Green color for success message */
+}
+
+.WC-error-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #dc3545; /* Red color for error message */
+}
+/* AddTaskForm.css */
+
+.WC-add-task-container {
+    background-color: white; /* Set the background color to white */
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.WC-add-task-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.WC-form-table {
+    width: 100%;
+}
+
+.WC-form-label {
+    padding: 10px;
+    color: #444;
+}
+
+.WC-form-select,
+.WC-form-input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.WC-submit-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.WC-submit-button:hover {
+    background-color: #218838;
+}
+
+.WC-success-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #28a745; /* Green color for success message */
+}
+
+.WC-error-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #dc3545; /* Red color for error message */
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 600px) {
+    .add-task-container {
+      padding: 15px;
+    }
+  }

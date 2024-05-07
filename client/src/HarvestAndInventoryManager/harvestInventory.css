@@ -1,0 +1,50 @@
+/* harvestInventory.HI-css */
+
+.HI-harvest-inventory-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.HI-1);
+}
+
+.HI-harvest-inventory-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.HI-harvest-inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.HI-harvest-inventory-table th,
+.HI-harvest-inventory-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.HI-harvest-inventory-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.HI-status-select {
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.HI-add-button {
+    padding: 8px 16px;
+    background-color: #0c4409;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.HI-add-button:hover {
+    background-color: #0c4409;
+}

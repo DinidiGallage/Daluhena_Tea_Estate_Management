@@ -1,0 +1,37 @@
+.pd-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .pd-buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pd-button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: rgba(15, 114, 30, 0.81);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .pd-active {
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: rgba(15, 114, 30, 0.81);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .pd-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  

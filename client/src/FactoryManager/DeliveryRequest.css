@@ -1,0 +1,47 @@
+/* Delivery Container */
+.pm-delivery-container {
+    margin-top: 20px;
+}
+
+/* Individual Delivery */
+.pm-delivery-container > div {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.pm-delivery-container > div p {
+    margin: 5px 0;
+}
+
+.pm-delivery-container > div select {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.pm-delivery-container > div button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pm-delivery-container > div button:hover {
+    background-color: #0056b3;
+}
+.pm-no-requests {
+    color: #28a745; /* Green theme color */
+    font-size: 18px; /* Font size for the message */
+    padding: 20px; /* Padding around the message */
+    border: 1px solid #28a745; /* Green border */
+    border-radius: 5px; /* Optional border radius */
+    text-align: center; /* Center align the message */
+    position: absolute; /* Position absolute to center */
+    top: 50%; /* Move to the middle vertically */
+    left: 50%; /* Move to the middle horizontally */
+    transform: translate(-50%, -50%); /* Centering trick */
+}
+

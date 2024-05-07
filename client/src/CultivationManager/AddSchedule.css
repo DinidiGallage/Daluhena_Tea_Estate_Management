@@ -1,0 +1,67 @@
+/* AddSchedule.css */
+
+.WC-add-schedule-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.WC-add-schedule-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.WC-add-schedule-container form {
+    margin-top: 20px;
+}
+
+.WC-add-schedule-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.WC-add-schedule-container select,
+.WC-add-schedule-container input[type="date"],
+.WC-add-schedule-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.WC-add-schedule-container textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.WC-add-schedule-container button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.WC-add-schedule-container button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.WC-add-schedule-container .error {
+    color: #dc3545;
+    margin-top: 10px;
+}
+/* Adjustments for smaller screens */
+@media (max-width: 600px) {
+    .add-schedule-container {
+      padding: 15px;
+    }
+  }

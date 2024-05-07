@@ -1,0 +1,126 @@
+/* Base layout configurations */
+.pm-dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.pm-dashboard h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #4a7a2f; /* Green color for headers to match tea theme */
+  font-size: 1.75rem; /* Larger size for visibility */
+}
+
+/* FullCalendar specific styles */
+.pm-fc .pm-fc-toolbar-title {
+  font-size: 1.75em; /* Uniform font size for calendar title */
+  color: #4a7a2f; /* Matching the dashboard theme */
+}
+
+.pm-fc .pm-fc-button-primary {
+  background-color: #6aa84f; /* Soft green for buttons */
+  border: 1px solid #38761d; /* Dark green border for definition */
+  color: white; /* White text for contrast */
+}
+
+.pm-fc .pm-fc-button-primary:not(:disabled):hover,
+.pm-fc .pm-fc-button-primary:not(:disabled).fc-button-active {
+  background-color: #38761d; /* Darker green on hover/active for depth */
+  color: white;
+}
+
+.pm-fc th {
+  background-color: #e4eed6; /* Light green for headers */
+  color: #4a7a2f; /* Dark green text to contrast header */
+}
+
+.pm-fc td, .pm-fc th {
+  border-color: #d0e6c8; /* Light green borders for a soft look */
+}
+
+/* Pie chart container */
+.pm-pie-container {
+  width: 100%;
+  max-width: 550px; /* Smaller width for better fit */
+  margin: 20px auto;
+  padding: 15px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Table of tea types */
+.pm-tea-types-table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 550px; /* Consistent with pie container for alignment */
+}
+
+.pm-tea-types-table th,
+.pm-tea-types-table td {
+  text-align: left;
+  padding: 12px;
+  border: 1px solid #a4c2f4; /* Light blue border */
+}
+
+.pm-tea-types-table th {
+  background-color: #6aa84f; /* Header background */
+  color: white; /* White text for contrast */
+}
+
+.pm-tea-types-table td {
+  background-color: #f7fafc; /* Very light background for cells */
+}
+
+/* Dashboard sections styling */
+.pm-dashboard-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* Centering sections for better aesthetics */
+  margin-top: 20px;
+}
+
+.pm-section {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.pm-section:hover {
+  transform: translateY(-5px); /* Slight raise effect on hover for interactivity */
+}
+
+.pm-calendar-section, .pm-chart-section, .pm-tea-types-section {
+  flex: 1 1 260px; /* Allows for wrapping and flexible widths */
+  margin: auto;
+  max-width: 800px; /* Increase the max-width for the calendar section */
+}
+
+/* Ensure calendar section has the same width as the pie container */
+.pm-calendar-section {
+  width: 100%;
+}
+
+/* Responsive considerations */
+@media (max-width: 768px) {
+  .pm-dashboard-sections {
+      flex-direction: column;
+  }
+
+  .pm-section {
+      width: 100%; /* Full width sections on smaller screens */
+  }
+
+  .pm-calendar-section, .pm-chart-section, .pm-tea-types-section {
+      max-width: none;
+  }
+}

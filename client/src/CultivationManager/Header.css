@@ -1,0 +1,66 @@
+/* Header.css */
+
+/* Sidebar container styles */
+.WC-sidebar-container {
+  width: 280px; /* Adjust the width as needed */
+  height: 100vh; /* Full height of the viewport */
+  background-color: #ffffff; /* White background */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center-align children (logo and nav items) horizontally */
+  padding: 20px 3px; /* Top and bottom padding to give some space */
+  overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+/* Nav pills styles */
+.WC-nav-pills {
+  flex-direction: column; /* Stack pills vertically */
+  width: 100%; /* Full width for better touch targets */
+  list-style-type: none; /* Remove bullets from list items */
+  overflow-x: hidden; /* Hide horizontal overflow */
+  overflow-y: auto; /* Add vertical scroll if necessary */
+  max-height: calc(100vh - 100px); /* Limit height to viewport height - 100px */
+}
+
+/* Nav item styles */
+.WC-nav-item {
+  width: 100%; /* Full width */
+  margin-bottom: 10px; /* Space between items */
+}
+
+/* Nav link and logout link styles */
+.WC-nav-link,
+.WC-logout-link {
+  color: #000; /* Black text for links */
+  padding: 12px 15px; /* Padding for touch targets */
+  text-align: left; /* Left text alignment */
+  border-radius: 5px; /* Rounded corners for links */
+  display: block; /* Block level to fill the container */
+  width: 100%; /* Full width */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  background-color: #fcfffe; /* Green background for nav-pills */
+  text-decoration: none; /* No underline */
+  margin: 10px 0; /* Vertical margin */
+}
+
+/* Hover and active styles for nav links */
+.WC-nav-link:hover,
+.WC-nav-link.active {
+  color: #000; /* Black text for active/hover */
+  background-color: rgb(20, 78, 20); /* Brighter green background for active/hover */
+}
+
+/* Logout link styles */
+.WC-logout-link {
+  color: #dc3545; /* Red text for "Log Out" link */
+  margin-top: auto; /* Push to the bottom */
+  background-color: transparent; /* Transparent background */
+}
+
+/* Hover and active styles for logout link */
+.WC-logout-link:hover,
+.WC-logout-link.active {
+  color: #000; /* Black text for active/hover */
+  background-color: #0f0; /* Green background for active/hover */
+}

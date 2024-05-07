@@ -1,0 +1,54 @@
+.pm-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pm-table th {
+  padding: 15px;
+  border-bottom: 2px solid #ccc;
+  background-color: #28a745; /* Green theme color */
+  color: #fff; /* Text color */
+  text-align: left;
+}
+
+.pm-table td {
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.pm-form-select {
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 16px; /* Font size */
+}
+
+.pm-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #28a745; /* Green theme color */
+  color: #fff; /* Text color */
+  cursor: pointer;
+}
+
+.pm-btn:hover {
+  background-color: #218838; /* Darker shade of green on hover */
+}
+.pd-no-deliveries-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+}
+
+.pd-no-deliveries {
+  text-align: center;
+  padding: 20px;
+  background-color: #28a745; /* Green theme color */
+  color: #fff; /* Text color */
+  border-radius: 5px;
+  width: fit-content; /* Making the width fit the content */
+}

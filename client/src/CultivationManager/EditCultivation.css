@@ -1,0 +1,105 @@
+/* EditCultivation.css */
+.edit-cultivation-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.edit-cultivation-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-input,
+.form-select {
+    padding: 10px;
+    border: 1px solid #4CAF50; /* Green border color */
+    border-radius: 5px;
+    outline: none;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green submit button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.error {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #dc3545; /* Red color for error message */
+}
+.edit-cultivation-container {
+    background-color: white;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.edit-cultivation-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-input,
+.form-select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #218838;
+}
+
+.error {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #dc3545;
+}
+/* Adjustments for smaller screens */
+@media (max-width: 600px) {
+    .edit-cultivation-container {
+        padding: 15px;
+    }
+
+    .form-input,
+    .form-select {
+        padding: 8px;
+    }
+
+    .submit-button {
+        padding: 8px 16px;
+    }
+}

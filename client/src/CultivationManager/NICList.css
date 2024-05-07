@@ -1,0 +1,57 @@
+/* NICList.css */
+
+.nic-list-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* White background */
+}
+
+.add-employee-button {
+    padding: 10px 20px;
+    background-color: #45a049; /* Darker green submit button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.add-employee-button:hover {
+    background-color: #4CAF50; /* Lighter green on hover */
+}
+
+.nic-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.nic-table th,
+.nic-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.nic-table th {
+    background-color: #45a049; /* Darker green table header */
+    color: #fff;
+}
+/* Media query for mobile responsiveness */
+@media only screen and (max-width: 600px) {
+    .nic-list-container {
+        padding: 10px;
+    }
+
+    .add-employee-button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .nic-table th,
+    .nic-table td {
+        padding: 6px;
+    }
+}

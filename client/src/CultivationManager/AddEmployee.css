@@ -1,0 +1,92 @@
+/* AddEmployee.css */
+.WC-add-employee-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f8f2; /* Light green background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.WC-add-employee-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.WC-label {
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.WC-input-field {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+.WC-submit-button {
+    padding: 10px 20px;
+    background-color: #28a745; /* Green submit button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.WC-submit-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+/* Background image container */
+.WC-add-employee-container {
+    background-color: white;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.WC-add-employee-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.WC-label {
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.WC-input-field {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+.WC-submit-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.WC-submit-button:hover {
+    background-color: #218838;
+}
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .input-field,
+    .submit-button {
+      padding: 10px;
+      font-size: 14px;
+    }
+  }

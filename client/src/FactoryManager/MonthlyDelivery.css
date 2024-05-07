@@ -1,0 +1,26 @@
+/* Monthly Deliveries Container */
+.pd-monthly-deliveries-container {
+    padding: 20px;
+}
+
+/* Monthly Deliveries Heading */
+.pd-monthly-deliveries-heading {
+    color: #28a745; /* Green theme color */
+}
+
+/* Monthly Deliveries Table */
+.pd-monthly-deliveries-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Delivery Row */
+.pd-delivery-row:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Delivery Data */
+.pd-delivery-data {
+    text-align: center;
+    padding: 8px;
+}

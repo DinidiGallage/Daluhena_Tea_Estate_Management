@@ -1,0 +1,52 @@
+.pd-edit-delivery-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.pd-edit-form {
+    margin-top: 20px;
+}
+
+.pd-edit-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pd-edit-table th {
+    padding: 15px;
+    border-bottom: 2px solid #ccc;
+    background-color: #f2f2f2;
+    font-size: 18px; /* Increased font size */
+    text-align: left;
+}
+
+.pd-edit-table td {
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px; /* Increased font size */
+}
+
+.pd-edit-select {
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px; /* Increased font size */
+}
+
+.pd-edit-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px; /* Increased font size */
+}
+
+.pd-edit-button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,214 @@
+.mr-manager-dashboard {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+}
+
+.mr-manager-dashboard h1 {
+    text-align: center;
+    color: #fffbfb;
+    margin-bottom: 30px;
+    font-weight: bolder;
+    font-size:  35px;
+}
+
+.mr-dashboard-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.mr-request-cards,
+.mr-status-cards,
+.mr-status-overview {
+    display: flex;
+    gap: 20px;
+}
+
+.mr-button-card {
+    flex: 1;
+    padding: 30px;
+    border-radius: 2px;
+    color: #fff;
+    box-shadow: 5px 5px 10px rgba(48, 43, 43, 0.568);
+}
+
+.mr-button-card .title {
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    font-weight: bolder;
+}
+
+.mr-button-card .count {
+    font-size: 30px;
+}
+
+.mr-button-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+    flex: 1;
+    padding: 25px;
+    border-radius: 15px;
+    color: #ffffff;
+    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.534);
+}
+
+.card .title {
+    font-size: 22px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.card .count {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.total-maintenance,
+.total-repair {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    height: 145px;
+    width: 300px;
+}
+
+.total-maintenance-status,
+.total-repair-status,
+.mr-genarate-report {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    height: 90px;
+    width: 300px;
+}
+
+.total-maintenance {
+    background-color: #2f58d3;
+}
+
+.total-repair {
+    background-color: #24b13b;
+}
+
+.total-maintenance-status {
+    background-color: #c73126;
+}
+
+.total-repair-status {
+    background-color: #d69929;
+}
+
+/*status buttons */
+.button-status {
+    flex: 1;
+    padding: 20px;
+    box-shadow: 5px 5px 10px rgba(48, 43, 43, 0.568);
+}
+
+.button-status .title {
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.button-status:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.part-status {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    height: 40px;
+    width: 220px;
+}
+
+.part-status {
+    background-color: #fffffff1;
+}
+
+/*Genarate Report*/
+.mr-genarate-report {
+    background-color: #000000e0;
+}
+
+
+
+.maintenance-status,
+.repair-status {
+    width: 350px;
+    height: 280px;
+}
+
+.status-overview .card {
+    flex-basis: calc(50% - 10px);
+    background-color: #eee5f0f8;
+    color: #000000;
+    box-shadow:#050000;
+    text-align: center;
+}
+
+.status-overview .title {
+    color: #050000;
+    font-size: 24px;
+    font-weight: bolder;
+
+}
+
+.status-overview .status {
+    font-size: 16px;
+    margin: 14px 0;
+}
+
+/* Customizations for the pie chart legend */
+.chartjs-legend ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.chartjs-legend li {
+    margin-right: 10px;
+    padding-left: 30px;
+    position: relative;
+    cursor: pointer;
+}
+
+.chartjs-legend li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    transform: translateY(-50%);
+}
+
+.chartjs-legend li:nth-child(1):before {
+    background-color: #0066ff;
+}
+
+.chartjs-legend li:nth-child(2):before {
+    background-color: #fff347;
+}
+
+.chartjs-legend li:nth-child(3):before {
+    background-color: #0d9600;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .dashboard-content {
+        flex-direction: column;
+    }
+}

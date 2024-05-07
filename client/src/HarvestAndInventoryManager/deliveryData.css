@@ -1,0 +1,62 @@
+/* deliveryData.css */
+
+.delivery-data-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.delivery-data-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.add-button {
+    padding: 8px 16px;
+    background-color: #0c4409;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.add-button:hover {
+    background-color: #0c4409;
+}
+
+.delivery-data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.delivery-data-table th,
+.delivery-data-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.delete-button,
+.edit-button {
+    padding: 8px 16px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.edit-button {
+    background-color: #28a745;
+}
+
+.delete-button:hover,
+.edit-button:hover {
+    opacity: 0.8;
+}

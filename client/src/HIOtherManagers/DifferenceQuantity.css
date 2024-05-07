@@ -1,0 +1,57 @@
+.HI-difference-quantity-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.HI-difference-quantity-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.HI-search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.HI-label {
+    margin-right: 10px;
+}
+
+.HI-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.HI-button {
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.HI-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.HI-th, .HI-td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.HI-th {
+    background-color: #f2f2f2;
+}
+
+.HI-error {
+    color: red;
+}

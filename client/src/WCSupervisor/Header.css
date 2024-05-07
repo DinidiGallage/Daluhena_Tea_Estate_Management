@@ -1,0 +1,111 @@
+/* Header.css */
+
+.WC-sidebar-container {
+  width: 280px;
+  height: 100vh; /* Full-height */
+  background-color: #ffffff; /* White background */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Subtle shadow */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center-align children (logo and nav items) horizontally */
+  padding: 20px 3px; /* Top and bottom padding to give some space */
+}
+
+.WC-navbar-brand {
+  width: 100%; /* Full width to center the logo properly */
+  display: flex;
+  justify-content: center; /* Center logo horizontally */
+  margin-bottom: 20px; /* 20px bottom margin */
+}
+
+.WC-logo {
+  max-height: 150px; /* Increased maximum height for the logo */
+  width: 150px; /* Set width to maintain aspect ratio */
+}
+
+.WC-nav {
+  width: 100%; /* Full width */
+}
+
+.WC-nav-pills {
+  flex-direction: column; /* Stack pills vertically */
+  width: 100%; /* Full width for better touch targets */
+}
+
+.WC-nav-item {
+  width: 100%; /* Full width */
+  margin-bottom: 10px; /* Space between items */
+}
+
+.WC-nav-link,
+.WC-logout-link {
+  color: #000; /* Black text for links */
+  padding: 12px 15px; /* Padding for touch targets */
+  text-align: left; /* Left text alignment */
+  border-radius: 5px; /* Rounded corners for links */
+  display: block; /* Block level to fill the container */
+  width: 100%; /* Full width */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  background-color: #fcfffe; /* Green background for nav-pills */
+  text-decoration: none; /* No underline */
+  margin: 10px 0; /* Vertical margin */
+}
+
+.WC-nav-link:hover,
+.WC-nav-link.active {
+  color: #000; /* Black text for active/hover */
+  background-color: rgb(20, 78, 20); /* Brighter green background for active/hover */
+}
+
+.WC-logout-link {
+  color: #dc3545; /* Red text for "Log Out" link */
+  margin-top: auto; /* Push to the bottom */
+  background-color: transparent; /* Transparent background */
+}
+
+.WC-logout-link:hover,
+.WC-logout-link.active {
+  color: #000; /* Black text for active/hover */
+  background-color: #0f0; /* Green background for active/hover */
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .WC-sidebar-container {
+    width: 100%; /* Full width on smaller screens */
+  }
+  .WC-logo {
+    max-height: 100px; /* Reduce logo size on smaller screens */
+  }
+  .WC-nav-link,
+  .WC-logout-link {
+    padding: 10px 12px; /* Smaller padding on smaller screens */
+    font-size: 14px; /* Smaller font size on smaller screens */
+  }
+}
+
+/* Styling for sub-menu items */
+.WC-sub-menu {
+  display: none; /* Hide sub-menu by default */
+  padding-left: 20px; /* Indent sub-menu */
+  list-style-type: none; /* Remove bullets or dots */
+}
+
+.WC-nav-item:hover .sub-menu {
+  display: block; /* Show sub-menu on hover */
+}
+
+.WC-sub-menu-item {
+  padding: 8px 0; /* Padding for sub-menu items */
+  color: #555; /* Sub-menu item text color */
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.WC-sub-menu-item:hover {
+  color: #333; /* Darker text color on hover */
+}
+
+/* Styling for active nav item with sub-menu */
+.WC-nav-item.active .sub-menu {
+  display: block; /* Show sub-menu on active */
+}

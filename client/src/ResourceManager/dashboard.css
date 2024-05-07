@@ -1,0 +1,109 @@
+/* dashboard.css */
+
+/* Base layout configurations */
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 960px; /* Optimized for standard screens while allowing some breathing room */
+  padding: 20px;
+}
+
+.fullCalendarContainer {
+  width: 100%;
+  margin-bottom: 20px; /* Consistent margin for visual spacing */
+}
+
+.managementSections {
+  display: flex;
+  flex-wrap: wrap; /* Allows sections to wrap on smaller screens */
+  gap: 20px; /* Spacing between sections */
+  justify-content: space-between; /* Aligns sections neatly */
+}
+
+.managementSection {
+  flex: 1 1 45%; /* Flex-grow, flex-shrink, and basis set for two columns layout */
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Slightly deeper shadow for depth perception */
+  transition: all 0.3s ease; /* Transition for interactive elements like hover */
+}
+
+/* Interactive Button styles */
+.addButton, .deleteButton {
+  padding: 8px 16px;
+  font-size: 14px; /* Slightly smaller font size for better proportionality */
+  color: white;
+  background-color: #4CAF50; /* Green background for a vibrant look */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease; /* Smoother transition for visual feedback */
+}
+
+.addButton:hover, .deleteButton:hover {
+  background-color: #419941; /* Darker shade of green on hover for button */
+  transform: translateY(-2px); /* Slight raise to indicate actionability */
+}
+
+/* Input field enhancements */
+.addInput {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: calc(100% - 100px); /* Adjust width accounting for button */
+  transition: border-color 0.3s ease; /* Transition for focus highlight */
+}
+
+.addInput:focus {
+  border-color: #4CAF50; /* Green border on focus, matching button color */
+  outline: none; /* Removing default focus outline */
+}
+
+/* Table Styles for Better Readability */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px; /* Space above the table for visual separation */
+}
+
+.styled-table th, .styled-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  background-color: #fafafa; /* Lighter background for cells for easier readability */
+}
+
+.styled-table th {
+  background-color: #e4e4e4; /* Slightly darker than cells for distinction */
+  color: #333; /* Darker text for contrast */
+}
+
+/* Responsiveness for Mobile Devices */
+@media (max-width: 768px) {
+  .managementSections {
+    flex-direction: column;
+  }
+
+  .managementSection {
+    width: 100%; /* Full width for mobile devices */
+    margin-bottom: 20px; /* Space below each section for clear separation */
+  }
+
+  .fullCalendarContainer, .managementSection {
+    padding: 15px; /* Slightly reduced padding on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .addButton, .deleteButton {
+      padding: 6px 12px; /* Smaller buttons on very small screens */
+      font-size: 12px; /* Smaller font size for buttons to fit better */
+  }
+
+  .addInput {
+      width: 100%; /* Full width input field on smaller screens */
+      margin-right: 0; /* No margin right as button goes below on small screens */
+  }
+}

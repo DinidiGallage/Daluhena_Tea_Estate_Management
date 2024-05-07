@@ -1,0 +1,56 @@
+/* Weather.css */
+
+.weather-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.weather-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.weather-table th,
+.weather-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.weather-table th {
+    background-color: #f2f2f2;
+}
+
+.weather-table td {
+    vertical-align: top;
+}
+
+.add-cultivation-container {
+    background-color: #fff; /* White background */
+    background-image: url('../WCimages/manager.jpg'); /* Path to your image */
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* Media query for mobile responsiveness */
+@media only screen and (max-width: 600px) {
+    .weather-container,
+    .add-cultivation-container {
+        padding: 10px;
+    }
+
+    .weather-table th,
+    .weather-table td {
+        padding: 8px;
+    }
+
+    .add-cultivation-container {
+        background-image: none; /* Remove background image on smaller screens */
+    }
+}

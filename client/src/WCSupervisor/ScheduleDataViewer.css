@@ -1,0 +1,32 @@
+/* ScheduleDataViewer.css */
+
+.WC-schedule-data-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.WC-schedule-data-title {
+    color: #4CAF50; /* Green title color */
+}
+
+.WC-schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.WC-schedule-table th,
+.WC-schedule-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.WC-schedule-table th {
+    background-color: #4CAF50; /* Green table header background */
+    color: #fff;
+}
+
+.WC-schedule-table td {
+    vertical-align: top;
+}

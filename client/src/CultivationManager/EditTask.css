@@ -1,0 +1,63 @@
+/* EditTask.css */
+
+.edit-task-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* White background */
+}
+
+.edit-task-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    padding: 10px;
+    border: 1px solid #4CAF50; /* Green border color */
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-select {
+    width: 100%;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green submit button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+/* Media query for mobile responsiveness */
+@media only screen and (max-width: 600px) {
+    .edit-task-container {
+        padding: 10px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .submit-button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,58 @@
+/* Container */
+.pm-container {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  /* Form */
+  .pm-form {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Form Group */
+  .pm-form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Form Label */
+  .pm-form-label {
+    font-weight: bold;
+  }
+  
+  /* Form Select */
+  .pm-form-select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Form Control */
+  .pm-form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Button */
+  .pm-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Button Primary */
+  .pm-btn.btn-primary {
+    background-color:rgba(15, 114, 30, 0.81);
+    color: #fff;
+  }
+  
+  /* Button Primary Hover */
+  .pm-btn.btn-primary:hover {
+    background-color: rgba(15, 114, 30, 0.81);
+  }
+  

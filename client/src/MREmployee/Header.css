@@ -1,0 +1,57 @@
+/* Sidebar Container */
+.sidebar-container {
+  width: 280px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: all 0.5s ease;
+  background: linear-gradient(145deg, #ffffff, #fefffed0); /* Vibrant gradient background */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 10px 10px 30px #000000, -10px -10px 30px #9b9a9a; /* Neumorphism effect */
+  border-radius: 0px; /* Rounded corners for sidebar */
+  padding: 20px; /* Padding for inner spacing */
+}
+
+/* Navbar Brand/Logo */
+.navbar-brand {
+  font-size: 1.8em; /* Slightly larger for emphasis */
+  color: #000000;
+  margin-bottom: 30px; /* Increased space */
+}
+
+/* Nav Pills Styling */
+.nav-pills .nav-link {
+  color: #000000;
+  background-color: transparent;
+  margin-bottom: 15px; /* Adjusted spacing */
+  transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 7px; /* Smooth rounded corners */
+  padding: 15px 25px; /* Increased padding for better touch target */
+  font-weight: 500; /* Medium font weight for readability */
+
+}
+
+.nav-pills .nav-link:hover, .nav-pills .nav-link.active {
+  color: #ffffff;
+  background-color: rgba(15, 114, 30, 0.81); /* Adjusted background for hover/active */
+   /* Enhanced shadow for depth */
+}
+
+/* Logout Link Styling */
+.logout-link {
+  color: #fff;
+  background-color: #ff2600; /* Vibrant red color for emphasis */
+  margin-top: auto; /* Pushes to the bottom */
+  border-radius: 25px; /* Smooth rounded corners */
+  padding: 15px 25px; /* Increased padding for emphasis */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 500; /* Medium font weight for visibility */
+  box-shadow: 0 2px 4px rgba(205, 151, 151, 0.1); /* Subtle shadow for depth */
+}
+
+.logout-link:hover {
+  background-color: #ff0000; /* Darker shade on hover for interaction feedback */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+}
+
+  

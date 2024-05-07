@@ -1,0 +1,30 @@
+/* WeatherDisplay.css */
+
+.weather-display-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.weather-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.weather-table th,
+.weather-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.weather-table th {
+    background-color: #4CAF50; /* Green table header background */
+    color: #fff;
+}
+
+.weather-table td {
+    vertical-align: top;
+}

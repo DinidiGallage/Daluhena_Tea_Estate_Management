@@ -1,0 +1,55 @@
+.HI-container {
+  display: flex;
+}
+
+HI-body{
+  background-image: url('harvest_bg.jpg');
+  background-repeat: no-repeat;
+}
+
+.HI-charts-summary-container {
+  flex: 1;
+  padding-right: 20px; /* Optional: Add padding between the charts and the tables */
+}
+
+.HI-forms-tables-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.HI-charts-row {
+  display: flex;
+  margin-bottom: 20px; /* Optional: Add margin between the charts and the summary table */
+}
+
+.HI-chart-container {
+  flex: 1;
+}
+
+.HI-summary-table {
+  width: 100%;
+}
+
+.HI-add-section {
+  margin-bottom: 20px; /* Optional: Add margin between the sections */
+}
+
+.HI-add-picker-section,
+.HI-add-tea-type-section,
+.HI-calendar-section {
+  margin-bottom: 20px; /* Optional: Add margin between the sections */
+}
+
+.HI-input-field {
+  margin-bottom: 10px; /* Optional: Add margin between the input fields */
+}
+
+.HI-picker-table,
+.HI-tea-type-table {
+  width: 100%;
+}
+
+.HI-calendar {
+  max-width: 100%;
+}

@@ -1,0 +1,48 @@
+/* rejectedHarvestData.css */
+
+.rejected-harvest-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.rejected-harvest-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.rejected-harvest-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rejected-harvest-table th,
+.rejected-harvest-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.edit-button,
+.delete-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.delete-button {
+    background-color: #dc3545;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    opacity: 0.8;
+}
