@@ -27,7 +27,7 @@ function EmpHeader() {
         // Clear token from localStorage or perform any other logout logic
         localStorage.removeItem('token');
         // Redirect to the login page
-        window.location.href = '/emplogin';
+        window.location.href = '/';
     };
 
     return (
