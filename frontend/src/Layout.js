@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+import HeaderFSManager from './HeaderManager';
 
 const LayoutWithHeader = ({ children }) => (
   <div style={{ display: 'flex', height: '100vh' }}> {/* Full screen height and flex container */}
@@ -9,7 +9,7 @@ const LayoutWithHeader = ({ children }) => (
       backgroundColor: '#f8f9fa', // Example background color
       overflowY: 'auto' // Adds scroll to the nav if content overflows
     }}>
-      <Header /> {/* Render the navigation bar */}
+      <HeaderFSManager /> {/* Render the navigation bar */}
     </div>
     <div style={{ flex: 1, overflowY: 'auto' }}> {/* Content area */}
       {children} {/* Render the specific page content */}

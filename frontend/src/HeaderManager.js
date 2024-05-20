@@ -14,7 +14,8 @@ function Header() {
     salaryPackages: false,
     expenses: false,
     sales: false,
-    employeeDetails: false
+    employeeDetails: false,
+    Final_Reports:false
   });
 
   const toggleDropdown = (dropdown) => {
@@ -74,14 +75,24 @@ function Header() {
         </li>
         
         <li className="nav-item">
-          <Link to="/final_reports" className="nav-link">
-            <FontAwesomeIcon icon={faListAlt} className="me-2" /> Final Reports
-          </Link>
+          <a className="nav-link" onClick={() => toggleDropdown('Final_Reports')}>
+            <FontAwesomeIcon icon={faSalesforce} className="me-2" /> Final reports
+            <FontAwesomeIcon icon={faCaretDown} className="ms-auto" />
+          </a>
+          {isOpen.Final_Reports && (
+            <ul className="submenu">
+              <li><Link to="/AddDebitCredit" className="nav-link">Upload reports</Link></li>
+              <li><Link to="/ViewDebitCredit" className="nav-link">View Final reports</Link></li>
+              
+            </ul>
+          )}
+       
         </li>
       </ul>
       <div className="mt-auto">
         <button className="nav-link logout-link" onClick={() => { console.log("Logging out..."); }}>
-          <FontAwesomeIcon icon={faSignOutAlt} className="me-2" /> Log Out
+          <FontAwesomeIcon icon={faSignOutAlt} className="me-2" />
+          <Link to="/WelcomePageFM" className="nav-link">Log Out</Link> 
         </button>
       </div>
     </div>

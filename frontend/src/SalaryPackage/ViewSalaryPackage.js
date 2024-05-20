@@ -5,6 +5,7 @@ import './ViewSalaryPackage.css'; // Make sure this points to the correct CSS fi
 import { FaSearch } from 'react-icons/fa';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import logo from "./logo.png";
 
 function ViewSalaryPackages() {
     const [packages, setPackages] = useState([]);
@@ -57,15 +58,19 @@ function ViewSalaryPackages() {
 
     const generateTaxReport = () => {
         const doc = new jsPDF();
-        doc.setFontSize(12); // Set font size
+        doc.setFontSize(20); // Set font size
 
         let linePosition = 20;
         const lineHeight = 10;
 
-        doc.text('Company Name: Daluhena Tea Estates', 20, linePosition);
+        doc.addImage(logo, 'PNG', 10, 10, 50, 50); // Add image at the top left corner
+
+        doc.text('Daluhena Tea Estates', 80, linePosition);
         linePosition += lineHeight;
-        doc.text('Finance Manager: Malmi Perera', 20, linePosition);
-        linePosition += lineHeight * 2;
+        doc.setFontSize(16); // Set font size
+        doc.text('Finance Manager: Malmi Perera', 80, linePosition);
+        linePosition += lineHeight * 6;
+        doc.setFontSize(16); // Set font size
 
         let totalTaxDeducted = 0;
 
@@ -74,13 +79,18 @@ function ViewSalaryPackages() {
             totalTaxDeducted += taxAmount;
             doc.text(`${pkg.designation} - Tax Deducted: $${taxAmount}`, 20, linePosition);
             linePosition += lineHeight;
+            doc.setFontSize(16); // Set font size
         });
 
-        doc.text(`Total Tax Deducted: $${totalTaxDeducted}`, 20, linePosition);
-        linePosition += lineHeight;
-        doc.text(`Report generated on: ${new Date().toLocaleString()}`, 20, linePosition);
+        doc.text(`Total Tax Deducted: $${totalTaxDeducted}`, 22, linePosition);
+        linePosition += lineHeight*4;
+        doc.setFontSize(20); // Set font size
+        doc.text(`Report generated on: ${new Date().toLocaleString()}`, 14, linePosition);
+        linePosition += lineHeight*4;
+        doc.setFontSize(14); // Set font size
 
-        doc.save('tax_report.pdf');
+        const filename = 'tax_report.pdf'; // Specify filename
+        doc.save(filename); // Trigger download with specified filename
     };
 
     const generateSalaryReport = () => {
@@ -90,25 +100,33 @@ function ViewSalaryPackages() {
         let linePosition = 20;
         const lineHeight = 10;
 
-        doc.text('Company Name: Daluhena Tea Estates', 20, linePosition);
+        doc.addImage(logo, 'PNG', 10, 10, 50, 50); // Add image at the top left corner
+
+        doc.text('Company Name: Daluhena Tea Estates', 80, linePosition);
         linePosition += lineHeight;
-        doc.text('Finance Manager: Malmi Perera', 20, linePosition);
-        linePosition += lineHeight * 2;
+        doc.setFontSize(20); // Set font size
+        doc.text('Finance Manager: Malmi Perera', 80, linePosition);
+        linePosition += lineHeight * 6;
+        doc.setFontSize(16); // Set font size
 
         let totalSalary = 0;
 
         packages.forEach(pkg => {
             const { totalSalary: employeeSalary } = calculateTotalSalary(pkg);
             totalSalary += employeeSalary;
-            doc.text(`${pkg.designation} - Salary Paid: $${employeeSalary}`, 20, linePosition);
+            doc.text(`${pkg.designation} - Salary Paid: $${employeeSalary}`, 22, linePosition);
             linePosition += lineHeight;
+            doc.setFontSize(20); // Set font size
         });
 
         doc.text(`Total Salary Paid: $${totalSalary}`, 20, linePosition);
-        linePosition += lineHeight;
-        doc.text(`Report generated on: ${new Date().toLocaleString()}`, 20, linePosition);
+        linePosition += lineHeight*4;
+        doc.setFontSize(20); // Set font size
+        doc.text(`Report generated on: ${new Date().toLocaleString()}`, 14, linePosition);
+        doc.setFontSize(14); // Set font size
 
-        doc.save('salary_report.pdf');
+        const filename = 'salary_report.pdf'; // Specify filename
+        doc.save(filename); // Trigger download with specified filename
     };
 
     const filteredPackages = packages.filter(pkg =>

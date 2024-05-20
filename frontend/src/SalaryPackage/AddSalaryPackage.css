@@ -1,12 +1,10 @@
 /* AddSalaryPackage.css */
 .salary-package-container {
   width: 100; /* Assuming 250px is the width of your sidebar */
- 
   padding: 20px;
   min-height: calc(100vh - 40px); /* Full height minus the vertical padding */
   background: #f7f7f7;
   box-shadow: none;
-  
 }
 
 .h1 header01 {
@@ -34,9 +32,9 @@ input[type="number"] {
 }
 
 .submit-btn {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
+  width: auto; /* Change width to auto to match delete button */
+  padding: 7px 15px; /* Adjust padding to match delete button */
+  background-color: #2e4b36;
   color: white;
   border: none;
   border-radius: 4px;

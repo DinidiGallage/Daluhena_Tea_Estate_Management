@@ -33,7 +33,7 @@
     "react-dom": "^18.2.0",
     "react-fullcalendar": "^1.0.0",
     "react-icons": "^5.1.0",
-    "react-router-dom": "^6.22.3",
+    "react-router-dom": "^6.23.0",
     "react-scripts": "5.0.1",
     "vue": "^3.4.21",
     "web-vitals": "^2.1.4"

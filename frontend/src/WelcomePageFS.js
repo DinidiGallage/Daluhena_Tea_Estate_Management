@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import './WelcomePage.css'; // Import the CSS file
+import './WelcomePageFM.css'; // Import the CSS file
 
 const WelcomePage = () => {
   const navigate = useNavigate(); // Use the useNavigate hook
@@ -8,12 +8,10 @@ const WelcomePage = () => {
   return (
     <div className="welcome-container">
       <h1 className="welcome-title">Welcome to Finance Management System</h1>
-      <button className="welcome-btn" onClick={() => navigate('/dashboard')}>
+      <button className="welcome-btn" onClick={() => navigate('/Dashboard')}>
         Finanace Manager
       </button>
-      <button className="welcome-btn" onClick={() => navigate('/final-reports')}>
-        Owner
-      </button>
+     
     </div>
   );
 };

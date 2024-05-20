@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import logo from "./logo.png";
 
 function ViewExpenses() {
     const [expenses, setExpenses] = useState([]);
@@ -48,45 +49,63 @@ function ViewExpenses() {
     };
 
     const generatePDF = () => {
-        html2canvas(componentRef.current).then(canvas => {
-            const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF();
-            const pdfWidth = pdf.internal.pageSize.getWidth();
-            const pdfHeight = pdf.internal.pageSize.getHeight();
-
-            // Date and time
-            const now = new Date();
-            const dateStr = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
-
-            // Add company and finance manager details in bold
-            pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(16);
-            pdf.setTextColor('#2e4b36');
-            pdf.text("Company Name: Daluhena Tea Estate", 10, 20);
-            pdf.text("Finance Manager: Malmi Perera", 10, 30);
-
-            // Add expenses details
-            pdf.setFont("helvetica", "normal");
-            pdf.setFontSize(12);
-            pdf.text("Expenses Details:", 10, 50);
-            let yPos = 60;
-            expenses.forEach(expense => {
-                pdf.text(`${expense.expenses_type}: ${expense.expense_amount}`, 10, yPos);
-                yPos += 10;
+        // Fetch the image from the public directory
+        fetch('./logo.png')
+            .then(response => response.blob())
+            .then(blob => {
+                const reader = new FileReader();
+                reader.readAsDataURL(blob);
+                reader.onloadend = () => {
+                    const base64data = reader.result;
+    
+                    html2canvas(componentRef.current).then(canvas => {
+                        const imgData = canvas.toDataURL('image/png');
+                        const pdf = new jsPDF();
+                        const pdfHeight = pdf.internal.pageSize.getHeight();
+    
+                        // Add the logo image
+                        pdf.addImage(logo, 'PNG', 10, 10, 50, 50); // Add image at the top left corner
+    
+                        // Date and time
+                        const now = new Date();
+                        const dateStr = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+    
+                        // Add company and finance manager details in bold, aligned to top right corner
+                        pdf.setFont("helvetica", "bold");
+                        pdf.setFontSize(20);
+                        pdf.setTextColor('#2e4b36');
+                        
+                        pdf.text("Company Name: Daluhena Tea Estate", 60, 60);
+                        pdf.text("Finance Manager: Malmi Perera", 60, 70);
+    
+                        // Add expenses details
+                        pdf.setFont("helvetica", "normal");
+                        pdf.setFontSize(14);
+                        pdf.text("Expenses Details:", 20, 100);
+                        let yPos = 120;
+                        expenses.forEach(expense => {
+                            pdf.text(`${expense.expenses_type}: ${expense.expense_amount}`, 10, yPos);
+                            yPos += 20;
+                        });
+    
+                        // Add total expenses
+                        pdf.setFontSize(16);
+                        pdf.text(`Total Expenses: ${totalExpenses}`, 10, yPos + 20);
+    
+                        // Add auto-generated date and time
+                        pdf.setFontSize(12);
+                        pdf.text(`Generated on: ${dateStr}`, 10, pdfHeight - 10);
+    
+                        // Save the PDF
+                        pdf.save("expenses_report.pdf");
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Failed to load logo:', error);
             });
-
-            // Add total expenses
-            pdf.setFontSize(14);
-            pdf.text(`Total Expenses: ${totalExpenses}`, 10, yPos + 10);
-
-            // Add auto-generated date and time
-            pdf.setFontSize(10);
-            pdf.text(`Generated on: ${dateStr}`, 10, pdfHeight - 10);
-
-            // Save the PDF
-            pdf.save("expenses_report.pdf");
-        });
     };
+    
 
     return (
         <div className="container">

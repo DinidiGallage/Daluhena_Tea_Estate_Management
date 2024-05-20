@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './dashboard.css';
+import './dashboardSF.css';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
@@ -55,7 +55,7 @@ class Dashboard extends React.Component {
                 <Link to="/AddSalaryPackage" className="button-salary"><b>Salary</b></Link>
               </div>
               <div className="card green-box">
-                <Link to="/final-reports" className="button-reports"><b>Final Reports</b></Link>
+                <Link to="/ViewDebitCredit" className="button-reports"><b>Final Reports</b></Link>
               </div>
               <div className="card green-box">
                 <Link to="/Addexpense" className="button-expense"><b>Expenses</b></Link>

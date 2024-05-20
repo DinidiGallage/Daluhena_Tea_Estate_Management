@@ -1,6 +1,4 @@
-// File: AddSale.js
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./AddSales.css";
 
@@ -10,53 +8,41 @@ function AddSale() {
         sales_amount: ''
     });
 
-    const [errors, setErrors] = useState({});
+    const [isFormValid, setIsFormValid] = useState(false);
 
-    // Validate each field individually
-    const validateField = (name, value) => {
-        let errorMessage = '';
-
-        switch (name) {
-            case 'sales_type':
-                if (!value) errorMessage = 'Please select a Sales Type';
-                break;
-            case 'sales_amount':
-                if (isNaN(value) || value <= 0) errorMessage = 'Please enter a valid Sales Amount';
-                break;
-            default:
-                break;
-        }
-
-        setErrors(prevErrors => ({
-            ...prevErrors,
-            [name]: errorMessage
-        }));
+    // Function to validate the entire form
+    const validateForm = () => {
+        const isValid = sale.sales_type !== '' && !isNaN(sale.sales_amount) && sale.sales_amount > 0;
+        setIsFormValid(isValid);
     };
+
+    useEffect(() => {
+        validateForm();
+    }, [sale]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        const parsedValue = name === 'sales_amount' ? parseFloat(value) : value;
+        let parsedValue = value;
+
+        // Handle number parsing for sales_amount
+        if (name === 'sales_amount') {
+            parsedValue = parseFloat(value);
+            // Prevent non-numeric input by setting it to an empty string if it's NaN
+            if (isNaN(parsedValue)) {
+                parsedValue = '';
+            }
+        }
 
         setSale(prevState => ({
             ...prevState,
             [name]: parsedValue
         }));
-
-        // Validate each field as it's being changed
-        validateField(name, parsedValue);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // Perform a final validation check before submitting
-        const validationFields = Object.keys(sale);
-        validationFields.forEach(field => validateField(field, sale[field]));
-
-        // Check for any existing errors before submission
-        const hasErrors = Object.values(errors).some(errorMessage => errorMessage);
-        if (hasErrors) {
-            alert('Please correct the errors before submitting the form');
+        if (!isFormValid) {
+            alert('Please fill all fields correctly before submitting.');
             return;
         }
 
@@ -64,7 +50,6 @@ function AddSale() {
             .then(response => {
                 alert('Sale Added Successfully!');
                 setSale({ sales_type: '', sales_amount: '' }); // Reset form
-                setErrors({});
             })
             .catch(error => {
                 console.error('There was an error!', error);
@@ -89,7 +74,6 @@ function AddSale() {
                         <option value="Factory Cash">Factory Cash</option>
                         <option value="Factory Deposits">Factory Deposits</option>
                     </select>
-                    {errors.sales_type && <span className="error">{errors.sales_type}</span>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="sales_amount">Sales Amount</label>
@@ -101,9 +85,8 @@ function AddSale() {
                         value={sale.sales_amount}
                         onChange={handleChange}
                         required />
-                    {errors.sales_amount && <span className="error">{errors.sales_amount}</span>}
                 </div>
-                <button type="submit" className="btn btn-primary">Add Sale</button>
+                <button type="submit" className="btn btn-primary" disabled={!isFormValid}>Add Sale</button>
             </form>
         </div>
     );

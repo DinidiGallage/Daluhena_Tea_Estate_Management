@@ -2,6 +2,50 @@ const express = require('express');
 const router = express.Router();
 const employeeSalary = require("../models/employeeSalary");
 const { startOfMonth, subMonths } = require('date-fns');
+const cors = require('cors');
+const multer = require('multer');
+const path = require('path');
+
+const app = express();
+
+
+
+app.use(cors()); // Add this line to enable CORS for all routes
+// Storage configuration for multer
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/');
+    },
+    filename: (req, file, cb) => {
+        // Ensure unique file names and sanitize filename
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        const sanitizedFileName = uniqueSuffix + path.extname(file.originalname);
+        cb(null, sanitizedFileName);
+    }
+});
+
+const upload = multer({ storage: storage });
+
+// Route for uploading files
+app.post('/employeeSalary/addDebitCredit', upload.single('file'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ error: 'No file uploaded' });
+    }
+
+    // Perform additional validation if needed (e.g., file type)
+
+    const pdfFileName = req.file.filename;
+
+    // Assuming employeeSalary is your Mongoose model/schema
+    const newEmployeeSalary = new employeeSalary({ pdfFileName });
+    newEmployeeSalary.save()
+        .then(() => res.status(200).json({ message: 'File uploaded successfully' }))
+        .catch(error => res.status(500).json({ error: 'Failed to upload file', details: error }));
+});
+
+
+
+
 
 // Add Salary Package Details
 router.post("/addSalaryPackage", (req, res) => {
@@ -52,11 +96,12 @@ router.delete("/deleteSalaryPackage/:id", (req, res) => {
 
 // Update a salary package
 router.put("/updateSalaryPackage/:id", (req, res) => {
-    const { salary_package_name, ot_payment_per_hour, tax, bonus, designation, basic_salary } = req.body;
+    const { salary_package_name, ot_payment_per_hour, tax, bonus, designation, basic_salary, no_of_hours_worked } = req.body;
     employeeSalary.findByIdAndUpdate(req.params.id, { salary_package_name, ot_payment_per_hour, tax, bonus, designation, basic_salary, no_of_hours_worked }, { new: true })
         .then(updatedPackage => res.json(updatedPackage))
         .catch(err => res.status(500).json({ error: 'Failed to update salary package', details: err }));
 });
+
 
 // Get a single salary package by ID
 router.get("/getSalaryPackage/:id", (req, res) => {
@@ -341,5 +386,10 @@ router.get('/getTotalSales', (req, res) => {
 router.get('/getTotalExpenses', (req, res) => {
     res.json(totalExpensesData);
 });
+
+
+
+
+
 
 module.exports = router;

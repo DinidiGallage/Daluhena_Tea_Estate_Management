@@ -18,7 +18,10 @@ const employeeSalarySchema = new Schema({
     date: { type: Date, default: Date.now } ,// This line adds a date field with the current date as default
     Expenses_name: {type:String},
     Amount_expense :{type:Number},
-    no_of_hours_worked:{type:Number}
+    no_of_hours_worked:{type:Number},
+    type:{type:String},
+    amount:{type:Number},
+    pdfFileName: { type: String }
 
 });
 
